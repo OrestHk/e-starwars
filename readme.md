@@ -1,4 +1,4 @@
-#Star wars store based on Laravel
+#Star wars e-shop
 
 Training project
 
