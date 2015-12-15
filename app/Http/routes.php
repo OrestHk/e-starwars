@@ -11,6 +11,10 @@
 |
 */
 
+// Global vars
+define('IMG_PATH_BACK', 'public/assets/images/products/');
+define('IMG_PATH_FRONT', 'assets/images/products/');
+
 Route::get('/', function () {
     return view('welcome');
 });
