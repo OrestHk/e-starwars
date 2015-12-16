@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Product;
 
+
 class FrontController extends Controller
 {
   public function index(){

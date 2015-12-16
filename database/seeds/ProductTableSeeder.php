@@ -11,10 +11,6 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Product::class, 20)
-            ->create()
-            ->each(function($product){
-                $faker = \Faker\Factory::create();
-            });
+        factory(App\Product::class, 20)->create();
     }
 }

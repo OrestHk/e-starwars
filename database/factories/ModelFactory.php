@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker){
 });
 
 // Product factory
-$factory->define(App\Picture::class, function (Faker\Generator $faker){
+$factory->define(App\Product::class, function (Faker\Generator $faker){
   // Create title + content
   $name = $faker->unique()->word(rand(1, 3));
   $slug = str_slug($name);
@@ -32,7 +32,7 @@ $factory->define(App\Picture::class, function (Faker\Generator $faker){
 
   // Attach a picture
   $images = App\Picture::lists('id')->all();
-  $image = rand(0, 1) ? $images[array_rand($images)] : null;
+  $image = $images[array_rand($images)];
 
   return [
       'name' => $name,
@@ -43,7 +43,7 @@ $factory->define(App\Picture::class, function (Faker\Generator $faker){
       'price' => $price,
       'category_id' => rand(1, 2),
       'publish_date' => Carbon\Carbon::now(),
-      'published_at' => Carbon\Carbon::now(),
+      'created_at' => Carbon\Carbon::now(),
       'updated_at' => Carbon\Carbon::now()
   ];
 });
@@ -56,7 +56,7 @@ $factory->define(App\Picture::class, function (Faker\Generator $faker){
     $infos = pathinfo($image);
     $size = filesize($image);
     // Copy it in the resources folder
-    copy($image, base_path(IMG_PATH_BACK.$infos['basename']);
+    copy($image, base_path(IMG_PATH_BACK.$infos['basename']));
 
     return [
         'filename'    => $infos['basename'],

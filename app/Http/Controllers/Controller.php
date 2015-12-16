@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Category;
+use View;
 
 abstract class Controller extends BaseController
 {
@@ -15,8 +16,8 @@ abstract class Controller extends BaseController
 
     public function __construct(){
     // injecter du code dans une vue, $view <-> au template
-    \View::composer('partials.main_menu', function ($view) {
-        $view->with('categories', Category::all());
-    });
-  }
+      View::composer('partials.main_menu', function ($view) {
+          $view->with('categories', Category::all());
+      });
+    }
 }
