@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\UserMeta;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -11,24 +13,24 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name'          => 'admin',
-            'email'         => 'admin@admin.com',
-            'password'      => Hash::make('admin'),
-            'created_at'    => Carbon\Carbon::now(),
-            'updated_at'    => Carbon\Carbon::now()
-        ]);
+        // DB::table('users')->insert([
+        //     'name'          => 'admin',
+        //     'email'         => 'admin@admin.com',
+        //     'password'      => Hash::make('admin'),
+        //     'created_at'    => Carbon\Carbon::now(),
+        //     'updated_at'    => Carbon\Carbon::now()
+        // ]);
         // Create 10 random users
-        factory(App\User::class, 10)
+        factory(App\User::class, 2)
             ->create()
             ->each(function($user){
                 // Create user's credit card number
                 $faker = \Faker\Factory::create();
-                $userMeta = new UserMeta;
-                $userMeta->cd = $faker->creditCardNumber();
-                $userMeta->created_at = Carbon\Carbon::now();
-                $userMeta->updated_at = Carbon\Carbon::now();
-                $user->userMeta()->save($userMeta);
+                $metas = new UserMeta;
+                $metas->cb = $faker->creditCardNumber();
+                $metas->created_at = Carbon\Carbon::now();
+                $metas->updated_at = Carbon\Carbon::now();
+                $user->metas()->save($metas);
             });
     }
 }

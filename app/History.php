@@ -12,7 +12,11 @@ class History extends Model
         'total_price'
     ];
 
+    /**
+     * Get products associated with history
+     * @return {object} products
+     */
     public function products(){
-        return $this->hasMany('App\product');
+        return $this->belongsToMany('App\Product', 'history_product');
     }
 }

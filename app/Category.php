@@ -13,7 +13,11 @@ class Category extends Model
         'description'
     ];
 
+    /**
+     * Get products wih the category X
+     * @return {object} products
+     */
     public function products(){
-        return $this->hasMany('App\product');
+        return $this->hasMany('App\Product');
     }
 }
