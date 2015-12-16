@@ -11,6 +11,7 @@
                 @endforeach
             </p>
             <p>{{$product->short_text}}</p>
+
         </article>
     @endforeach
 @endsection

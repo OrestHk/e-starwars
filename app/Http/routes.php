@@ -15,4 +15,4 @@
 define('IMG_PATH_BACK', 'public/assets/images/products/');
 define('IMG_PATH_FRONT', 'assets/images/products/');
 
-Route::get('/','FrontController@index');
+Route::get('/', 'FrontController@index');

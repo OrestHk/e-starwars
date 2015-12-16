@@ -33,9 +33,12 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
     <nav>
-        @include('partials.main_menu')
+        @include('partials.admin_menu')
     </nav>
     <div class="row">
+            @if(Session::has('message'))
+                <div class="alert alert-info">{{ Session::get('message') }}</div>
+            @endif
         <div class="one-half column" style="margin-top: 10%">
             @yield('content','default value')
         </div>
