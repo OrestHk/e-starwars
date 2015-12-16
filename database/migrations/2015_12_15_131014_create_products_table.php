@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->text('short_text', 255);
             $table->dateTime('publish_date');
-            $table->enum('statut', ['published', 'unpublished'])->default('published');
+            $table->enum('status', ['published', 'unpublished'])->default('published');
             $table->integer('picture_id')->unsigned();
             $table->integer('category_id')->unsigned();
             $table->float('price');

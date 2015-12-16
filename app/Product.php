@@ -14,7 +14,8 @@ class Product extends Model
         'status',
         'image_id',
         'category_id',
-        'price'
+        'price',
+        'publish_date'
     ];
 
     /**
