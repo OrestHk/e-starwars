@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct(){
+        // injecter du code dans une vue, $view <-> au template
+        View::composer('partials.main_menu', function ($view) {
+            $view->with('categories', Category::all());
+        });
+    }
+
 }
