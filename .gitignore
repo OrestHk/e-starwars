@@ -1,6 +1,7 @@
 /public/assets/images/products/
 /vendor
 /node_modules
+/storage/debugbar/
 Homestead.yaml
 Homestead.json
 npm-debug.log
