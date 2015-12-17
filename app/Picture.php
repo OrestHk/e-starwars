@@ -11,8 +11,4 @@ class Picture extends Model
         'dasizete',
         'type'
     ];
-
-    public function product(){
-        return $this->belongsTo('App\product');
-    }
 }

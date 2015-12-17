@@ -36,4 +36,12 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Get user meta
+     * @return {object} metas
+     */
+    public function metas(){
+        return $this->hasOne('App\UserMeta');
+    }
 }

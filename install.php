@@ -28,6 +28,6 @@
 
   echo "Artisan working...\n";
 
-  exec('php artisan migrate:refresh --seed');
+  exec('php artisan migrate --seed');
 
   echo "Project ready\n";

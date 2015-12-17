@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Tag;
+
 class ProductTableSeeder extends Seeder
 {
     /**
@@ -14,7 +16,17 @@ class ProductTableSeeder extends Seeder
         factory(App\Product::class, 20)
             ->create()
             ->each(function($product){
-                $faker = \Faker\Factory::create();
+                // Get tags list
+                $tags = Tag::lists('id');
+                foreach($tags as $tag){
+                    // Randomly attach a tag to a post
+                    if(rand(0, 1)){
+                        $product->tags()->attach($tag, [
+                            'created_at'    => Carbon\Carbon::now(),
+                            'updated_at'    => Carbon\Carbon::now()
+                        ]);
+                    }
+                }
             });
     }
 }

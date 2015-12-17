@@ -12,7 +12,7 @@ class CreateUsersMetaTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_meta', function (Blueprint $table) {
+        Schema::create('user_metas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('CB');
