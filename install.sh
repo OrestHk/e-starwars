@@ -59,6 +59,17 @@ if [ $answer="y" ]; then
 fi
 
 
+#seed Db
+echo -n "Do you wish to create tables and seed db ? (y/n)"
+read answer
+
+if [ $answer="y" ]; then
+
+    php artisan migrate --seed;
+
+fi
+
+
 #install dependencies node
 
 echo -n "Do you wish to install modules node for gulp program? (y/n)"
@@ -66,9 +77,7 @@ read answer
 
 if [ ! -d "./node_modules/" ] && [ $answer="y" ]; then
 
-    npm install gulp -g
-    npm install gulp --save-dev
-    npm install gulp-autoprefixer gulp-sass gulp-minify-css gulp-concat gulp-uglify gulp-imagemin gulp-phpunit gulp-notify gulp-rename gulp-livereload --save-dev
+    npm install
 
 fi
 

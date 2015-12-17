@@ -8,7 +8,8 @@ class Picture extends Model
 {
     protected $fillable = [
         'filename',
-        'dasizete',
+        'size',
         'type'
     ];
+
 }

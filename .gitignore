@@ -6,3 +6,5 @@ Homestead.json
 npm-debug.log
 .env
 .idea
+/public/assets/images
+/storage

@@ -13,8 +13,19 @@
 
 // Global vars
 define('IMG_PATH_BACK', 'public/assets/images/products/');
+#aparament c'est la méme en front et back
 define('IMG_PATH_FRONT', 'assets/images/products/');
 
-Route::get('/', function () {
-    return view('welcome');
+//index Route
+Route::get('/', 'FrontController@index');
+
+
+//Auth
+Route::controller('auth', 'Auth\AuthController');
+
+//admin Route
+Route::get('dashboard', 'Admin\DashboardController@index');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('product', 'Admin\ProductController');
 });

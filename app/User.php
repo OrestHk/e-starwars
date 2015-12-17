@@ -42,6 +42,8 @@ class User extends Model implements AuthenticatableContract,
      * @return {object} metas
      */
     public function metas(){
+
         return $this->hasOne('App\UserMeta');
+
     }
 }
