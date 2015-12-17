@@ -16,6 +16,6 @@ class UserMeta extends Model
      * @return {object} metas
      */
     public function user(){
-        return $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
     }
 }
