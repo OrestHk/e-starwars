@@ -34,7 +34,7 @@
 �������������������������������������������������� -->
 <div class="container">
     <nav>
-        @include('partials.admin_menu')
+        @include('admin.partials.admin_menu')
     </nav>
     <div class="row">
             @if(Session::has('message'))
@@ -46,7 +46,17 @@
     </div>
 </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').attr('content')
+        }
+    });
+</script>
 <!-- End Document
   �������������������������������������������������� -->
+
 </body>
 </html>

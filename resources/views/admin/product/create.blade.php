@@ -1,4 +1,4 @@
-@extends('layouts.master_admin')
+@extends('admin.layouts.master_admin')
 
 @section('content')
 
@@ -43,8 +43,8 @@
         @endforeach
 
 
-    {!! Form::label('published_at','published_at') !!}
-    {!! Form::input('date','published_at',\Carbon\Carbon::now()->toDateString()) !!}
+    {!! Form::label('publish_date','publié le') !!}
+    {!! Form::input('date','publish_date') !!}
     {!! $errors->first('publish_date','<span class="error">:message</span>') !!}
     <br>
     {!! Form::submit('create',['class'=>'button-primary']) !!}

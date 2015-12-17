@@ -1,4 +1,4 @@
-@extends('layouts.master_admin')
+@extends('admin.layouts.master_admin')
 
 @section('content')
 
@@ -25,29 +25,33 @@
     {!! Form::label('category_id','categories',['for','category']) !!}
     {!! Form::select('category_id', $cats)!!}
 
+
     {!! Form::label('status','status',['for'=>'status']) !!}
     {!! Form::select('status',array(
                                 'published'=>'published',
                                 'unpublished'=>'unpublished',
                                 'draft'=>'draft'),$product->status
                                 ) !!}
+    {!! $errors->first('status','<span class="error">:message</span>') !!}
+
 
       @foreach($tags as $tag)
-      {!! Form::label($tag->id,$tag->name) !!}
-      {!! Form::checkbox('tags[]',$tag->id) !!}
+        {!! Form::label($tag->id,$tag->name) !!}
+        {!! Form::checkbox('tags[]',$tag->id) !!}
       @endforeach
 
 
-    {!! $errors->first('status','<span class="error">:message</span>') !!}
-    @if(!empty($product->picture()))
-        <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
-    @endif
+
+      @if(!empty($product->picture->filename))
+          <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
+      @endif
     {!! Form::label('image','image',['for'=>'image']) !!}
     {!! Form::file('image') !!}
-    {!! Form::label('publish_at','publish_at') !!}
-    {!! Form::input('date','publish_at',\Carbon\Carbon::now()->toDateString()) !!}
 
-    {!! $errors->first('published_at','<span class="error">:message</span>') !!}
+    {!! Form::label('publish_date','plublier à') !!}
+    {!! Form::input('date','publish_date',\Carbon\Carbon::now()->toDateString()) !!}
+
+    {!! $errors->first('publish_date','<span class="error">:message</span>') !!}
     <br>
     {!! Form::submit('update') !!}
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Tag;
 use App\Category;
+use App\Picture;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
       {
 
           $products = Product::paginate(5);
-          return view('product.index', compact('products'));
+          return view('admin.product.index', compact('products'));
       }
 
 
@@ -36,7 +37,7 @@ class ProductController extends Controller
 
            $cats = $this->categoryTitleAndId();
 
-           return view('product.create', compact('cats','tags'));
+           return view('admin.product.create', compact('cats','tags'));
        }
 
        /**
@@ -48,15 +49,32 @@ class ProductController extends Controller
        public function store(Request $request)
        {
 
-          $product = Product::create($request->all());
-
-           if($request->file('image')){
-               $this->storeImage($request->file('image'),$product->id);
-           }
 
 
-           foreach($request->input('tags') as $id){
+         $req = $request->all();
+         $product = Product::create($req);
+
+
+         if(\Input::hasFile('image')){
+
+           $img = $request->file('image');
+
+           $ext = $img->getClientOriginalExtension();
+           $picture = Picture::create([
+             'filename'=> str_slug(str_random(rand(20, 30))).'.'.$ext,
+             'size' => $img->getSize(),
+             'type' => $ext
+           ]);
+
+           \Input::file('image')->move(IMG_PATH_FRONT,$picture->filename);
+
+           $product->picture()->associate($picture->id);
+         }
+
+           if(!empty($request->input('tags'))){
+             foreach($request->input('tags') as $id){
                $product->tags()->attach($id);
+             }
            }
 
            return redirect()->to('admin/product')->with('message', trans('creation success'));
@@ -72,12 +90,12 @@ class ProductController extends Controller
        {
 
 
-           $product= Product::find($id);
-
+           $product = Product::find($id);
+           $tags = Tag::all();
            $cats = $this->categoryTitleAndId();
            $product->status == 'published' ? $published = true : $published = false;
 
-           return view('product.edit', compact('product','cats'));
+           return view('admin.product.edit', compact('product','cats','tags'));
        }
 
        /**
@@ -87,21 +105,37 @@ class ProductController extends Controller
         * @param  int  $id
         * @return \Illuminate\Http\Response
         */
-       public function update( $request, $id)
+       public function update(Request $request, $id)
        {
 
 
-           $product = Product::find($id)->update($request->all());
+           $product = Product::find($id);
 
-           if($request->file('image')){
-             $picture = new Picture($request->file('image'));
 
-               $product->image->sync($picture);
+           if(\Input::hasFile('image')){
+             $img = $request->file('image');
+
+             $ext = $img->getClientOriginalExtension();
+             $picture = Picture::create([
+               'filename'=> str_slug(str_random(rand(20, 30))).'.'.$ext,
+               'size' => $img->getSize(),
+               'type' => $ext
+             ]);
+            \Input::file('image')->move(IMG_PATH_FRONT,$picture->filename);
+             $product->picture()->associate($picture->id);
+
            }
 
-           foreach($request->input('tags') as $id){
-               $product->tags()->sync($id);
+
+           if(!empty($request->input('tags'))){
+             foreach($request->input('tags') as $id){
+               $product->tags()->attach($id);
+              }
+           }else {
+              $product->tags()->detach();
            }
+
+           $product->update($request->all());
 
            return redirect()->to('admin/product')->with('message', 'success');
        }

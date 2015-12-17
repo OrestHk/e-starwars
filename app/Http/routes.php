@@ -12,7 +12,7 @@
 */
 
 // Global vars
-#define('IMG_PATH_BACK', 'public/assets/images/products/');
+define('IMG_PATH_BACK', 'public/assets/images/products/');
 #aparament c'est la méme en front et back
 define('IMG_PATH_FRONT', 'assets/images/products/');
 

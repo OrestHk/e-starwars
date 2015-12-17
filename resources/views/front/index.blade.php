@@ -3,7 +3,7 @@
 @section('content')
     @foreach($products as $product)
         <article>
-            <a href="{{url('product',$product->slug)}}">Title: {{$product->title}}</a>
+            <a href="{{url('product',$product->slug)}}">Title: {{$product->name}}</a>
             <p>Category :{{$product->category->name}}</p>
             <p>
                 @foreach($product->tags as $tag)
