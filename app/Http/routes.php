@@ -15,6 +15,11 @@
 define('IMG_PATH_BACK', 'public/assets/images/products/');
 define('IMG_PATH_FRONT', 'assets/images/products/');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/** Front **/
+// Home
+Route::get('/', 'FrontController@home');
+// Products
+Route::get('/products/', 'FrontController@products');
+Route::get('/products/{slug}', 'FrontController@singleProduct');
+Route::get('/categories/{slug}', 'FrontController@categoryProducts');
+Route::get('/tags/{slug}', 'FrontController@tagProducts');
