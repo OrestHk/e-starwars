@@ -43,4 +43,11 @@ class Product extends Model
     public  function history(){
         return $this->hasMany('App\History');
     }
+
+    public function hasTag($id){
+      foreach ($this->tags as $tag){
+        if($tag->id === $id)return true;
+      }
+    return false;
+    }
 }

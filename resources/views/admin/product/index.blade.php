@@ -1,9 +1,7 @@
 @extends('admin.layouts.master_admin')
 
 @section('content')
-    <div class="pagination">
-        {!!$products->render()!!}
-    </div>
+
     <a class="btn" href="{{url('admin/product/create')}}">New one</a>
     <table class="table table-hover table-bordered">
         <thead>
@@ -13,7 +11,6 @@
             <th>date publication</th>
             <th>Category</th>
             <th>tags</th>
-
             <th>delete</th>
         </tr>
         </thead>
@@ -43,4 +40,7 @@
         @endforelse
         </tbody>
     </table>
+    <div class="pagination">
+        {!!$products->render()!!}
+    </div>
 @stop

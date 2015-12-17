@@ -31,8 +31,7 @@ class ProductController extends Controller
         *
         * @return \Illuminate\Http\Response
         */
-       public function create()
-       {
+       public function create(){
            $tags = Tag::all();
 
            $cats = $this->categoryTitleAndId();
@@ -57,18 +56,8 @@ class ProductController extends Controller
 
          if(\Input::hasFile('image')){
 
-           $img = $request->file('image');
+            $this->AddImage($request,$product);
 
-           $ext = $img->getClientOriginalExtension();
-           $picture = Picture::create([
-             'filename'=> str_slug(str_random(rand(20, 30))).'.'.$ext,
-             'size' => $img->getSize(),
-             'type' => $ext
-           ]);
-
-           \Input::file('image')->move(IMG_PATH_FRONT,$picture->filename);
-
-           $product->picture()->associate($picture->id);
          }
 
            if(!empty($request->input('tags'))){
@@ -86,9 +75,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function edit($id)
-       {
-
+     public function edit($id){
 
            $product = Product::find($id);
            $tags = Tag::all();
@@ -105,32 +92,17 @@ class ProductController extends Controller
         * @param  int  $id
         * @return \Illuminate\Http\Response
         */
-       public function update(Request $request, $id)
-       {
-
+       public function update(Request $request, $id){
 
            $product = Product::find($id);
 
-
            if(\Input::hasFile('image')){
-             $img = $request->file('image');
-
-             $ext = $img->getClientOriginalExtension();
-             $picture = Picture::create([
-               'filename'=> str_slug(str_random(rand(20, 30))).'.'.$ext,
-               'size' => $img->getSize(),
-               'type' => $ext
-             ]);
-            \Input::file('image')->move(IMG_PATH_FRONT,$picture->filename);
-             $product->picture()->associate($picture->id);
-
+               $this->AddImage($request,$product);
            }
 
 
            if(!empty($request->input('tags'))){
-             foreach($request->input('tags') as $id){
-               $product->tags()->attach($id);
-              }
+            $product->tags()->sync($request->input('tags'));
            }else {
               $product->tags()->detach();
            }
@@ -159,6 +131,22 @@ class ProductController extends Controller
               $cats[$category->id] = $category->name;
           }
           return $cats;
+      }
+
+      public function AddImage($request,$product){
+        $img = $request->file('image');
+
+        $ext = $img->getClientOriginalExtension();
+        $picture = Picture::create([
+          'filename'=> str_slug(str_random(rand(20, 30))).'.'.$ext,
+          'size' => $img->getSize(),
+          'type' => $ext
+        ]);
+       \Input::file('image')->move(IMG_PATH_FRONT,$picture->filename);
+
+        $product->picture()->associate($picture->id);
+        $product->save();
+
       }
 
 }

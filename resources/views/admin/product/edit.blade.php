@@ -35,9 +35,10 @@
     {!! $errors->first('status','<span class="error">:message</span>') !!}
 
 
-      @foreach($tags as $tag)
+
+  @foreach($tags as $tag)
         {!! Form::label($tag->id,$tag->name) !!}
-        {!! Form::checkbox('tags[]',$tag->id) !!}
+        {!! Form::checkbox('tags[]',$tag->id, $product->hasTag($tag->id)) !!}
       @endforeach
 
 
