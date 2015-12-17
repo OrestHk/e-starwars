@@ -13,6 +13,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
+
         factory(App\Product::class, 20)
             ->create()
             ->each(function($product){
@@ -28,5 +29,6 @@ class ProductTableSeeder extends Seeder
                     }
                 }
             });
+
     }
 }
