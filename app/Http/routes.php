@@ -26,9 +26,6 @@ Route::get('/categories/{slug}', 'FrontController@categoryProducts');
 Route::get('/tags/{slug}', 'FrontController@tagProducts');
 
 /** Back **/
-//index Route
-Route::get('/', 'FrontController@index');
-
 //Auth
 Route::controller('auth', 'Auth\AuthController');
 
