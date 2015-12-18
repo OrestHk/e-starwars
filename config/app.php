@@ -148,6 +148,7 @@ return [
         /**
          * My Service Providers
          */
+        nickurt\Akismet\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
@@ -166,6 +167,7 @@ return [
 
     'aliases' => [
 
+        'Akismet'   => nickurt\Akismet\Facade::class,
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,
         'Auth'      => Illuminate\Support\Facades\Auth::class,

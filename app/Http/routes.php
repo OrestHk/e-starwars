@@ -24,6 +24,9 @@ Route::get('/products/', 'FrontController@products');
 Route::get('/products/{slug}', 'FrontController@singleProduct');
 Route::get('/categories/{slug}', 'FrontController@categoryProducts');
 Route::get('/tags/{slug}', 'FrontController@tagProducts');
+// Conctact
+Route::get('/contact/', 'ContactController@show');
+Route::post('/contact/send/', 'ContactController@send');
 
 /** Back **/
 //Auth
