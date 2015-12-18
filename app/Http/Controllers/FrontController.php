@@ -33,7 +33,7 @@ class FrontController extends Controller
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->paginate($this->paginat);
-        return view('front.products', compact('products'));
+        return view('front.products.index', compact('products'));
     }
     /**
      * Get product info by slug

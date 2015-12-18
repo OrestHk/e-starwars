@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Keep line break on templates by default
+        \Blade::setEchoFormat('nl2br(e(%s))');
     }
 
     /**

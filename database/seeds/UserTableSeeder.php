@@ -20,9 +20,8 @@ class UserTableSeeder extends Seeder
              'created_at'    => Carbon\Carbon::now(),
              'updated_at'    => Carbon\Carbon::now()
          ]);
+
         // Create 10 random users
-
-        factory(App\User::class, 2)
-
+        factory(App\User::class, 2);
     }
 }
