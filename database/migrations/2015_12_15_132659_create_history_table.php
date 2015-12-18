@@ -12,7 +12,7 @@ class CreateHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('history', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->dateTime('order_date');
@@ -28,6 +28,6 @@ class CreateHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('history');
+        Schema::drop('histories');
     }
 }
