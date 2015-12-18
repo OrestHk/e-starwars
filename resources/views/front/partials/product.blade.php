@@ -1,9 +1,11 @@
 <div class="product">
-    <img src="" class="image" />
+    @if(isset($product->picture))
+    <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" class="{{$single ? 'image' : 'image-min'}}" />
+    @endif
     <div class="about">
-        <a class="title" href="">{{$product->name}}</a>
+        <a class="title" href="{{url('/products/'.$product->slug)}}">{{$product->name}}</a>
         @if(isset($product->category)) -
-        <a class="category" href="{{url('/tags/'.$product->category->slug)}}">{{$product->category->name}}</a>
+        <a class="category" href="{{url('/categories/'.$product->category->slug)}}">{{$product->category->name}}</a>
         @endif
         @if($single)
         <p class="description">{{$product->description}}</p>
