@@ -12,7 +12,7 @@ class Product extends Model
         'description',
         'short_text',
         'status',
-        'image_id',
+        'picture_id',
         'category_id',
         'price',
         'publish_date'
@@ -50,6 +50,11 @@ class Product extends Model
         if($tag->id === $id)return true;
       }
     return false;
-
     }
+
+
+    public function dateConfert(){
+       return date('d/m/Y',strtotime($this->publish_date));
+    }
+
 }

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\History;
+use App\Product;
+
 class DashboardController extends Controller
 {
       /**
@@ -22,8 +25,17 @@ class DashboardController extends Controller
       *
       * @return Response
       */
-      public function index()
-      {
+      public function index(){
         return view('admin.dashboard.index');
+      }
+
+      public function orderHistory(){
+        $products = Product::all();
+        $histories = [];
+        foreach ($products as $product ) {
+          array_push($histories,$product->history());
+        }
+
+        return view('admin.history.index',compact('histories','product'));
       }
 }

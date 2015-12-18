@@ -20,7 +20,7 @@ define('IMG_PATH_FRONT', 'assets/images/products/');
 // Home
 Route::get('/', 'FrontController@home');
 // Products
-Route::get('/products/', 'FrontController@products');
+Route::get('products', 'FrontController@products');
 Route::get('/products/{slug}', 'FrontController@singleProduct');
 Route::get('/categories/{slug}', 'FrontController@categoryProducts');
 Route::get('/tags/{slug}', 'FrontController@tagProducts');
@@ -37,4 +37,5 @@ Route::get('dashboard', 'Admin\DashboardController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('product', 'Admin\ProductController');
+    Route::get('history','Admin\DashboardController@orderHistory');
 });

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <a class="btn" href="{{url('admin/product/create')}}">New one</a>
-    <table class="table table-hover table-bordered">
+    <a class="button button-primary" href="{{url('admin/product/create')}}">New one</a>
+    <table class="u-full-width">
         <thead>
         <tr>
             <th>status</th>
@@ -20,10 +20,10 @@
             <tr class="{{($product->status=='published')? 'success' : 'info'}}">
                 <td>{{$product->status}}</td>
                 <td><a href="{{url('admin/product/'.$product->id.'/edit')}}">{{$product->name}}</a></td>
-                <td>{{$product->publish_date}}</td>
-                <td>{{$product->category_id ? $product->category->name : 'no Category'}}</td>
+                <td>{{$product->dateConfert()}}</td>
+                <td>{{$product->category ? $product->category->name : 'no Category'}}</td>
                 <td>@forelse($product->tags as $tag)
-                      {{$tag->name}}
+                      <p class="tags">{{$tag->name}}</p>
                     @empty
                       <p>no tags</p>
                     @endforelse
