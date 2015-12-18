@@ -33,28 +33,23 @@
 <!-- Primary Page Layout
 �������������������������������������������������� -->
 <div class="container">
-    <nav>
+    <div class="row">
+      <div class="twelve columns">
         @include('admin.partials.admin_menu')
-    </nav>
+      </div>
+    </div>
     <div class="row">
             @if(Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
-        <div class="one-half column" style="margin-top: 10%">
+        <div class="twelve columns">
             @yield('content','default value')
         </div>
     </div>
 </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').attr('content')
-        }
-    });
-</script>
 <!-- End Document
   �������������������������������������������������� -->
 

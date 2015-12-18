@@ -32,6 +32,6 @@ class CreateUsersMetaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users_meta');
+        Schema::drop('user_metas');
     }
 }
