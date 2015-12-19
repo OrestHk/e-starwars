@@ -19,5 +19,16 @@
             @endforeach
         </div>
         @endif
+        @if($single)
+          {!! Form::label('quantity','quantité',['for'=>'quantity']) !!}
+          {!! Form::select('quantity',array(
+                                      '1'=>'1',
+                                      '2'=>'2',
+                                      '3'=>'3',
+                                      '4'=>'4',
+                                      '5'=>'5',
+                              ))!!}
+          <input type="button" data-id="{{$product->id}}" name="order" value="commandez">
+        @endif
     </div>
 </div>
