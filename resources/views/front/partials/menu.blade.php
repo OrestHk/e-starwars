@@ -2,6 +2,7 @@
     <ul>
         <li><a href="{{url('/categories/helmets/')}}">Helmets</a></li>
         <li><a href="{{url('/categories/lasers/')}}">Lasers</a></li>
+        <li><a href="{{url('/order/')}}">my cart</a></li>
     </ul>
 </nav>
 

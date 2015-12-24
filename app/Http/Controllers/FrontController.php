@@ -68,4 +68,22 @@ class FrontController extends Controller
             ->paginate($this->paginat);
         return view('front.tags.single', compact('tag', 'products'));
     }
+
+    public function order(){
+      return view('front.order.index');
+    }
+
+    public function getOrderProduct($id){
+      /**
+      * TODO
+      * could do better
+      */
+      $product = Product::find($id);
+      $productImg = $product->picture;
+      $productCat = $product->category;
+      $productTags = $product->tags;
+
+      return json_encode(compact('product','productImg','productCat','productTags'));
+    }
+
 }
