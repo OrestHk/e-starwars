@@ -9,7 +9,7 @@
 
     orderToString:function(){
         var string = localStorage.getItem('command');
-        localStorage.clear();
+
         var order;
         for(order in this.order){
           if(typeof(string)===typeof(this))
@@ -25,9 +25,10 @@
     },
 
     orderToArray:function(){
+      var arrayTest = [];
       var string = localStorage.command;
       if(typeof(string) == typeof('string')){
-        if(string.split('|').length > 1 ){
+        if(typeof(string.split('|')) === typeof(arrayTest)){
           string = localStorage.command.split('|');
           for(var i = 0 ; i < string.length ; i++){
             var str = string[i].split('_');
