@@ -1,6 +1,5 @@
   'use strict'
   var Cart = {
-    orders: [],
     order:{},
 
     addOderItem:function(id,quantity){
@@ -26,35 +25,33 @@
     },
 
     orderToArray:function(){
-
-      var string = localStorage.command.split('|');
-      localStorage.clear();
-      if(string.length > 0){
-        for(var i = 0 ; i < string.length - 1; i++){
-          var str = string[i].split('_');
-          this.orders.push(this.order[str[0]]=str[1]);
+      var string = localStorage.command;
+      if(typeof(string) == typeof('string')){
+        if(string.split('|').length > 1 ){
+          string = localStorage.command.split('|');
+          for(var i = 0 ; i < string.length ; i++){
+            var str = string[i].split('_');
+            this.order[str[0]]=str[1];
+          }
+        }else{
+          var str = localStorage.command.split('_');
+          this.order[str[0]]=str[1];
         }
-      }else{
-        var str = string.split('_');
-        this.orders.push(this.order[str[0]]=str[1]);
       }
       console.log('orderToArray');
-        console.log(this.orders);
+      console.log(this.order);
     },
-
-
   }
 
 
 
   $(document).ready(function(){
-    var checkekCart = localStorage.getItem('command');
-    if(typeof(checkekCart) !== typeof(Cart)){
-        Cart.orderToArray();
-    }
-    else {
 
-    }
+    var isProduct = location.pathname.split('/')[1] == 'products' ? true : false;
+    var checkekCart = localStorage.getItem('command');
+      if(typeof(checkekCart) !== typeof(Cart) && isProduct){
+          Cart.orderToArray();
+      }
   });
 
 
