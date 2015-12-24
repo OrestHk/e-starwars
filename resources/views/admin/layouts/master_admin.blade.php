@@ -21,7 +21,7 @@
     �������������������������������������������������� -->
     <link rel="stylesheet" href="{{asset('assets/css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/skeleton.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/css.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/css/css.css')}}">
 
     <!-- Favicon
     �������������������������������������������������� -->
@@ -49,6 +49,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{{asset('assets/admin/js/admin.js')}}"></script>
 
 <!-- End Document
   �������������������������������������������������� -->

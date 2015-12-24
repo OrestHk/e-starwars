@@ -1,0 +1,37 @@
+ul.pagination {
+  list-style: none;
+  vertical-align: top
+}
+ul.pagination li {
+  display: inline-block;
+  margin-left: 10px;
+}
+nav#adminMainNav a{
+  text-decoration: none;
+}
+td > p.tags{
+ background: black;
+ color: white;
+ display: inline-block;
+ border-radius: 5px;
+ padding: 1px 2px;
+}
+.alert.alert-info{
+  width: 25%;
+  background-color: rgba(34,139,34,0.5);
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+}
+input[value="delete"]{
+  background-color: #420101;
+  color: white;
+  transition: background 0.5s;
+}
+input[value="delete"]:hover{
+  background-color: white;
+}
