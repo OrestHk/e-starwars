@@ -1,13 +1,10 @@
-<nav class="categories-nav">
+<div class="menu"></div>
+<nav class="main-menu">
     <ul>
+        <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{url('/categories/helmets/')}}">Helmets</a></li>
         <li><a href="{{url('/categories/lasers/')}}">Lasers</a></li>
-    </ul>
-</nav>
-
-<nav class="useful-nav">
-    <ul>
-        <li><a href="{{url('/contact/dashboard/')}}">Login</a></li>
-        <li><a href="{{url('/contact/')}}">Contact</a></li>
+        <li><a href="{{url('/contact/')}}">Contact us</a></li>
+        <li><a href="{{url('/legal/')}}">Legal</a></li>
     </ul>
 </nav>

@@ -1,0 +1,84 @@
+body, html{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-family: $Moondog;
+}
+
+// Header
+header{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-color: $drkBlue;
+    // Header border
+    &:after{
+        content: '';
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 14px;
+        position: absolute;
+        background-repeat: repeat-x;
+        background-position: 0% 100%;
+        background-image: url($path+'header-border.png');
+    }
+    // Logo
+    h1{
+        top: 0px;
+        left: 50%;
+        position: absolute;
+        transform: translateX('-50%');
+        .name{
+            font-size: 14px;
+            color: $lgtBlue;
+            font-family: $Starwars;
+            position: absolute;
+            top: 50%;
+            transform: translateY('-50%');
+            &.name-1{right: 110%;}
+            &.name-2{left: 110%;}
+        }
+    }
+    // Menu
+    .menu{
+        top: 50%;
+        width: 74px;
+        height: 44px;
+        left: $defPadding;
+        position: absolute;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        background-image: url($path+'menu.png');
+    }
+    // Cart
+    .cart{
+        top: 50%;
+        width: 47px;
+        height: 53px;
+        right: $defPadding;
+        position: absolute;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        background-image: url($path+'cart.png');
+        .container{
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform: rotate(45deg);
+            border: $defBorder $lgtGrey solid;
+        }
+        .items{
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            font-size: 20px;
+            color: $lgtGrey;
+            transform: translate(-50% -50%);
+        }
+    }
+}

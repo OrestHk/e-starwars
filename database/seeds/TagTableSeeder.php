@@ -22,8 +22,13 @@ class TagTableSeeder extends Seeder
             'created_at'    => Carbon\Carbon::now(),
             'updated_at'    => Carbon\Carbon::now()
         ],[
-            'name'          => 'Dark side',
-            'slug'          => 'dark-side',
+            'name'          => 'First Order',
+            'slug'          => 'first-order',
+            'created_at'    => Carbon\Carbon::now(),
+            'updated_at'    => Carbon\Carbon::now()
+        ],[
+            'name'          => 'Rebels',
+            'slug'          => 'rebels',
             'created_at'    => Carbon\Carbon::now(),
             'updated_at'    => Carbon\Carbon::now()
         ],[
