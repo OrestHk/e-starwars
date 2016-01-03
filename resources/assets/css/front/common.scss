@@ -1,3 +1,6 @@
+@import '../conf';
+@import '../font';
+
 body, html{
     width: 100%;
     height: 100%;
@@ -19,27 +22,33 @@ header{
         top: 100%;
         left: 0;
         width: 100%;
+        z-index: -1;
         height: 14px;
         position: absolute;
         background-repeat: repeat-x;
         background-position: 0% 100%;
-        background-image: url($path+'header-border.png');
+        background-image: url($imgs+'header-border.png');
     }
     // Logo
     h1{
         top: 0px;
         left: 50%;
+        height: 100%;
         position: absolute;
-        transform: translateX('-50%');
+        transform: translateX(-50%);
         .name{
-            font-size: 14px;
+            font-size: 40px;
             color: $lgtBlue;
             font-family: $Starwars;
             position: absolute;
             top: 50%;
-            transform: translateY('-50%');
-            &.name-1{right: 110%;}
-            &.name-2{left: 110%;}
+            transform: translateY(-50%);
+            &.name-1{right: 105%;}
+            &.name-2{left: 105%;}
+        }
+        img{
+            top: -80px;
+            position: relative;
         }
     }
     // Menu
@@ -51,7 +60,7 @@ header{
         position: absolute;
         transform: translateY(-50%);
         background-repeat: no-repeat;
-        background-image: url($path+'menu.png');
+        background-image: url($imgs+'menu.png');
     }
     // Cart
     .cart{
@@ -62,7 +71,7 @@ header{
         position: absolute;
         transform: translateY(-50%);
         background-repeat: no-repeat;
-        background-image: url($path+'cart.png');
+        background-image: url($imgs+'cart.png');
         .container{
             left: 0;
             top: 0;
