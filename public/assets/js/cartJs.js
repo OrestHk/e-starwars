@@ -84,6 +84,7 @@
             total += this.order[product[i].id] * product[i].price;
             $('#orderList').append(_html);
         }
+        this.totalPrice = total;
         $('#orderList').append('<p>total = '+total+'</p>');
 
     },
@@ -99,7 +100,8 @@
                   _token: CSRF_TOKEN,
                   order:this.order,
                   name:name,
-                  email:mail
+                  email:mail,
+                  total:this.totalPrice
               },
               dataType: 'JSON',
               complete: function (data){

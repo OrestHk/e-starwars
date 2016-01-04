@@ -8,7 +8,7 @@ class History extends Model
 {
     protected $fillable = [
         'user_id',
-        'date',
+        'order_date',
         'total_price'
     ];
 
