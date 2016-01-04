@@ -114,13 +114,7 @@ class FrontController extends Controller
         $rq = $request->all();
 
         $user = User::where('email',$rq['email'])->firstOrFail();
-        $idproduct = [];
-        $quantityproduct = [];
         if(!empty($user)){
-            foreach($rq['order'] as $order => $quantity){
-                array_push($idproduct,$order);
-                array_push($quantityproduct,$quantity);
-            }
 
 
            $history = History::create([
@@ -129,8 +123,11 @@ class FrontController extends Controller
                 'total_price'=>$rq['total']
             ]);
 
-            $history->products()->sync($idproduct);
-            dd($history);
+
+            foreach($rq['order'] as $product_id => $quantity){
+                $history->products()->sync(['related_id'=>['quantity'=>$quantity,'product_id'=>$product_id]]);
+            }
+
             return 1;
         }else{
             return 0;
