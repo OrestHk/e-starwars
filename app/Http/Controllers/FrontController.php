@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\History;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -9,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -78,6 +81,35 @@ class FrontController extends Controller
         $products = Product::whereIn('id',$rq['ids'])->with('tags','category','picture')->get();
 
         return json_encode($products);
+    }
+
+    public function validationOrder(Request $request){
+
+        $rq = $request->all();
+        $user = User::where('email',$rq['email'])->get();
+        $idproduct = [];
+        $quantityproduct = [];
+        if(!empty($user)){
+            foreach($rq['order'] as $order => $quantity){
+                array_push($idproduct,$order);
+                array_push($quantityproduct,$quantity);
+            }
+           // dd(get_class_methods($user));
+            /*********
+             ******
+             ** TODO :
+             ****
+             ****
+             ** error @ $user->id
+             ******
+             *******/
+            dd($user);
+         /*   $history = History::create([
+                'user_id'=>$user->id
+            ]);*/
+        }else{
+            return 'name or email error';
+        }
     }
 
 }

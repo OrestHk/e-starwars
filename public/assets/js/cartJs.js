@@ -53,10 +53,7 @@
     },
 
     AjaxProduct:function(ids){
-      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        console.log('ajaxRequest');
-      console.log(ids);
-
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
       $.ajax({
           url:'/orderObj/',
           type: 'POST',
@@ -77,7 +74,6 @@
 
     productToHTML:function(product){
         var total = 0;
-        console.log(product[0].picture);
         for(var i = 0; i < product.length - 1;i++){
             this.totalPrice += this.order[product.id] * product[i].price;
             var _html = '<div class=""><p>name: '+product[i].name+'</p>'+
@@ -90,10 +86,32 @@
         }
         $('#orderList').append('<p>total = '+total+'</p>');
 
-
-
-
     },
+      orderProced: function () {
+          var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+          var name = $('#CustomerName').val();
+          var mail = $('#CustomerMail').val();
+          console.log(name,mail);
+          $.ajax({
+              url:'/validationOrder/',
+              type: 'POST',
+              data: {
+                  _token: CSRF_TOKEN,
+                  order:this.order,
+                  name:name,
+                  email:mail
+              },
+              dataType: 'JSON',
+              complete: function (data){
+                  Cart.productToHTML(JSON.parse(data.responseText));
+                  localStorage.clean();
+              },
+              error:function(error){
+                  console.log(error);
+                  //alert('Whoops !! error:'+error);
+              }
+          });
+      }
 
   }
 
@@ -112,6 +130,10 @@
       }
   });
 
+  $('#orderValidation').submit(function(evt){
+      evt.preventDefault();
+     Cart.orderProced();
+  });
 
   $('input[name="order"]').on('click',function(){
       Cart.addOderItem($(this).attr('data-id'),$('#quantity :selected').text());
