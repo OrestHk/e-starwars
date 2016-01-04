@@ -14,6 +14,7 @@
     </div>
 
     @include('front.partials.footer')
+    <div class="overlay"></div>
 
 </body>
 <script src="{{asset('assets/js/jquery-1.7.2.min.js')}}"></script>

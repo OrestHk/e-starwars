@@ -1,6 +1,38 @@
 $(document).ready(function(){
     scroll();
+    menu();
 });
+
+$(window).resize(function(){
+    menuOverflow();
+});
+
+/**
+ * Init menu overflow handler
+ */
+function menuOverflow(){
+    var availableSize = $(".main-menu").height();
+    $(".main-menu .main").each(function(){
+        availableSize -= $(this).outerHeight(true);
+    })
+    availableSize -= $(".main-menu .tags").outerHeight(true) - $(".main-menu .tags").outerHeight();
+    $(".main-menu .tags").css('max-height', availableSize);
+}
+
+/**
+ * Init open close menu listener
+ */
+function menu(){
+    // Open Close
+    $(".menu").click(function(){
+        $(this).toggleClass('open');
+        $(".overlay").fadeToggle(300);
+        $(".main-menu").toggleClass('open');
+        $('body').toggleClass('hidden');
+    });
+    // Overflow
+    menuOverflow();
+}
 
 /**
  * Init scroll listener to toggle header reduced form
