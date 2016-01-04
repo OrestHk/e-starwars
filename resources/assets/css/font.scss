@@ -1,0 +1,96 @@
+@import 'conf.scss';
+
+// Aurebesh font import
+@font-face {
+    font-family: 'Aurebesh';
+    src: url($fonts+'Aurebesh/aurebesh_condensed-webfont.eot');
+    src: url($fonts+'Aurebesh/aurebesh_condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Aurebesh/aurebesh_condensed-webfont.woff2') format('woff2'),
+         url($fonts+'Aurebesh/aurebesh_condensed-webfont.woff') format('woff'),
+         url($fonts+'Aurebesh/aurebesh_condensed-webfont.ttf') format('truetype'),
+         url($fonts+'Aurebesh/aurebesh_condensed-webfont.svg#aurebesh_condensedregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Star wars font import
+@font-face {
+    font-family: 'Starwars';
+    src: url($fonts+'Starwars/starjedi-webfont.eot');
+    src: url($fonts+'Starwars/starjedi-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Starwars/starjedi-webfont.woff2') format('woff2'),
+         url($fonts+'Starwars/starjedi-webfont.woff') format('woff'),
+         url($fonts+'Starwars/starjedi-webfont.ttf') format('truetype'),
+         url($fonts+'Starwars/starjedi-webfont.svg#star_jediregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Moondog Font import
+@font-face {
+    font-family: 'Moondog_regular';
+    src: url($fonts+'Moondog/moon00__-webfont.eot');
+    src: url($fonts+'Moondog/moon00__-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon00__-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon00__-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon00__-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon00__-webfont.svg#moondog_zeroregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Moondog_regular';
+    src: url($fonts+'Moondog/moon00i_-webfont.eot');
+    src: url($fonts+'Moondog/moon00i_-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon00i_-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon00i_-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon00i_-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon00i_-webfont.svg#moondog_zeroitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Moondog_bold';
+    src: url($fonts+'Moondog/moon15__-webfont.eot');
+    src: url($fonts+'Moondog/moon15__-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon15__-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon15__-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon15__-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon15__-webfont.svg#moondog_fifteenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Moondog_bold';
+    src: url($fonts+'Moondog/moon15i_-webfont.eot');
+    src: url($fonts+'Moondog/moon15i_-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon15i_-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon15i_-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon15i_-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon15i_-webfont.svg#moondog_fifteenitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Moondog_bolder';
+    src: url($fonts+'Moondog/moon30__-webfont.eot');
+    src: url($fonts+'Moondog/moon30__-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon30__-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon30__-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon30__-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon30__-webfont.svg#moondog_thirtyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Moondog_bolder';
+    src: url($fonts+'Moondog/moon30i_-webfont.eot');
+    src: url($fonts+'Moondog/moon30i_-webfont.eot?#iefix') format('embedded-opentype'),
+         url($fonts+'Moondog/moon30i_-webfont.woff2') format('woff2'),
+         url($fonts+'Moondog/moon30i_-webfont.woff') format('woff'),
+         url($fonts+'Moondog/moon30i_-webfont.ttf') format('truetype'),
+         url($fonts+'Moondog/moon30i_-webfont.svg#moondog_thirtyitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}

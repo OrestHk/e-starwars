@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="{{asset('assets/css/front.min.css')}}">
 </head>
 <body>
 

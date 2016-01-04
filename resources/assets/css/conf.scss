@@ -1,0 +1,32 @@
+// Colors
+$drkBlue: #252c38;
+$lgtBlue: #226498;
+$drkGrey: #546680;
+$lgtGrey: #889db8;
+
+// Fonts
+$Moondog: 'Moondog_regular';
+$MoondogBold: 'Moondog_bold';
+$MoondogBolder: 'Moondog_bolder';
+$Starwars: 'Starwars';
+$Aurebesh: 'Aurebesh';
+
+// Configuration
+$defPadding: 10px;
+$defBorder: 2px;
+
+// Paths
+$imgs: '../images/';
+$fonts: '../fonts/';
+
+// Reset
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    line-height: 1;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+img{display: block;}
