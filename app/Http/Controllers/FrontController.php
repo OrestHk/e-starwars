@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -73,17 +72,12 @@ class FrontController extends Controller
       return view('front.order.index');
     }
 
-    public function getOrderProduct($id){
-      /**
-      * TODO
-      * could do better
-      */
-      $product = Product::find($id);
-      $productImg = $product->picture;
-      $productCat = $product->category;
-      $productTags = $product->tags;
+    public function getOrderProduct(Request $request){
 
-      return json_encode(compact('product','productImg','productCat','productTags'));
+        $rq = $request->all();
+        $products = Product::whereIn('id',$rq['ids'])->with('tags','category','picture')->get();
+
+        return json_encode($products);
     }
 
 }

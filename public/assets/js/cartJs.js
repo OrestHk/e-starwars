@@ -20,10 +20,6 @@
             string += '|'+order+'_'+this.order[order];
         }
         localStorage.setItem('command', string);
-        console.log('orderToString');
-        console.log(localStorage.command);
-        // this.orderString = this.order+'*'+this.order.quantity+'|';
-        // console.log(this.orderString);
     },
 
     orderToArray:function(){
@@ -41,33 +37,36 @@
           this.order[str[0]]=str[1];
         }
       }
-      console.log('orderToArray');
-      console.log(this.order);
     },
 
     orderList:function(){
 
-      this.orderToArray();
-      var order;
-      for(order in this.order){
-        this.AjaxProduct(order);
-      }
+        this.orderToArray();
+        var order;
+        var tab = [];
+        for(order in this.order){
+            tab.push(order);
+        }
+        this.AjaxProduct(tab);
 
 
     },
 
-    AjaxProduct:function(id){
+    AjaxProduct:function(ids){
       var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-      console.log(id);
+        console.log('ajaxRequest');
+      console.log(ids);
+
       $.ajax({
-          url:'/order/'+id,
-          type: 'GET',
-          data: {_token: CSRF_TOKEN,
-                'id':id
+          url:'/orderObj/',
+          type: 'POST',
+          data: {
+              _token: CSRF_TOKEN,
+              'ids':ids
               },
           dataType: 'JSON',
-          complete: function (data) {
-              Cart.productToHTML(data.responseText);
+          complete: function (data){
+              Cart.productToHTML(JSON.parse(data.responseText));
           },
           error:function(error){
             console.log(error);
@@ -77,17 +76,23 @@
     },
 
     productToHTML:function(product){
-      console.log(this.order);
-      console.log(product);
-      /*
-      this.totalPrice += this.order[product.id] * product.price;
-        var _html = '<p>name: '+product.name+'</p>'+
-                    '<p>price: '+product.price+'</p>'+
-                    '<p>quantity: '+this.order[product.id]+'/<p>'+
-                    '<p>final cost: '+this.order[product.id] * product.price+'/<p>';
+        var total = 0;
+        console.log(product[0].picture);
+        for(var i = 0; i < product.length - 1;i++){
+            this.totalPrice += this.order[product.id] * product[i].price;
+            var _html = '<div class=""><p>name: '+product[i].name+'</p>'+
+                '<img src="assets/images/products/'+product[i].picture.filename+'">'+
+                '<p>price: '+product[i].price+'</p>'+
+                '<p>quantity: '+this.order[product[i].id]+'</p>'+
+                '<p>final cost: '+this.order[product[i].id] * product[i].price+'</p></div>';
+            total += this.order[product[i].id] * product[i].price;
+            $('#orderList').append(_html);
+        }
+        $('#orderList').append('<p>total = '+total+'</p>');
 
-      $('#orderList').append(_html);
-      */
+
+
+
     },
 
   }

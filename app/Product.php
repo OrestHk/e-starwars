@@ -52,7 +52,6 @@ class Product extends Model
     return false;
     }
 
-
     public function dateConfert(){
        return date('d/m/Y',strtotime($this->publish_date));
     }
