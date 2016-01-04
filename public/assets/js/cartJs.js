@@ -49,7 +49,6 @@
         }
         this.AjaxProduct(tab);
 
-
     },
 
     AjaxProduct:function(ids){
@@ -73,8 +72,9 @@
     },
 
     productToHTML:function(product){
+        console.log(product);
         var total = 0;
-        for(var i = 0; i < product.length - 1;i++){
+        for(var i = 0; i < product.length ;i++){
             this.totalPrice += this.order[product.id] * product[i].price;
             var _html = '<div class=""><p>name: '+product[i].name+'</p>'+
                 '<img src="assets/images/products/'+product[i].picture.filename+'">'+
@@ -84,6 +84,7 @@
             total += this.order[product[i].id] * product[i].price;
             $('#orderList').append(_html);
         }
+        this.totalPrice = total;
         $('#orderList').append('<p>total = '+total+'</p>');
 
     },
@@ -99,12 +100,12 @@
                   _token: CSRF_TOKEN,
                   order:this.order,
                   name:name,
-                  email:mail
+                  email:mail,
+                  total:this.totalPrice
               },
               dataType: 'JSON',
               complete: function (data){
-                  Cart.productToHTML(JSON.parse(data.responseText));
-                  localStorage.clean();
+                  localStorage.clear();
               },
               error:function(error){
                   console.log(error);

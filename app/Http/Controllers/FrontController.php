@@ -120,29 +120,25 @@ class FrontController extends Controller
     public function validationOrder(Request $request){
 
         $rq = $request->all();
-        $user = User::where('email',$rq['email'])->get();
-        $idproduct = [];
-        $quantityproduct = [];
+
+        $user = User::where('email',$rq['email'])->firstOrFail();
         if(!empty($user)){
-            foreach($rq['order'] as $order => $quantity){
-                array_push($idproduct,$order);
-                array_push($quantityproduct,$quantity);
+
+
+           $history = History::create([
+                'user_id'=>$user->id,
+                'order_date'=>date('Y-m-d H:m:s',time()),
+                'total_price'=>$rq['total']
+            ]);
+
+
+            foreach($rq['order'] as $product_id => $quantity){
+                $history->products()->sync(['related_id'=>['quantity'=>$quantity,'product_id'=>$product_id]]);
             }
-           // dd(get_class_methods($user));
-            /*********
-             ******
-             ** TODO :
-             ****
-             ****
-             ** error @ $user->id
-             ******
-             *******/
-            dd($user);
-         /*   $history = History::create([
-                'user_id'=>$user->id
-            ]);*/
+
+            return 1;
         }else{
-            return 'name or email error';
+            return 0;
         }
     }
 
