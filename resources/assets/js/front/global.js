@@ -1,11 +1,25 @@
 $(document).ready(function(){
     scroll();
     menu();
+    fixFooter();
 });
 
 $(window).resize(function(){
     menuOverflow();
+    fixFooter();
 });
+
+/**
+ * Fix footer if not enought content
+ */
+function fixFooter(){
+    var container = $(".main-container").height();
+    var wh = $(window).height();
+    if(container < wh)
+        $("footer").addClass('fixed');
+    else
+        $("footer").removeClass('fixed');
+}
 
 /**
  * Init menu overflow handler

@@ -5,7 +5,7 @@
     <div class="menu-4"></div>
 </div>
 <nav class="main-menu">
-    <ul class="main">
+    <ul class="main first-main">
         <li><a href="{{url('/')}}">Home</a></li>
         <li><a href="{{url('/categories/helmets/')}}">Helmets</a></li>
         <li><a href="{{url('/categories/lasers/')}}">Lasers</a></li>
@@ -17,7 +17,7 @@
         @endforeach
     </ul>
     @endif
-    <ul class="main">
+    <ul class="main second-main">
         <li><a href="{{url('/')}}">Contact us</a></li>
         <li><a href="{{url('/categories/helmets/')}}">Legal</a></li>
     </ul>

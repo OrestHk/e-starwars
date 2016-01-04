@@ -10,7 +10,7 @@
 
     @include('front.partials.header')
 
-    <div class="content">
+    <div class="main-container">
         @yield('content')
     </div>
 

@@ -116,22 +116,37 @@ header{
             padding-top: 60px;
             transition: left 0.4s ease, padding 0.3s ease;
             background-color: $drkBlue;
-            .tags{
-                overflow: auto;
-                margin: 10px 0px;
-                padding: 10px 0px;
+            .tags{overflow: auto;}
+            .main{
                 position: relative;
-                &:after, &:before{
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    width: 60%;
-                    height: $defBorder;
-                    transform: translateX(-50%);
-                    background-color: $lgtBlue;
+                &.first-main{
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                    &:after{
+                        bottom: 0;
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        width: 60%;
+                        height: $defBorder;
+                        transform: translateX(-50%);
+                        background-color: $lgtBlue;
+                    }
                 }
-                &:after{top: 0;}
-                &:before{bottom: 0;}
+                &.second-main{
+                    padding-top: 10px;
+                    margin-top: 10px;
+                    &:after{
+                        top: 0;
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        width: 60%;
+                        height: $defBorder;
+                        transform: translateX(-50%);
+                        background-color: $lgtBlue;
+                    }
+                }
             }
             li{
                 width: 100%;
@@ -304,6 +319,11 @@ footer{
         background-position: 0% 100%;
         background-image: url($imgs+'footer-border.png');
     }
+    &.fixed{
+        position: absolute;
+        bottom: 0;
+        top: initial;
+    }
 }
 // Overlay
 .overlay{
@@ -315,4 +335,55 @@ footer{
     display: none;
     position: fixed;
     background-color: transparentize($drkBlue, 0.1);
+}
+
+// Buttons
+.container-btn{
+    position: relative;
+    display: inline-block;
+    .btn{
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        color: $lgtBlue;
+        border: $defBorder transparent solid;
+        background-color: transparent;
+        padding: 10px 15px;
+    }
+    div{
+        position: absolute;
+        background-color: $drkBlue;
+    }
+    .top{
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: $defBorder;
+        transition: width 0.3s ease;
+    }
+    .right{
+        top: 0;
+        right: 0;
+        width: $defBorder;
+        height: 0%;
+        transition: height 0.25s ease;
+    }
+    .bot{
+        bottom: 0;
+        right: 0;
+        width: 0%;
+        height: $defBorder;
+        transition: width 0.2s ease;
+    }
+    .left{
+        bottom: 0;
+        left: 0;
+        width: $defBorder;
+        height: 0%;
+        transition: height 0.15s ease;
+    }
+    &:hover{
+        .top, .bot{width: 100%;}
+        .left, .right{height: 100%;}
+    }
 }
