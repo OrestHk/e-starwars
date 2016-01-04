@@ -24,8 +24,8 @@ function menuOverflow(){
  */
 function menu(){
     // Open Close
-    $(".menu").click(function(){
-        $(this).toggleClass('open');
+    $(".menu, .overlay").click(function(){
+        $(".menu").toggleClass('open');
         $(".overlay").fadeToggle(300);
         $(".main-menu").toggleClass('open');
         $('body').toggleClass('hidden');
