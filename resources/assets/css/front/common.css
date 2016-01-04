@@ -1,4 +1,4 @@
-* {
+*, :after, :before {
   margin: 0px;
   padding: 0px;
   outline: none;
@@ -7,20 +7,14 @@
   -webkit-appearance: none;
   -webkit-tap-highlight-color: transparent; }
 
-img {
-  display: block; }
-
-* {
-  margin: 0px;
-  padding: 0px;
-  outline: none;
-  line-height: 1;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent; }
+a {
+  text-decoration: none; }
 
 img {
   display: block; }
+
+.clear {
+  clear: both; }
 
 @font-face {
   font-family: 'Aurebesh';
@@ -82,14 +76,16 @@ body, html {
   width: 100%;
   height: 100%;
   position: relative;
-  font-family: "Moondog_regular"; }
+  font-family: "Moondog_bolder"; }
 
 header {
   top: 0px;
   left: 0px;
   width: 100%;
+  z-index: 10;
   height: 60px;
   position: fixed;
+  transition: height 0.3s ease;
   background-color: #252c38; }
   header:after {
     content: '';
@@ -102,67 +98,138 @@ header {
     background-repeat: repeat-x;
     background-position: 0% 100%;
     background-image: url("../images/header-border.png"); }
-  header h1 {
-    top: 0px;
-    left: 50%;
+  header .content {
     height: 100%;
-    position: absolute;
-    transform: translateX(-50%); }
-    header h1 .name {
-      font-size: 40px;
-      color: #226498;
-      font-family: "Starwars";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%); }
-      header h1 .name.name-1 {
-        right: 105%; }
-      header h1 .name.name-2 {
-        left: 105%; }
-    header h1 img {
-      top: -80px;
-      position: relative; }
-  header .menu {
-    top: 50%;
-    width: 74px;
-    height: 44px;
-    left: 10px;
-    position: absolute;
-    transform: translateY(-50%);
-    background-repeat: no-repeat;
-    background-image: url("../images/menu.png"); }
-  header .main-menu {
-    top: 0;
-    left: -30%;
-    width: 30%;
-    height: 100%;
-    display: none;
-    position: absolute;
-    background-color: #252c38; }
-    header .main-menu li {
-      width: 100%;
-      display: block; }
-  header .cart {
-    top: 50%;
-    width: 47px;
-    height: 53px;
-    right: 10px;
-    position: absolute;
-    transform: translateY(-50%);
-    background-repeat: no-repeat;
-    background-image: url("../images/cart.png"); }
-    header .cart .container {
-      left: 0;
-      top: 0;
-      width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative; }
+    header .content h1 {
+      top: 0px;
+      left: 50%;
       height: 100%;
       position: absolute;
-      transform: rotate(45deg);
-      border: 2px #889db8 solid; }
-    header .cart .items {
-      left: 50%;
+      transform: translateX(-50%); }
+      header .content h1 .name {
+        font-size: 40px;
+        color: #226498;
+        font-family: "Starwars";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: font-size 0.3s ease; }
+        header .content h1 .name.name-1 {
+          right: 100%; }
+        header .content h1 .name.name-2 {
+          left: 100%; }
+      header .content h1 img {
+        top: -80px;
+        width: 214px;
+        position: relative;
+        transition: width 0.3s ease, top 0.1s ease; }
+    header .content .menu {
       top: 50%;
+      width: 74px;
+      height: 44px;
+      left: 10px;
       position: absolute;
-      font-size: 20px;
-      color: #889db8;
-      transform: translate(-50% -50%); }
+      background-size: contain;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-image: url("../images/menu.png");
+      transition: height 0.3s ease, width 0.3s ease; }
+    header .content .main-menu {
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      display: none;
+      position: absolute;
+      background-color: #252c38; }
+      header .content .main-menu li {
+        width: 100%;
+        display: block; }
+    header .content .cart {
+      top: 50%;
+      width: 47px;
+      height: 53px;
+      right: 10px;
+      position: absolute;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-image: url("../images/cart.png");
+      transition: transform 0.3s cubic-bezier(0.87, -0.6, 0.8, 1.44), top 0.3s cubic-bezier(0.87, -0.6, 0.8, 1.44); }
+      header .content .cart .container {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        bottom: -5px;
+        right: 0px;
+        transition: transform 0.3s ease, bottom 0.3s ease, right 0.3s ease; }
+        header .content .cart .container .border {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transform: rotate(45deg);
+          border: 2px #889db8 solid; }
+        header .content .cart .container .items {
+          top: 50%;
+          left: 50%;
+          color: #889db8;
+          font-size: 14px;
+          position: absolute;
+          font-family: "Moondog_bolder";
+          transform: translate(-50%, -50%); }
+
+.reduced header {
+  height: 35px; }
+  .reduced header .content h1 .name {
+    font-size: 25px; }
+  .reduced header .content h1 img {
+    top: -55px;
+    width: 140px; }
+  .reduced header .content .menu {
+    width: 45px;
+    height: 25px; }
+  .reduced header .content .cart {
+    top: 170%;
+    transform: translateY(-50%) rotate(45deg); }
+    .reduced header .content .cart .container {
+      transform: rotate(-55deg);
+      bottom: 5px;
+      right: 13px; }
+
+footer {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  background-color: #252c38; }
+  footer .content {
+    height: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative; }
+    footer .content a {
+      color: #226498;
+      font-size: 24px;
+      bottom: 10px;
+      position: absolute; }
+      footer .content a.contact {
+        left: 10px; }
+      footer .content a.legal {
+        right: 10px; }
+    footer .content .logo-footer {
+      left: 50%;
+      bottom: 10px;
+      position: absolute;
+      transform: translateX(-50%); }
+  footer:after {
+    content: '';
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    height: 14px;
+    position: absolute;
+    background-repeat: repeat-x;
+    background-position: 0% 100%;
+    background-image: url("../images/footer-border.png"); }

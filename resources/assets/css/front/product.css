@@ -1,0 +1,136 @@
+.products {
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding-top: 170px; }
+  .products .blocs {
+    float: left;
+    width: 50%; }
+    .products .blocs .product {
+      width: 80%;
+      position: relative;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      background-repeat: no-repeat;
+      background-position: 50% 100%; }
+      .products .blocs .product .about-top {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px; }
+        .products .blocs .product .about-top .image-min {
+          max-width: 30%;
+          float: right;
+          margin-bottom: 10px; }
+        .products .blocs .product .about-top .title {
+          color: #252c38;
+          font-size: 30px;
+          margin-bottom: 5px;
+          display: inline-block; }
+        .products .blocs .product .about-top .description {
+          font-size: 14px;
+          color: #226498; }
+      .products .blocs .product .cube .borders {
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
+        position: absolute;
+        transform: rotate(45deg); }
+        .products .blocs .product .cube .borders div {
+          position: absolute;
+          background-color: #252c38; }
+        .products .blocs .product .cube .borders .top {
+          width: 100%;
+          height: 2px;
+          top: 0%;
+          left: 0%;
+          transition: width ease 0.2s; }
+        .products .blocs .product .cube .borders .right {
+          width: 2px;
+          height: 100%;
+          top: 0;
+          right: 0;
+          transition: height ease 0.25s; }
+        .products .blocs .product .cube .borders .bot {
+          width: 100%;
+          height: 2px;
+          bottom: 0;
+          right: 0;
+          transition: width ease 0.3s; }
+        .products .blocs .product .cube .borders .left {
+          width: 2px;
+          height: 100%;
+          bottom: 0;
+          left: 0;
+          transition: height ease 0.15s; }
+      .products .blocs .product .cube:hover .top {
+        width: 80%; }
+      .products .blocs .product .cube:hover .left {
+        height: 80%; }
+      .products .blocs .product .cube:hover .bot {
+        width: 80%; }
+      .products .blocs .product .cube:hover .right {
+        height: 80%; }
+      .products .blocs .product .category {
+        top: 50%;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        border: 2px transparent solid;
+        transform: translateY(-50%);
+        background-repeat: no-repeat;
+        background-position: 50% 50%; }
+        .products .blocs .product .category .borders {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+        .products .blocs .product .category.helmets {
+          background-image: url("../images/icones/helmet.png"); }
+        .products .blocs .product .category.lasers {
+          background-image: url("../images/icones/blaster.png"); }
+      .products .blocs .product .tags {
+        text-align: center; }
+        .products .blocs .product .tags .tag {
+          width: 35px;
+          height: 35px;
+          margin: 0 10px;
+          display: inline-block;
+          position: relative;
+          border: 2px transparent solid;
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          background-size: contain; }
+          .products .blocs .product .tags .tag .borders div {
+            background-color: #226498; }
+          .products .blocs .product .tags .tag.jedi {
+            background-image: url("../images/icones/jedi.png"); }
+          .products .blocs .product .tags .tag.blasters {
+            background-image: url("../images/icones/target.png"); }
+          .products .blocs .product .tags .tag.first-order {
+            background-image: url("../images/icones/first-order.png"); }
+          .products .blocs .product .tags .tag.sith {
+            background-image: url("../images/icones/sith.png"); }
+          .products .blocs .product .tags .tag.rebels {
+            background-image: url("../images/icones/rebel.png"); }
+          .products .blocs .product .tags .tag.lightsabers {
+            background-image: url("../images/icones/saber.png"); }
+      .products .blocs .product:last-of-type {
+        margin-bottom: 0px; }
+    .products .blocs.left .product {
+      background-image: url("../images/product-border.png"); }
+      .products .blocs.left .product .image-min {
+        margin-left: 20px; }
+      .products .blocs.left .product .category {
+        left: 105%; }
+    .products .blocs.right {
+      padding-top: 100px; }
+      .products .blocs.right .product {
+        background-image: url("../images/product-border-right.png");
+        float: right;
+        text-align: right; }
+        .products .blocs.right .product .image-min {
+          margin-right: 20px;
+          float: left; }
+        .products .blocs.right .product .category {
+          right: 105%; }

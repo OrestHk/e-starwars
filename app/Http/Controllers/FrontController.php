@@ -23,7 +23,8 @@ class FrontController extends Controller
             ->orderBy('publish_date', 'DESC')
             ->take(10)
             ->get();
-        return view('front.home', compact('products'));
+        $prods = $this->splitProducts($products);
+        return view('front.home', compact('prods'));
     }
     /**
      * Display all products
@@ -33,7 +34,8 @@ class FrontController extends Controller
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->paginate($this->paginat);
-        return view('front.products.index', compact('products'));
+        $prods = $this->splitProducts($products);
+        return view('front.products.index', compact('prods', 'products'));
     }
     /**
      * Get product info by slug
@@ -54,7 +56,8 @@ class FrontController extends Controller
             ->orderBy('publish_date', 'DESC')
             ->with('tags', 'picture')
             ->paginate($this->paginat);
-        return view('front.categories.single', compact('category', 'products'));
+        $prods = $this->splitProducts($products);
+        return view('front.categories.single', compact('category', 'prods', 'products'));
     }
     /**
      * Get products relative to tags
@@ -66,6 +69,29 @@ class FrontController extends Controller
             ->orderBy('publish_date', 'DESC')
             ->with('tags', 'category', 'picture')
             ->paginate($this->paginat);
-        return view('front.tags.single', compact('tag', 'products'));
+        $prods = $this->splitProducts($products);
+        return view('front.tags.single', compact('tag', 'prods', 'products'));
+    }
+    /**
+     * Split products in two columns
+     */
+    private function splitProducts($products){
+        $index = 0;
+        $prodLeft = array();
+        $prodRight = array();
+        foreach($products as $product){
+            if($index % 2 == 0)
+                array_push($prodLeft, $product);
+            else
+                array_push($prodRight, $product);
+            $index++;
+        }
+
+        $products = [
+            'left' => $prodLeft,
+            'right' => $prodRight
+        ];
+
+        return $products;
     }
 }

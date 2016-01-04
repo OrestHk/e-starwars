@@ -1,0 +1,17 @@
+*, :after, :before {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  line-height: 1;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent; }
+
+a {
+  text-decoration: none; }
+
+img {
+  display: block; }
+
+.clear {
+  clear: both; }

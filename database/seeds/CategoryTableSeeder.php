@@ -19,7 +19,7 @@ class CategoryTableSeeder extends Seeder
             'updated_at'    => Carbon\Carbon::now()
         ],[
             'name'          => 'Lasers',
-            'slug'          => 'Lasers',
+            'slug'          => 'lasers',
             'description'   => 'Weapons, weapons, LASER WEAPONS !',
             'created_at'    => Carbon\Carbon::now(),
             'updated_at'    => Carbon\Carbon::now()
