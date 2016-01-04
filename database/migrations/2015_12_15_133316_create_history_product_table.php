@@ -14,6 +14,7 @@ class CreateHistoryProductTable extends Migration
     {
         Schema::create('history_product', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('quantity')->unsigned();
             $table->integer('history_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->timestamps();
