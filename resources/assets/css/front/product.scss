@@ -1,0 +1,161 @@
+@import '../conf';
+
+// Products
+.products{
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 1024px;
+    padding-top: 170px;
+    // Left and right bloc
+    .blocs{
+        float: left;
+        width: 50%;
+        // Product
+        .product{
+            width: 80%;
+            position: relative;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            background-repeat: no-repeat;
+            background-position: 50% 100%;
+            // Upper infos, before tags
+            .about-top{
+                width: 100%;
+                position: relative;
+                margin-bottom: 20px;
+                .image-min{
+                    max-width: 30%;
+                    float: right;
+                    margin-bottom: 10px;
+                }
+                .title{
+                    color: $drkBlue;
+                    font-size: 30px;
+                    margin-bottom: 5px;
+                    display: inline-block;
+                }
+                .description{
+                    font-size: 14px;
+                    color: $lgtBlue;
+                }
+            }
+            // Cube borders
+            .cube{
+                .borders{
+                    top: -10%;
+                    left: -10%;
+                    width: 120%;
+                    height: 120%;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    div{
+                        position: absolute;
+                        background-color: $drkBlue;
+                    }
+                    .top{
+                        width: 100%;
+                        height: $defBorder;
+                        top: 0%;
+                        left: 0%;
+                        transition: width ease 0.2s;
+                    }
+                    .right{
+                        width: $defBorder;
+                        height: 100%;
+                        top: 0;
+                        right: 0;
+                        transition: height ease 0.25s;
+                    }
+                    .bot{
+                        width: 100%;
+                        height: $defBorder;
+                        bottom: 0;
+                        right: 0;
+                        transition: width ease 0.3s;
+                    }
+                    .left{
+                        width: $defBorder;
+                        height: 100%;
+                        bottom: 0;
+                        left: 0;
+                        transition: height ease 0.15s;
+                    }
+                }
+                &:hover{
+                    .top{width: 80%;}
+                    .left{height: 80%;}
+                    .bot{width: 80%;}
+                    .right{height: 80%;}
+                }
+            }
+            // Category
+            .category{
+                top: 50%;
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                border: $defBorder transparent solid;
+                transform: translateY(-50%);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                .borders{
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+                &.helmets{background-image: url($imgs+'icones/helmet.png');}
+                &.lasers{background-image: url($imgs+'icones/blaster.png');}
+            }
+            // Tags
+            .tags{
+                text-align: center;
+                .tag{
+                    .borders div{background-color: $lgtBlue;}
+                    width: 35px;
+                    height: 35px;
+                    margin: 0 10px;
+                    display: inline-block;
+                    position: relative;
+                    border: $defBorder transparent solid;
+                    background-repeat: no-repeat;
+                    background-position: 50% 50%;
+                    background-size: contain;
+                    &.jedi{background-image: url($imgs+'icones/jedi.png');}
+                    &.blasters{background-image: url($imgs+'icones/target.png');}
+                    &.first-order{background-image: url($imgs+'icones/first-order.png');}
+                    &.sith{background-image: url($imgs+'icones/sith.png');}
+                    &.rebels{background-image: url($imgs+'icones/rebel.png');}
+                    &.lightsabers{background-image: url($imgs+'icones/saber.png');}
+                }
+            }
+            &:last-of-type{
+                margin-bottom: 0px;
+            }
+        }
+        // Left exceptions
+        &.left{
+            .product{
+                background-image: url($imgs+'product-border.png');
+                .image-min{
+                    margin-left: 20px;
+                }
+                .category{left: 105%;}
+            }
+        }
+        // Right exceptions
+        &.right{
+            padding-top: 100px;
+            .product{
+                background-image: url($imgs+'product-border-right.png');
+                float: right;
+                text-align: right;
+                .image-min{
+                    margin-right: 20px;
+                    float: left;
+                }
+                .category{right: 105%;}
+            }
+        }
+    }
+}

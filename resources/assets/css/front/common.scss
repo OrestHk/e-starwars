@@ -1,11 +1,12 @@
 @import '../conf';
+@import 'reset.scss';
 @import '../font';
 
 body, html{
     width: 100%;
     height: 100%;
     position: relative;
-    font-family: $Moondog;
+    font-family: $MoondogBolder;
 }
 
 // Header
@@ -13,8 +14,10 @@ header{
     top: 0px;
     left: 0px;
     width: 100%;
+    z-index: 10;
     height: 60px;
     position: fixed;
+    transition: height 0.3s ease;
     background-color: $drkBlue;
     // Header border
     &:after{
@@ -29,65 +32,172 @@ header{
         background-position: 0% 100%;
         background-image: url($imgs+'header-border.png');
     }
-    // Logo
-    h1{
-        top: 0px;
-        left: 50%;
+    .content{
         height: 100%;
-        position: absolute;
-        transform: translateX(-50%);
-        .name{
-            font-size: 40px;
-            color: $lgtBlue;
-            font-family: $Starwars;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            &.name-1{right: 105%;}
-            &.name-2{left: 105%;}
-        }
-        img{
-            top: -80px;
-            position: relative;
-        }
-    }
-    // Menu
-    .menu{
-        top: 50%;
-        width: 74px;
-        height: 44px;
-        left: $defPadding;
-        position: absolute;
-        transform: translateY(-50%);
-        background-repeat: no-repeat;
-        background-image: url($imgs+'menu.png');
-    }
-    // Cart
-    .cart{
-        top: 50%;
-        width: 47px;
-        height: 53px;
-        right: $defPadding;
-        position: absolute;
-        transform: translateY(-50%);
-        background-repeat: no-repeat;
-        background-image: url($imgs+'cart.png');
-        .container{
-            left: 0;
-            top: 0;
-            width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
+        // Logo
+        h1{
+            top: 0px;
+            left: 50%;
             height: 100%;
             position: absolute;
-            transform: rotate(45deg);
-            border: $defBorder $lgtGrey solid;
+            transform: translateX(-50%);
+            .name{
+                font-size: 40px;
+                color: $lgtBlue;
+                font-family: $Starwars;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: font-size 0.3s ease;
+                &.name-1{right: 100%;}
+                &.name-2{left: 100%;}
+            }
+            img{
+                top: -80px;
+                width: 214px;
+                position: relative;
+                transition: width 0.3s ease, top 0.1s ease;
+            }
         }
-        .items{
-            left: 50%;
+        // Menu
+        .menu{
             top: 50%;
+            width: 74px;
+            height: 44px;
+            left: $defPadding;
             position: absolute;
-            font-size: 20px;
-            color: $lgtGrey;
-            transform: translate(-50% -50%);
+            background-size: contain;
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-image: url($imgs+'menu.png');
+            transition: height 0.3s ease, width 0.3s ease;
         }
+        .main-menu{
+            top: 0;
+            left: -30%;
+            width: 30%;
+            height: 100%;
+            display: none;
+            position: absolute;
+            background-color: $drkBlue;
+            li{
+                width: 100%;
+                display: block;
+            }
+        }
+        // Cart
+        .cart{
+            top: 50%;
+            width: 47px;
+            height: 53px;
+            right: $defPadding;
+            position: absolute;
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-image: url($imgs+'cart.png');
+            transition: transform 0.3s cubic-bezier(.87,-.60,.80,1.44), top 0.3s cubic-bezier(.87,-.60,.80,1.44);
+            .container{
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                bottom: -5px;
+                right: 0px;
+                transition: transform 0.3s ease, bottom 0.3s ease, right 0.3s ease;
+                .border{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    transform: rotate(45deg);
+                    border: $defBorder $lgtGrey solid;
+                }
+                .items{
+                    top: 50%;
+                    left: 50%;
+                    color: $lgtGrey;
+                    font-size: 14px;
+                    position: absolute;
+                    font-family: $MoondogBolder;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+}
+// Header reduced
+.reduced{
+    header{
+        height: 35px;
+        .content{
+            h1{
+                .name{
+                    font-size: 25px;
+                }
+                img{
+                    top: -55px;
+                    width: 140px;
+                }
+            }
+            .menu{
+                width: 45px;
+                height: 25px;
+            }
+            .cart{
+                top: 170%;
+                transform: translateY(-50%) rotate(45deg);
+                .container{
+                    transform: rotate(-55deg);
+                    bottom: 5px;
+                    right: 13px;
+                }
+            }
+        }
+    }
+}
+
+// Footer
+footer{
+    width: 100%;
+    height: 80px;
+    position: relative;
+    background-color: $drkBlue;
+    .content{
+        height: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        position: relative;
+        a{
+            color: $lgtBlue;
+            font-size: 24px;
+            bottom: $defPadding;
+            position: absolute;
+            &.contact{
+                left: $defPadding;
+            }
+            &.legal{
+                right: $defPadding;
+            }
+        }
+        .logo-footer{
+            left: 50%;
+            bottom: 10px;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+    }
+    // Footer border
+    &:after{
+        content: '';
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        height: 14px;
+        position: absolute;
+        background-repeat: repeat-x;
+        background-position: 0% 100%;
+        background-image: url($imgs+'footer-border.png');
     }
 }

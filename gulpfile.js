@@ -23,7 +23,7 @@ var path = {
 /* Assets Back */
 // Sass
 gulp.task('sassBack', function(){
-  gulp.src(path.resources.cssBack+'*.+(scss|sass)')
+  return gulp.src(path.resources.cssBack+'*.+(scss|sass)')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(path.resources.cssBack));
 });
@@ -68,11 +68,11 @@ gulp.task('jsFront', function(){
 });
 
 // Watch
-gulp.watch('back-watch', function(){
+gulp.task('back-watch', function(){
   gulp.watch(path.resources.jsBack+'/*.js', ['jsBack']);
   gulp.watch(path.resources.cssBack+'/**/*.+(scss|sass|css)', ['sassBack', 'cssBack']);
 });
-gulp.watch('front-watch', function(){
+gulp.task('front-watch', function(){
   gulp.watch(path.resources.jsFront+'/*.js', ['jsFront']);
   gulp.watch(path.resources.cssFront+'/**/*.+(scss|sass|css)', ['sassFront', 'cssFront']);
 });

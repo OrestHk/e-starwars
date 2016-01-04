@@ -18,15 +18,3 @@ $defBorder: 2px;
 // Paths
 $imgs: '../images/';
 $fonts: '../fonts/';
-
-// Reset
-*{
-    margin: 0px;
-    padding: 0px;
-    outline: none;
-    line-height: 1;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-img{display: block;}
