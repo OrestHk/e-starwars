@@ -1,4 +1,4 @@
-<div class="products">
+<div class="products-container">
     @if(!empty($prods['left']))
         <div class="left blocs">
             @foreach($prods['left'] as $product)

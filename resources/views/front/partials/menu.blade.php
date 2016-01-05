@@ -13,12 +13,12 @@
     @if($allTags)
     <ul class="tags">
         @foreach($allTags as $tag)
-            <li><a href="{{url('/')}}" class="{{$tag->slug}}">{{$tag->name}}</a></li>
+            <li><a href="{{url('tags/'.$tag->slug)}}" class="{{$tag->slug}}">{{$tag->name}}</a></li>
         @endforeach
     </ul>
     @endif
     <ul class="main second-main">
-        <li><a href="{{url('/')}}">Contact us</a></li>
-        <li><a href="{{url('/categories/helmets/')}}">Legal</a></li>
+        <li><a href="{{url('contact/')}}">Contact us</a></li>
+        <li><a href="{{url('legal/')}}">Legal</a></li>
     </ul>
 </nav>

@@ -67,35 +67,35 @@
   .cube.main-cube:hover .borders div {
     background-color: #226498; }
 
-.products {
+.products-container {
   padding: 10px;
   margin: 0 auto;
   max-width: 1024px;
   padding-top: 170px; }
-  .products .product {
+  .products-container .product-container {
     width: 80%;
     position: relative;
     margin-bottom: 50px;
     padding-bottom: 30px;
     background-repeat: no-repeat;
     background-position: 50% 100%; }
-    .products .product .about-top {
+    .products-container .product-container .about-top {
       width: 100%;
       position: relative;
       margin-bottom: 20px; }
-      .products .product .about-top .image-min {
+      .products-container .product-container .about-top .image-min {
         max-width: 30%;
         float: right;
         margin-bottom: 10px; }
-      .products .product .about-top .title {
+      .products-container .product-container .about-top .title {
         color: #252c38;
         font-size: 30px;
         margin-bottom: 5px;
         display: inline-block; }
-      .products .product .about-top .description {
+      .products-container .product-container .about-top .description {
         font-size: 14px;
         color: #226498; }
-    .products .product .category {
+    .products-container .product-container .category {
       top: 50%;
       width: 50px;
       height: 50px;
@@ -104,18 +104,18 @@
       transform: translateY(-50%);
       background-repeat: no-repeat;
       background-position: 50% 50%; }
-      .products .product .category .borders {
+      .products-container .product-container .category .borders {
         top: 0;
         left: 0;
         width: 100%;
         height: 100%; }
-      .products .product .category.helmets {
+      .products-container .product-container .category.helmets {
         background-image: url("../images/icones/helmet.png"); }
-      .products .product .category.lasers {
+      .products-container .product-container .category.lasers {
         background-image: url("../images/icones/blaster.png"); }
-    .products .product .tags {
+    .products-container .product-container .tags {
       text-align: center; }
-      .products .product .tags .tag {
+      .products-container .product-container .tags .tag {
         width: 35px;
         height: 35px;
         margin: 0 10px;
@@ -125,75 +125,75 @@
         background-repeat: no-repeat;
         background-position: 50% 50%;
         background-size: contain; }
-        .products .product .tags .tag.jedi {
+        .products-container .product-container .tags .tag.jedi {
           background-image: url("../images/icones/jedi.png"); }
-        .products .product .tags .tag.blasters {
+        .products-container .product-container .tags .tag.blasters {
           background-image: url("../images/icones/target.png"); }
-        .products .product .tags .tag.first-order {
+        .products-container .product-container .tags .tag.first-order {
           background-image: url("../images/icones/first-order.png"); }
-        .products .product .tags .tag.sith {
+        .products-container .product-container .tags .tag.sith {
           background-image: url("../images/icones/sith.png"); }
-        .products .product .tags .tag.rebels {
+        .products-container .product-container .tags .tag.rebels {
           background-image: url("../images/icones/rebel.png"); }
-        .products .product .tags .tag.lightsabers {
+        .products-container .product-container .tags .tag.lightsabers {
           background-image: url("../images/icones/saber.png"); }
-    .products .product.single {
+    .products-container .product-container.single {
       width: 100%;
       display: table; }
-      .products .product.single .table-element {
+      .products-container .product-container.single .table-element {
         vertical-align: top;
         display: table-cell;
         position: relative; }
-      .products .product.single .image {
+      .products-container .product-container.single .image {
         width: 45%; }
-        .products .product.single .image img {
+        .products-container .product-container.single .image img {
           width: 100%; }
-      .products .product.single .category-container {
+      .products-container .product-container.single .category-container {
         width: 10%;
         vertical-align: middle; }
-        .products .product.single .category-container .category {
+        .products-container .product-container.single .category-container .category {
           top: 0;
           left: 0;
           margin: 0 auto;
           display: block;
           transform: inherit;
           position: relative; }
-      .products .product.single .container-infos {
+      .products-container .product-container.single .container-infos {
         text-align: right;
         width: 45%; }
-        .products .product.single .container-infos .about-top {
+        .products-container .product-container.single .container-infos .about-top {
           margin-bottom: 30px; }
-          .products .product.single .container-infos .about-top .title {
+          .products-container .product-container.single .container-infos .about-top .title {
             font-size: 46px; }
-          .products .product.single .container-infos .about-top .description {
+          .products-container .product-container.single .container-infos .about-top .description {
             font-size: 20px; }
-        .products .product.single .container-infos .tags {
+        .products-container .product-container.single .container-infos .tags {
           margin-bottom: 30px; }
-      .products .product.single form {
+      .products-container .product-container.single form {
         text-align: center; }
-        .products .product.single form .form-content label {
+        .products-container .product-container.single form .form-content label {
           color: #226498;
           font-size: 18px;
           margin-right: 10px; }
-        .products .product.single form .form-content .container-btn.select {
+        .products-container .product-container.single form .form-content .container-btn.select {
           margin-right: 10px; }
-  .products .blocs {
+  .products-container .blocs {
     float: left;
     width: 50%; }
-    .products .blocs.left .product {
+    .products-container .blocs.left .product-container {
       background-image: url("../images/product-border.png"); }
-      .products .blocs.left .product .image-min {
+      .products-container .blocs.left .product-container .image-min {
         margin-left: 20px; }
-      .products .blocs.left .product .category {
+      .products-container .blocs.left .product-container .category {
         left: 105%; }
-    .products .blocs.right {
+    .products-container .blocs.right {
       padding-top: 100px; }
-      .products .blocs.right .product {
+      .products-container .blocs.right .product-container {
         background-image: url("../images/product-border-right.png");
         float: right;
         text-align: right; }
-        .products .blocs.right .product .image-min {
+        .products-container .blocs.right .product-container .image-min {
           margin-right: 20px;
           float: left; }
-        .products .blocs.right .product .category {
+        .products-container .blocs.right .product-container .category {
           right: 105%; }

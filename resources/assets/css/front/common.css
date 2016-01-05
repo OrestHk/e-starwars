@@ -80,6 +80,9 @@ body, html {
   body.hidden, html.hidden {
     overflow: hidden; }
 
+input, textarea, select {
+  font-family: "Moondog_bolder"; }
+
 header {
   top: 0px;
   left: 0px;
@@ -323,9 +326,9 @@ footer {
       font-size: 24px;
       bottom: 10px;
       position: absolute; }
-      footer .content a.contact {
+      footer .content a.contact-btn {
         left: 10px; }
-      footer .content a.legal {
+      footer .content a.legal-btn {
         right: 10px; }
     footer .content .logo-footer {
       left: 50%;

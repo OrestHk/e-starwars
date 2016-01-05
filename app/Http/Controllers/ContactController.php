@@ -17,7 +17,8 @@ class ContactController extends Controller
      * Display the contact page content
      */
     public function show(){
-        return view('front.contact');
+        $class = 'contact';
+        return view('front.contact', compact('class'));
     }
     /**
      * Send an email to admin and register it in database
@@ -33,14 +34,14 @@ class ContactController extends Controller
             $rq['spam'] = true;
         else{
             // If not spam, send it to admin
-            Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
-                $message->from($rq['email'], 'WTF ?');
-                $message->to('admin@admin.com');
-            });
+            // Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
+            //     $message->from($rq['email'], 'WTF ?');
+            //     $message->to('admin@admin.com');
+            // });
         }
         // Insert message in db
         Contact::create($rq);
-        // Redirect to contact page
-        return redirect()->to('/contact/')->with('message', 'Message sent');
+        // Ajax return
+        return ['error' => 'sent'];
     }
 }

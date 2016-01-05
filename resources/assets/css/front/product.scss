@@ -75,13 +75,13 @@
     }
 }
 // Products
-.products{
+.products-container{
     padding: 10px;
     margin: 0 auto;
     max-width: 1024px;
     padding-top: 170px;
     // Product
-    .product{
+    .product-container{
         width: 80%;
         position: relative;
         margin-bottom: 50px;
@@ -205,7 +205,7 @@
         width: 50%;
         // Left exceptions
         &.left{
-            .product{
+            .product-container{
                 background-image: url($imgs+'product-border.png');
                 .image-min{
                     margin-left: 20px;
@@ -216,7 +216,7 @@
         // Right exceptions
         &.right{
             padding-top: 100px;
-            .product{
+            .product-container{
                 background-image: url($imgs+'product-border-right.png');
                 float: right;
                 text-align: right;

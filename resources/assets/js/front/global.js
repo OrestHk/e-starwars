@@ -6,6 +6,11 @@ $(document).ready(function(){
  * Init all functions
  */
 function init(){
+    // Allow ajax calls globaly
+    $.ajaxSetup({
+       headers:{'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')}
+    });
+
     scroll();
     menu();
     fixFooter();

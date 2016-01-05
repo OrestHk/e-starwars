@@ -1,0 +1,66 @@
+.contact {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .contact form {
+    top: 55%;
+    left: 50%;
+    width: 40%;
+    max-width: 600px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+    .contact form .fields {
+      width: 100%;
+      display: table;
+      position: relative;
+      padding-bottom: 20px;
+      overflow: hidden; }
+      .contact form .fields .field {
+        width: 100%;
+        display: table-row; }
+        .contact form .fields .field label, .contact form .fields .field .field-container {
+          display: table-cell;
+          position: relative;
+          text-align: left; }
+        .contact form .fields .field label {
+          width: 80px;
+          font-size: 16px;
+          color: #252c38;
+          padding: 10px 0px;
+          vertical-align: top; }
+        .contact form .fields .field .field-container input, .contact form .fields .field .field-container textarea {
+          padding: 10px;
+          font-size: 16px;
+          color: #252c38;
+          width: 100%;
+          border: none; }
+        .contact form .fields .field .field-container textarea {
+          min-width: 100%;
+          max-width: 480px;
+          max-height: 200px;
+          min-height: 60px;
+          resize: none; }
+      .contact form .fields:after {
+        width: 60%;
+        content: '';
+        height: 2px;
+        background-color: #252c38;
+        position: absolute;
+        left: 20%;
+        bottom: 0; }
+      .contact form .fields .success, .contact form .fields .progress {
+        width: 60%;
+        text-align: center;
+        font-size: 16px;
+        color: #226498;
+        position: absolute;
+        left: 20%;
+        bottom: -20px;
+        transition: bottom 0.25s ease; }
+    .contact form .container-btn {
+      margin-top: 20px; }
+    .contact form.sent .fields .success {
+      bottom: 5px; }
+    .contact form.progress .fields .progress {
+      bottom: 5px; }

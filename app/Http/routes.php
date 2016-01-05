@@ -24,7 +24,7 @@ Route::get('products', 'FrontController@products');
 Route::get('/products/{slug}', 'FrontController@singleProduct');
 Route::get('/categories/{slug}', 'FrontController@categoryProducts');
 Route::get('/tags/{slug}', 'FrontController@tagProducts');
-//order
+// Order
 Route::get('order','FrontController@order');
 Route::post('validationOrder','FrontController@validationOrder');
 Route::post('orderObj/','FrontController@getOrderProduct');
