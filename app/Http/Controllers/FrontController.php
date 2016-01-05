@@ -125,7 +125,7 @@ class FrontController extends Controller
 
 
             foreach($rq['order'] as $product_id => $quantity){
-                $history->products()->sync(['related_id'=>['quantity'=>$quantity,'product_id'=>$product_id]]);
+                $history->products()->attach([$history->id=>['quantity'=>$quantity,'product_id'=>$product_id]]);
             }
 
             return 1;

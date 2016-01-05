@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class History extends Model
 {
     protected $fillable = [
+        'id',
         'user_id',
         'order_date',
         'total_price'
@@ -18,5 +19,9 @@ class History extends Model
      */
     public function products(){
         return $this->belongsToMany('App\Product', 'history_product');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

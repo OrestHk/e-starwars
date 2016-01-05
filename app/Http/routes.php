@@ -41,5 +41,5 @@ Route::get('dashboard', 'Admin\DashboardController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('product', 'Admin\ProductController');
-    Route::get('history','Admin\DashboardController@orderHistory');
+    Route::resource('history','Admin\HistoryController');
 });
