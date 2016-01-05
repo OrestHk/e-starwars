@@ -106,7 +106,17 @@ class FrontController extends Controller
     }
 
     public function order(){
-      return view('front.order.index');
+        $orders = json_decode($_COOKIE['SwC']);
+        $products = [];
+        $cost = 0;
+        foreach ($orders as $order => $qtn) {
+            $product = Product::find($order)->with('tags','category','picture')->firstOrFail();
+            array_push($products,$product);
+            $product->final_price = $product->price * $qtn;
+            $cost += $product->final_price;
+        }
+        setcookie('SwCcostFinal',$cost);
+        return view('front.order.index',compact('products','cost'));
     }
 
     public function getOrderProduct(Request $request){
@@ -120,22 +130,18 @@ class FrontController extends Controller
     public function validationOrder(Request $request){
 
         $rq = $request->all();
-
+        $orders = json_decode($_COOKIE['SwC']);
         $user = User::where('email',$rq['email'])->firstOrFail();
         if(!empty($user)){
-
-
-           $history = History::create([
+            $history = History::create([
                 'user_id'=>$user->id,
                 'order_date'=>date('Y-m-d H:m:s',time()),
-                'total_price'=>$rq['total']
+                'total_price'=>$_COOKIE['SwCcostFinal']
             ]);
-
-
-            foreach($rq['order'] as $product_id => $quantity){
+            foreach($orders as $product_id => $quantity){
                 $history->products()->attach([$history->id=>['quantity'=>$quantity,'product_id'=>$product_id]]);
             }
-
+            setcookie('SwCcostFinal','off',time()-1);
             return 1;
         }else{
             return 0;
