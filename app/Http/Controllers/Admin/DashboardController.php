@@ -29,13 +29,4 @@ class DashboardController extends Controller
         return view('admin.dashboard.index');
       }
 
-      public function orderHistory(){
-        $products = Product::all();
-        $histories = [];
-        foreach ($products as $product ) {
-          array_push($histories,$product->history());
-        }
-
-        return view('admin.history.index',compact('histories','product'));
-      }
 }

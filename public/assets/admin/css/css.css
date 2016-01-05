@@ -35,3 +35,19 @@ input[value="delete"]{
 input[value="delete"]:hover{
   background-color: white;
 }
+#authDashbord{
+    padding-top: 29px;
+    width: 237px;
+    background-image: url('../../images/logo.png');
+    margin: 150px auto;
+    text-align: center;
+    height: 311px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+#authDashbord  button{
+    color: white;
+}#authDashbord  button:hover{
+    color: slategrey;
+}

@@ -16,7 +16,7 @@
         <div class="left"></div>
     </div>
     <div class="container-btn">
-        {!! Form::submit('Add to cart', ['class' => 'btn']) !!}
+        {!! Form::submit('Add to cart', ['class' => 'btn','name' => 'order']) !!}
         <div class="top"></div>
         <div class="right"></div>
         <div class="bot"></div>
