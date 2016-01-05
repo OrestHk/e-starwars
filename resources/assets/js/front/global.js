@@ -1,6 +1,52 @@
 $(document).ready(function(){
     scroll();
+    menu();
+    fixFooter();
 });
+
+$(window).resize(function(){
+    menuOverflow();
+    fixFooter();
+});
+
+/**
+ * Fix footer if not enought content
+ */
+function fixFooter(){
+    var container = $(".main-container").height();
+    var wh = $(window).height();
+    if(container < wh)
+        $("footer").addClass('fixed');
+    else
+        $("footer").removeClass('fixed');
+}
+
+/**
+ * Init menu overflow handler
+ */
+function menuOverflow(){
+    var availableSize = $(".main-menu").height();
+    $(".main-menu .main").each(function(){
+        availableSize -= $(this).outerHeight(true);
+    })
+    availableSize -= $(".main-menu .tags").outerHeight(true) - $(".main-menu .tags").outerHeight();
+    $(".main-menu .tags").css('max-height', availableSize);
+}
+
+/**
+ * Init open close menu listener
+ */
+function menu(){
+    // Open Close
+    $(".menu, .overlay").click(function(){
+        $(".menu").toggleClass('open');
+        $(".overlay").fadeToggle(300);
+        $(".main-menu").toggleClass('open');
+        $('body').toggleClass('hidden');
+    });
+    // Overflow
+    menuOverflow();
+}
 
 /**
  * Init scroll listener to toggle header reduced form

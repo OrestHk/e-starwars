@@ -7,6 +7,7 @@ body, html{
     height: 100%;
     position: relative;
     font-family: $MoondogBolder;
+    &.hidden{overflow: hidden;}
 }
 
 // Header
@@ -65,27 +66,139 @@ header{
         // Menu
         .menu{
             top: 50%;
-            width: 74px;
-            height: 44px;
+            z-index: 20;
+            width: 62px;
+            height: 35px;
+            cursor: pointer;
             left: $defPadding;
             position: absolute;
-            background-size: contain;
             transform: translateY(-50%);
-            background-repeat: no-repeat;
-            background-image: url($imgs+'menu.png');
-            transition: height 0.3s ease, width 0.3s ease;
+            transition: height 0.3s ease, width 0.3s ease, left 0.5s ease;
+            // Menu button
+            div{
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background-size: contain;
+                background-repeat: no-repeat;
+                transition: opacity 0.2s ease, transform 0.6s ease;
+                &.menu-1{background-image: url($imgs+'menu-1.png');}
+                &.menu-2{
+                    transform-origin: 20% 30%;
+                    background-image: url($imgs+'menu-2.png');
+                }
+                &.menu-3{
+                    transform-origin: 20% 65%;
+                    background-image: url($imgs+'menu-3.png');
+                }
+                &.menu-4{background-image: url($imgs+'menu-4.png');}
+            }
+            &.open{
+                left: 15%;
+                margin-left: -12px;
+                div{
+                    &.menu-1, &.menu-4{opacity: 0;}
+                    &.menu-2{transform: rotate(25deg);}
+                    &.menu-3{transform: rotate(-35deg);}
+                }
+            }
         }
+        // Real menu
         .main-menu{
             top: 0;
-            left: -30%;
-            width: 30%;
+            left: -20%;
+            width: 20%;
+            z-index: 15;
             height: 100%;
-            display: none;
-            position: absolute;
+            position: fixed;
+            padding-top: 60px;
+            transition: left 0.4s ease, padding 0.3s ease;
             background-color: $drkBlue;
+            .tags{overflow: auto;}
+            .main{
+                position: relative;
+                &.first-main{
+                    padding-bottom: 10px;
+                    margin-bottom: 10px;
+                    &:after{
+                        bottom: 0;
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        width: 60%;
+                        height: $defBorder;
+                        transform: translateX(-50%);
+                        background-color: $lgtBlue;
+                    }
+                }
+                &.second-main{
+                    padding-top: 10px;
+                    margin-top: 10px;
+                    &:after{
+                        top: 0;
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        width: 60%;
+                        height: $defBorder;
+                        transform: translateX(-50%);
+                        background-color: $lgtBlue;
+                    }
+                }
+            }
             li{
                 width: 100%;
                 display: block;
+                a{
+                    display: block;
+                    color: $lgtBlue;
+                    padding: 15px $defPadding;
+                    position: relative;
+                    transition: color 0.3s ease;
+                    background-repeat: no-repeat;
+                    background-position: 95% 50%;
+                    &.jedi{background-image: url($imgs+'icones/jedi-blue.png');}
+                    &.blasters{background-image: url($imgs+'icones/target-blue.png');}
+                    &.first-order{background-image: url($imgs+'icones/first-order-blue.png');}
+                    &.sith{background-image: url($imgs+'icones/sith-blue.png');}
+                    &.rebels{background-image: url($imgs+'icones/rebel-blue.png');}
+                    &.lightsabers{background-image: url($imgs+'icones/saber-blue.png');}
+                    &:after{
+                        top: 0;
+                        left: 0;
+                        content: '';
+                        width: 0%;
+                        z-index: -1;
+                        height: 100%;
+                        position: absolute;
+                        transition: width 0.3s ease;
+                        background-color: $lgtGrey;
+                    }
+                }
+                &:hover{
+                    a{
+                        color: $drkBlue;
+                        &:after{width: 100%;}
+                    }
+                }
+            }
+            &.open{
+                left: 0;
+            }
+            // Header border
+            &:after{
+                content: '';
+                left: 100%;
+                top: 0;
+                width: 14px;
+                z-index: -1;
+                height: 100%;
+                position: absolute;
+                background-repeat: repeat-y;
+                background-position: 0% 0%;
+                background-image: url($imgs+'menu-border.png');
             }
         }
         // Cart
@@ -143,6 +256,12 @@ header{
             .menu{
                 width: 45px;
                 height: 25px;
+                &.open{
+                    margin-left: 20px;
+                }
+            }
+            .main-menu{
+                padding-top: 35px;
             }
             .cart{
                 top: 170%;
@@ -199,5 +318,72 @@ footer{
         background-repeat: repeat-x;
         background-position: 0% 100%;
         background-image: url($imgs+'footer-border.png');
+    }
+    &.fixed{
+        position: absolute;
+        bottom: 0;
+        top: initial;
+    }
+}
+// Overlay
+.overlay{
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    background-color: transparentize($drkBlue, 0.1);
+}
+
+// Buttons
+.container-btn{
+    position: relative;
+    display: inline-block;
+    .btn{
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        color: $lgtBlue;
+        border: $defBorder transparent solid;
+        background-color: transparent;
+        padding: 10px 15px;
+    }
+    div{
+        position: absolute;
+        background-color: $drkBlue;
+    }
+    .top{
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: $defBorder;
+        transition: width 0.3s ease;
+    }
+    .right{
+        top: 0;
+        right: 0;
+        width: $defBorder;
+        height: 0%;
+        transition: height 0.25s ease;
+    }
+    .bot{
+        bottom: 0;
+        right: 0;
+        width: 0%;
+        height: $defBorder;
+        transition: width 0.2s ease;
+    }
+    .left{
+        bottom: 0;
+        left: 0;
+        width: $defBorder;
+        height: 0%;
+        transition: height 0.15s ease;
+    }
+    &:hover{
+        .top, .bot{width: 100%;}
+        .left, .right{height: 100%;}
     }
 }

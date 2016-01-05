@@ -1,138 +1,208 @@
 @import '../conf';
 
+// Cube borders
+.cube{
+    .borders{
+        top: -10%;
+        left: -10%;
+        width: 120%;
+        height: 120%;
+        position: absolute;
+        transform: rotate(45deg);
+        div{
+            position: absolute;
+            background-color: $drkBlue;
+        }
+        .top{
+            width: 100%;
+            height: $defBorder;
+            top: 0%;
+            left: 0%;
+            transition: width ease 0.2s, background 0.3s ease-in;
+        }
+        .right{
+            width: $defBorder;
+            height: 100%;
+            top: 0;
+            right: 0;
+            transition: height ease 0.25s, background 0.35s ease-in;
+        }
+        .bot{
+            width: 100%;
+            height: $defBorder;
+            bottom: 0;
+            right: 0;
+            transition: width ease 0.3s, background 0.4s ease-in;
+        }
+        .left{
+            width: $defBorder;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            transition: height ease 0.15s, background 0.25s ease-in;
+        }
+    }
+    &:hover{
+        .borders{
+            // div{background-color: $lgtBlue;}
+            .top{width: 80%;}
+            .left{height: 80%;}
+            .bot{width: 80%;}
+            .right{height: 80%;}
+        }
+    }
+    &.main-cube{
+        top: 50%;
+        left: 50%;
+        width: 80px;
+        height: 80px;
+        position: fixed;
+        border: $defBorder transparent solid;
+        transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        .borders{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        &.helmets{background-image: url($imgs+'icones/helmet-big.png');}
+        &.lasers{background-image: url($imgs+'icones/blaster-big.png');}
+        &:hover{
+            .borders div{background-color: $lgtBlue;}
+        }
+    }
+}
 // Products
 .products{
     padding: 10px;
     margin: 0 auto;
     max-width: 1024px;
     padding-top: 170px;
+    // Product
+    .product{
+        width: 80%;
+        position: relative;
+        margin-bottom: 50px;
+        padding-bottom: 30px;
+        background-repeat: no-repeat;
+        background-position: 50% 100%;
+        // Upper infos, before tags
+        .about-top{
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+            .image-min{
+                max-width: 30%;
+                float: right;
+                margin-bottom: 10px;
+            }
+            .title{
+                color: $drkBlue;
+                font-size: 30px;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+            .description{
+                font-size: 14px;
+                color: $lgtBlue;
+            }
+        }
+        // Category
+        .category{
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            border: $defBorder transparent solid;
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            .borders{
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            &.helmets{background-image: url($imgs+'icones/helmet.png');}
+            &.lasers{background-image: url($imgs+'icones/blaster.png');}
+        }
+        // Tags
+        .tags{
+            text-align: center;
+            .tag{
+                width: 35px;
+                height: 35px;
+                margin: 0 10px;
+                display: inline-block;
+                position: relative;
+                border: $defBorder transparent solid;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: contain;
+                &.jedi{background-image: url($imgs+'icones/jedi.png');}
+                &.blasters{background-image: url($imgs+'icones/target.png');}
+                &.first-order{background-image: url($imgs+'icones/first-order.png');}
+                &.sith{background-image: url($imgs+'icones/sith.png');}
+                &.rebels{background-image: url($imgs+'icones/rebel.png');}
+                &.lightsabers{background-image: url($imgs+'icones/saber.png');}
+            }
+        }
+        // Single product handler
+        &.single{
+            width: 100%;
+            display: table;
+            .table-element{
+                vertical-align: top;
+                display: table-cell;
+                position: relative;
+            }
+            .image{
+                width: 45%;
+                img{width: 100%;}
+            }
+            .category-container{
+                width: 10%;
+                vertical-align: middle;
+                .category{
+                    top: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    display: block;
+                    transform: inherit;
+                    position: relative;
+                }
+            }
+            .container-infos{
+                text-align: right;
+                width: 45%;
+                .about-top{
+                    margin-bottom: 30px;
+                    .title{font-size: 46px;}
+                    .description{font-size: 20px;}
+                }
+                .tags{
+                    margin-bottom: 30px;
+                }
+            }
+            form{
+                text-align: center;
+                .form-content{
+                    label{
+                        color: $lgtBlue;
+                        font-size: 18px;
+                        margin-right: 10px;
+                    }
+                    .container-btn.select{margin-right: 10px;}
+                }
+            }
+        }
+    }
     // Left and right bloc
     .blocs{
         float: left;
         width: 50%;
-        // Product
-        .product{
-            width: 80%;
-            position: relative;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            background-repeat: no-repeat;
-            background-position: 50% 100%;
-            // Upper infos, before tags
-            .about-top{
-                width: 100%;
-                position: relative;
-                margin-bottom: 20px;
-                .image-min{
-                    max-width: 30%;
-                    float: right;
-                    margin-bottom: 10px;
-                }
-                .title{
-                    color: $drkBlue;
-                    font-size: 30px;
-                    margin-bottom: 5px;
-                    display: inline-block;
-                }
-                .description{
-                    font-size: 14px;
-                    color: $lgtBlue;
-                }
-            }
-            // Cube borders
-            .cube{
-                .borders{
-                    top: -10%;
-                    left: -10%;
-                    width: 120%;
-                    height: 120%;
-                    position: absolute;
-                    transform: rotate(45deg);
-                    div{
-                        position: absolute;
-                        background-color: $drkBlue;
-                    }
-                    .top{
-                        width: 100%;
-                        height: $defBorder;
-                        top: 0%;
-                        left: 0%;
-                        transition: width ease 0.2s;
-                    }
-                    .right{
-                        width: $defBorder;
-                        height: 100%;
-                        top: 0;
-                        right: 0;
-                        transition: height ease 0.25s;
-                    }
-                    .bot{
-                        width: 100%;
-                        height: $defBorder;
-                        bottom: 0;
-                        right: 0;
-                        transition: width ease 0.3s;
-                    }
-                    .left{
-                        width: $defBorder;
-                        height: 100%;
-                        bottom: 0;
-                        left: 0;
-                        transition: height ease 0.15s;
-                    }
-                }
-                &:hover{
-                    .top{width: 80%;}
-                    .left{height: 80%;}
-                    .bot{width: 80%;}
-                    .right{height: 80%;}
-                }
-            }
-            // Category
-            .category{
-                top: 50%;
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                border: $defBorder transparent solid;
-                transform: translateY(-50%);
-                background-repeat: no-repeat;
-                background-position: 50% 50%;
-                .borders{
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-                &.helmets{background-image: url($imgs+'icones/helmet.png');}
-                &.lasers{background-image: url($imgs+'icones/blaster.png');}
-            }
-            // Tags
-            .tags{
-                text-align: center;
-                .tag{
-                    .borders div{background-color: $lgtBlue;}
-                    width: 35px;
-                    height: 35px;
-                    margin: 0 10px;
-                    display: inline-block;
-                    position: relative;
-                    border: $defBorder transparent solid;
-                    background-repeat: no-repeat;
-                    background-position: 50% 50%;
-                    background-size: contain;
-                    &.jedi{background-image: url($imgs+'icones/jedi.png');}
-                    &.blasters{background-image: url($imgs+'icones/target.png');}
-                    &.first-order{background-image: url($imgs+'icones/first-order.png');}
-                    &.sith{background-image: url($imgs+'icones/sith.png');}
-                    &.rebels{background-image: url($imgs+'icones/rebel.png');}
-                    &.lightsabers{background-image: url($imgs+'icones/saber.png');}
-                }
-            }
-            &:last-of-type{
-                margin-bottom: 0px;
-            }
-        }
         // Left exceptions
         &.left{
             .product{

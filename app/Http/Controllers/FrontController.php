@@ -11,11 +11,19 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Tag;
+use View;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
     private $paginat = 10;
+
+    public function __construct(){
+        // Get all tags
+        View::composer('front.partials.menu', function ($view){
+            $view->with('allTags', Tag::all());
+        });
+    }
     /**
      * Display home products
      */
