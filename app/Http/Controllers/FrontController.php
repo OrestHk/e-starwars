@@ -106,14 +106,19 @@ class FrontController extends Controller
 
     public function order(){
         $orders = json_decode($_COOKIE['SwC']);
-        $products = [];
+        $products_ids = [];
         $cost = 0;
         foreach ($orders as $order => $qtn) {
-            $product = Product::find($order)->with('tags','category','picture')->firstOrFail();
-            array_push($products,$product);
+            array_push($products_ids,$order);
+        }
+
+        $products = Product::whereIn('id',$products_ids)->with('tags','category','picture')->get();
+
+        foreach($products as $product){
             $product->final_price = $product->price * $qtn;
             $cost += $product->final_price;
         }
+
         setcookie('SwCcostFinal',$cost);
         return view('front.order.index',compact('products','cost'));
     }

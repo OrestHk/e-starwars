@@ -10,6 +10,7 @@
             <p>price : {{$product->price}}</p>
             <p>quantity : {{$product->final_price / $product->price}}</p>
             <p>total product cost : {{$product->final_price}}</p>
+
         @empty
             <p>no order</p>
         @endforelse
