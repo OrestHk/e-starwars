@@ -67,8 +67,25 @@
   .cube.main-cube:hover .borders div {
     background-color: #226498; }
 
+.container-pagination {
+  text-align: center;
+  margin-bottom: 30px; }
+  .container-pagination .pagination {
+    display: inline-block; }
+    .container-pagination .pagination li {
+      display: inline-block; }
+      .container-pagination .pagination li a, .container-pagination .pagination li span {
+        display: block;
+        padding: 10px;
+        font-size: 16px;
+        color: #252c38; }
+      .container-pagination .pagination li.active span {
+        color: #226498; }
+      .container-pagination .pagination li.disabled span {
+        color: #889db8; }
+
 .products-container {
-  padding: 10px;
+  padding: 20px;
   margin: 0 auto;
   max-width: 1024px;
   padding-top: 170px; }
@@ -82,7 +99,7 @@
     .products-container .product-container .about-top {
       width: 100%;
       position: relative;
-      margin-bottom: 20px; }
+      margin-bottom: 10px; }
       .products-container .product-container .about-top .image-min {
         max-width: 30%;
         float: right;
@@ -118,7 +135,7 @@
       .products-container .product-container .tags .tag {
         width: 35px;
         height: 35px;
-        margin: 0 10px;
+        margin: 10px;
         display: inline-block;
         position: relative;
         border: 2px transparent solid;

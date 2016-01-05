@@ -11,12 +11,31 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Category;
 use App\Tag;
+use Cookie;
 use View;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
     private $paginat = 10;
+
+    public function __construct(Request $request){
+        parent::__construct();
+
+        // Check for splash cookie
+        if($request->cookie('splash'))
+            $splash = false;
+        else{
+            // Set cookie
+            Cookie::queue('splash', true, 43200);
+            $splash = true;
+        }
+        $splash = true;
+        // Tell if splash screen is needed
+        View::composer('front.layouts.master', function ($view) use ($splash){
+            $view->with('splash', $splash);
+        });
+    }
 
     /**
      * Display home products

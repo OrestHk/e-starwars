@@ -20,4 +20,9 @@
         <p>No products available yet.</p>
     @endif
     <div class="clear"></div>
+    @if(isset($products))
+    <div class="container-pagination">
+        {!!$products->render()!!}
+    </div>
+    @endif
 </div>

@@ -17,6 +17,9 @@
 
     @include('front.partials.footer')
     <div class="overlay"></div>
+    @if($splash)
+        @include('front.partials.splash')
+    @endif
 
 </body>
 <script src="{{asset('assets/js/jquery-1.7.2.min.js')}}"></script>
