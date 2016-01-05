@@ -1,7 +1,7 @@
 {!! Form::open(['url' => '','id' => 'addcart']) !!}
 <div class="form-content">
     {!! Form::label('quantity','Quantity :',['for'=>'quantity']) !!}
-    {!! Form::hidden('product_id', $product->id) !!}
+    {!! Form::hidden('product_id', $product->id, ['id' => 'product_id']) !!}
     <div class="container-btn select">
         {!! Form::select('quantity',array(
             '1'=>'1',
