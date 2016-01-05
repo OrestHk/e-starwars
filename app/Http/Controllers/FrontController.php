@@ -96,7 +96,6 @@ class FrontController extends Controller
                 array_push($prodRight, $product);
             $index++;
         }
-
         $products = [
             'left' => $prodLeft,
             'right' => $prodRight
@@ -120,10 +119,8 @@ class FrontController extends Controller
     }
 
     public function getOrderProduct(Request $request){
-
         $rq = $request->all();
         $products = Product::whereIn('id',$rq['ids'])->with('tags','category','picture')->get();
-
         return json_encode($products);
     }
 
