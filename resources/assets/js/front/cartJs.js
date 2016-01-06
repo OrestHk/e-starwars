@@ -7,14 +7,13 @@ var Cart = {
     addOderItem:function(id,quantity){
         this.order[id] = quantity;
         this.orderToCookie();
+        $('#successAddInCart').fadeIn().delay(2500).fadeOut();
     },
 
     orderToCookie: function () {
         Cookies.set('SwC',this.order);
         console.log(Cookies.get());
     },
-
-
 
     orderToObj:function(){
         this.order = JSON.parse(Cookies.get('SwC'));
@@ -37,7 +36,11 @@ var Cart = {
             },
             dataType: 'JSON',
             complete: function (data){
-                localStorage.clear();
+                if(data == 1){
+                    $('#successOrder').fadeIn().delay(5000).fadeOut();
+                    window.location.reload();
+                }
+
             },
             error:function(error){
                 console.log(error);
@@ -53,13 +56,10 @@ var Cart = {
 $(document).ready(function(){
 
     var isProduct = location.pathname.split('/')[1] == 'products' ? true : false;
-    var isOrder = location.pathname.split('/')[1] == 'order' ? true : false;
     if(isProduct){
         Cart.orderToObj();
     }
-    if(isOrder){
-        //Cart.orderList();
-    }
+
 });
 
 $('#orderValidation').submit(function(evt){

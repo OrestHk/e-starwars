@@ -121,7 +121,7 @@ class ProductController extends Controller
      public function destroy($id)
        {
            Product::destroy($id);
-           return redirect()->to('admin/product')->with('message', 'success delete');
+           return redirect('admin/product')->with('message', 'success delete');
        }
 
        private function categoryTitleAndId()

@@ -24,3 +24,6 @@
     </div>
 </div>
 {!! Form::close() !!}
+<div id="successAddInCart" style="display:none">
+    <h2>add to cart</h2>
+</div>

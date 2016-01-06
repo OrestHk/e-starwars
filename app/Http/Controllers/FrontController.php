@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\History;
 use App\User;
+use GuzzleHttp\Subscriber\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Cookie;
+
 
 use App\Product;
 use App\Category;
@@ -197,23 +200,44 @@ class FrontController extends Controller
 
     public function order(){
         $class = 'order';
+        if(!empty($_COOKIE['SwC'])){
+            $products = $this->getProducts();
+            $cost = $this->getCost($products);
+            return view('front.order.index',compact('products','cost'));
+        }else{
+            return redirect('/')->with('message','No product in cart');
+        }
+
+    }
+
+    private function getCost($products){
+        $orders = json_decode($_COOKIE['SwC']);
+        $products_qtn = [];
+        $count = 0;
+        $cost = 0;
+
+        foreach ($orders as $order => $qtn) {
+            array_push($products_qtn,$qtn);
+        }
+
+        foreach($products as $product){
+            $product->final_price = $product->price * $products_qtn[$count];
+            $cost += $product->final_price;
+            $count++;
+        }
+        return $cost;
+    }
+
+    public function getProducts(){
         $orders = json_decode($_COOKIE['SwC']);
         $products_ids = [];
-        $cost = 0;
         foreach ($orders as $order => $qtn) {
             array_push($products_ids,$order);
         }
-
         $products = Product::whereIn('id',$products_ids)->with('tags','category','picture')->get();
-
-        foreach($products as $product){
-            $product->final_price = $product->price * $qtn;
-            $cost += $product->final_price;
-        }
-
-        setcookie('SwCcostFinal',$cost);
-        return view('front.order.index',compact('products','cost', 'class'));
+        return $products;
     }
+
 
     public function getOrderProduct(Request $request){
         $rq = $request->all();
@@ -225,17 +249,19 @@ class FrontController extends Controller
 
         $rq = $request->all();
         $orders = json_decode($_COOKIE['SwC']);
+        $products = $this->getProducts();
+        $cost = $this->getCost($products);
         $user = User::where('email',$rq['email'])->firstOrFail();
         if(!empty($user)){
             $history = History::create([
                 'user_id'=>$user->id,
                 'order_date'=>date('Y-m-d H:m:s',time()),
-                'total_price'=>$_COOKIE['SwCcostFinal']
+                'total_price'=>$cost
             ]);
             foreach($orders as $product_id => $quantity){
                 $history->products()->attach([$history->id=>['quantity'=>$quantity,'product_id'=>$product_id]]);
             }
-            setcookie('SwCcostFinal','off',time()-1);
+            Cookie::queue('SwC','off',-1);
             return 1;
         }else{
             return 0;

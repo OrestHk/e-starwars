@@ -1,0 +1,129 @@
+@font-face {
+  font-family: 'Aurebesh';
+  src: url("../fonts/Aurebesh/aurebesh_condensed-webfont.eot");
+  src: url("../fonts/Aurebesh/aurebesh_condensed-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Aurebesh/aurebesh_condensed-webfont.woff2") format("woff2"), url("../fonts/Aurebesh/aurebesh_condensed-webfont.woff") format("woff"), url("../fonts/Aurebesh/aurebesh_condensed-webfont.ttf") format("truetype"), url("../fonts/Aurebesh/aurebesh_condensed-webfont.svg#aurebesh_condensedregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Starwars';
+  src: url("../fonts/Starwars/starjedi-webfont.eot");
+  src: url("../fonts/Starwars/starjedi-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Starwars/starjedi-webfont.woff2") format("woff2"), url("../fonts/Starwars/starjedi-webfont.woff") format("woff"), url("../fonts/Starwars/starjedi-webfont.ttf") format("truetype"), url("../fonts/Starwars/starjedi-webfont.svg#star_jediregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Moondog_regular';
+  src: url("../fonts/Moondog/moon00__-webfont.eot");
+  src: url("../fonts/Moondog/moon00__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon00__-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon00__-webfont.woff") format("woff"), url("../fonts/Moondog/moon00__-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon00__-webfont.svg#moondog_zeroregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Moondog_regular';
+  src: url("../fonts/Moondog/moon00i_-webfont.eot");
+  src: url("../fonts/Moondog/moon00i_-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon00i_-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon00i_-webfont.woff") format("woff"), url("../fonts/Moondog/moon00i_-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon00i_-webfont.svg#moondog_zeroitalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Moondog_bold';
+  src: url("../fonts/Moondog/moon15__-webfont.eot");
+  src: url("../fonts/Moondog/moon15__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon15__-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon15__-webfont.woff") format("woff"), url("../fonts/Moondog/moon15__-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon15__-webfont.svg#moondog_fifteenregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Moondog_bold';
+  src: url("../fonts/Moondog/moon15i_-webfont.eot");
+  src: url("../fonts/Moondog/moon15i_-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon15i_-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon15i_-webfont.woff") format("woff"), url("../fonts/Moondog/moon15i_-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon15i_-webfont.svg#moondog_fifteenitalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Moondog_bolder';
+  src: url("../fonts/Moondog/moon30__-webfont.eot");
+  src: url("../fonts/Moondog/moon30__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon30__-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon30__-webfont.woff") format("woff"), url("../fonts/Moondog/moon30__-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon30__-webfont.svg#moondog_thirtyregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Moondog_bolder';
+  src: url("../fonts/Moondog/moon30i_-webfont.eot");
+  src: url("../fonts/Moondog/moon30i_-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Moondog/moon30i_-webfont.woff2") format("woff2"), url("../fonts/Moondog/moon30i_-webfont.woff") format("woff"), url("../fonts/Moondog/moon30i_-webfont.ttf") format("truetype"), url("../fonts/Moondog/moon30i_-webfont.svg#moondog_thirtyitalic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Moondog_bolder"; }
+
+ul.pagination {
+  list-style: none;
+  vertical-align: top; }
+  ul.pagination li {
+    display: inline-block;
+    margin-left: 10px; }
+
+nav#adminMainNav a {
+  text-decoration: none; }
+
+td > p.tags {
+  background: black;
+  color: white;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 1px 2px; }
+
+.alert.alert-info {
+  width: 25%;
+  background-color: rgba(34, 139, 34, 0.5);
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 15%;
+  left: 35%; }
+
+input.btn-delete[type=submit] {
+  background-color: #420101;
+  color: white;
+  transition: background 0.5s; }
+
+input.btn-delete[type=submit]:hover {
+  background-color: white;
+  color: #252c38; }
+
+#authDashbord {
+  padding-top: 29px;
+  width: 237px;
+  background-image: url("../images/logo.png");
+  margin: 150px auto;
+  text-align: center;
+  height: 311px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white; }
+  #authDashbord input {
+    color: black; }
+  #authDashbord button {
+    color: white; }
+  #authDashbord button:hover {
+    color: slategrey; }
+
+#recapOrder {
+  margin: 55px auto;
+  width: auto; }
+  #recapOrder div {
+    margin: 0 0 0 35px; }
+  #recapOrder #productRecapOrder div {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(130, 130, 130, 0.5); }

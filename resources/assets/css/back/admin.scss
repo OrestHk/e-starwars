@@ -1,0 +1,85 @@
+@import "../conf";
+@import "../font";
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: $MoondogBolder;
+}
+
+ul.pagination {
+  list-style: none;
+  vertical-align: top;
+  li {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+nav#adminMainNav a{
+  text-decoration: none;
+}
+td > p.tags{
+  background: black;
+  color: white;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 1px 2px;
+}
+.alert.alert-info{
+  width: 25%;
+  background-color: rgba(34,139,34,0.5);
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+}
+input.btn-delete[type=submit]{
+  background-color: $redBtn;
+  color: white;
+  transition: background 0.5s;
+}
+input.btn-delete[type=submit]:hover{
+  background-color: white;
+  color: $drkBlue;
+}
+#authDashbord{
+  padding-top: 29px;
+  width: 237px;
+  background-image: url($imgs + 'logo.png');
+  margin: 150px auto;
+  text-align: center;
+  height: 311px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  input{
+    color:black;
+  }
+  button{
+    color: white;
+  }
+  button:hover{
+    color: slategrey;
+  }
+}
+
+#recapOrder{
+  margin:55px auto;
+  width:auto;
+  div{
+    margin:0 0 0 35px;
+  }
+  #productRecapOrder div{
+    display: inline-block;
+    vertical-align: top;
+    margin:5px;
+    padding:20px;
+    border-radius: 5px;
+    background-color: rgba(130,130,130,0.5);
+  }
+}
