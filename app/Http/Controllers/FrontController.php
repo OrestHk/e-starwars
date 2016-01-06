@@ -30,7 +30,6 @@ class FrontController extends Controller
             Cookie::queue('splash', true, 43200);
             $splash = true;
         }
-        $splash = true;
         // Tell if splash screen is needed
         View::composer('front.layouts.master', function ($view) use ($splash){
             $view->with('splash', $splash);

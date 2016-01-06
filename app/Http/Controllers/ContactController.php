@@ -8,11 +8,28 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Mail;
+use View;
 use Akismet;
 use App\Contact;
 
 class ContactController extends Controller
 {
+    public function __construct(Request $request){
+        parent::__construct();
+
+        // Check for splash cookie
+        if($request->cookie('splash'))
+            $splash = false;
+        else{
+            // Set cookie
+            Cookie::queue('splash', true, 43200);
+            $splash = true;
+        }
+        // Tell if splash screen is needed
+        View::composer('front.layouts.master', function ($view) use ($splash){
+            $view->with('splash', $splash);
+        });
+    }
     /**
      * Display the contact page content
      */
