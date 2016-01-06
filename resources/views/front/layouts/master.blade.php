@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{asset('assets/css/front.min.css')}}">
 </head>
 <body>
+    @if(session('message'))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
 
     @include('front.partials.header')
 

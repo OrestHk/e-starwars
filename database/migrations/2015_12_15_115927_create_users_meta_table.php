@@ -16,6 +16,7 @@ class CreateUsersMetaTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('CB');
+            $table->string('adresse');
             // Foreign
             $table->foreign('user_id')
                 ->references('id')

@@ -23,4 +23,7 @@
         <input type="submit" id="valideOrder" value="BUY">
     </form>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <div id="successOrder" style="display:none">
+        <h2>Thank you ! you will get you'r stuff soon</h2>
+    </div>
 @endsection

@@ -31,7 +31,7 @@
 
                 <td>{!! Form::open(['url'=>'admin/product/'.$product->id, 'method'=>'DELETE', 'class'=>'form-delete']) !!}
                     <div class="form-group">
-                        {!! Form::submit('delete', ['class'=>'btn']) !!}
+                        {!! Form::submit('delete', ['class'=>'btn-delete']) !!}
                     </div>
                     {!! Form::close() !!}</td>
             </tr>
