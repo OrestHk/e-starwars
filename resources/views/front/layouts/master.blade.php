@@ -6,6 +6,16 @@
     <meta name="csrf-token" content="{{csrf_token()}}" />
     <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <link rel="stylesheet" href="{{asset('assets/css/front.min.css')}}">
+    <script>
+        pagData = {
+            @if(isset($paginatUrl))
+                url: '{{$paginatUrl}}',
+            @endif
+            @if(isset($page))
+                page: '{{$page}}'
+            @endif
+        };
+    </script>
 </head>
 <body>
 

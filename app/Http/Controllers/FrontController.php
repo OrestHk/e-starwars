@@ -13,6 +13,7 @@ use App\Category;
 use App\Tag;
 use Cookie;
 use View;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
@@ -41,63 +42,121 @@ class FrontController extends Controller
      */
     public function home(){
         $class = 'home';
+        // Products query
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->take(10)
             ->get();
+        // Split products in two arrays
         $prods = $this->splitProducts($products);
+        // Return the view
         return view('front.home', compact('prods', 'class'));
     }
     /**
      * Display all products
      */
-    public function products(){
-        $class = 'products';
+    public function products(Request $request, $page = false){
+        $class = '/products';
+        $paginatUrl = 'products/';
+        // Check if request coming from ajax
+        $ajax = $request->ajax();
+        // Check if query for specific page
+        if($page){
+            Paginator::currentPageResolver(function() use ($page){
+                return $page;
+            });
+        }
+        // Products query
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->paginate($this->paginat);
+        // Split products in two arrays
         $prods = $this->splitProducts($products);
-        return view('front.products.index', compact('prods', 'products', 'class'));
+
+        // Return view for ajax call
+        if($page && $ajax)
+            return $this->splitProductsView($prods);
+        // Return view for default display
+        else
+            return view('front.products.index', compact('prods', 'products', 'class', 'paginatUrl', 'page'));
     }
     /**
      * Get product info by slug
      */
     public function singleProduct($slug){
         $class = 'product';
+        // Products query
         $product = Product::where('slug', $slug)
             ->with('tags', 'category', 'picture')
             ->firstOrFail();
+        // Return the view
         return view('front.products.single', compact('product', 'class'));
     }
     /**
      * Get products relative to category
      */
-    public function categoryProducts($slug){
+    public function categoryProducts(Request $request, $slug, $page = false){
         $class = 'category';
+        $paginatUrl = '/categories/'.$slug.'/';
+        // Check if request coming from ajax
+        $ajax = $request->ajax();
+        // Category query
         $category = Category::where('slug', $slug)
             ->firstOrFail();
+        // Check if query for specific page
+        if($page){
+            Paginator::currentPageResolver(function() use ($page){
+                return $page;
+            });
+        }
+        // Products query
         $products = Product::where('category_id', $category->id)
             ->orderBy('publish_date', 'DESC')
             ->with('tags', 'picture')
             ->paginate($this->paginat);
+        // Split products in two arrays
         $prods = $this->splitProducts($products);
-        return view('front.categories.single', compact('category', 'prods', 'products', 'class'));
+
+        // Return view for ajax call
+        if($page && $ajax)
+            return $this->splitProductsView($prods);
+        // Return view for default display
+        else
+            return view('front.categories.single', compact('category', 'prods', 'products', 'class', 'paginatUrl', 'page'));
     }
     /**
      * Get products relative to tags
      */
-    public function tagProducts($slug){
+    public function tagProducts(Request $request, $slug, $page = false){
         $class = 'tag';
+        $paginatUrl = '/tags/'.$slug.'/';
+        // Check if request coming from ajax
+        $ajax = $request->ajax();
+        // Tag query
         $tag = Tag::where('slug', $slug)
             ->firstOrFail();
+        // Check if query for specific page
+        if($page){
+            Paginator::currentPageResolver(function() use ($page){
+                return $page;
+            });
+        }
+        // Products query
         $products = $tag->products()
             ->orderBy('publish_date', 'DESC')
             ->with('tags', 'category', 'picture')
             ->paginate($this->paginat);
+        // Split products in two arrays
         $prods = $this->splitProducts($products);
-        return view('front.tags.single', compact('tag', 'prods', 'products', 'class'));
+
+        // Return view for ajax call
+        if($page && $ajax)
+            return $this->splitProductsView($prods);
+        // Return view for default display
+        else
+            return view('front.tags.single', compact('tag', 'prods', 'products', 'class', 'paginatUrl', 'page'));
     }
     /**
      * Split products in two columns
@@ -120,8 +179,24 @@ class FrontController extends Controller
 
         return $products;
     }
+    /**
+     * Return splitted products rendered view
+     */
+    private function splitProductsView($prods){
+        $data = [];
+        // Left
+        $products = $prods['left'];
+        $data['left'] = view('front.ajax.products', compact('products'))->render();
+        // Right
+        $products = $prods['right'];
+        $data['right'] = view('front.ajax.products', compact('products'))->render();
+        if(!$data['left'] || !$data['right'])
+            return 'last';
+        return $data;
+    }
 
     public function order(){
+        $class = 'order';
         $orders = json_decode($_COOKIE['SwC']);
         $products_ids = [];
         $cost = 0;
@@ -137,7 +212,7 @@ class FrontController extends Controller
         }
 
         setcookie('SwCcostFinal',$cost);
-        return view('front.order.index',compact('products','cost'));
+        return view('front.order.index',compact('products','cost', 'class'));
     }
 
     public function getOrderProduct(Request $request){

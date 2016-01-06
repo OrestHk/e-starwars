@@ -21,16 +21,19 @@ define('IMG_PATH_FRONT', 'assets/images/products/');
 Route::get('/', 'FrontController@home');
 // Products
 Route::get('products', 'FrontController@products');
-Route::get('/products/{slug}', 'FrontController@singleProduct');
-Route::get('/categories/{slug}', 'FrontController@categoryProducts');
-Route::get('/tags/{slug}', 'FrontController@tagProducts');
+Route::get('products/{page}', 'FrontController@products');
+Route::get('products/{slug}', 'FrontController@singleProduct');
+Route::get('categories/{slug}', 'FrontController@categoryProducts');
+Route::get('categories/{slug}/{page}', 'FrontController@categoryProducts');
+Route::get('tags/{slug}', 'FrontController@tagProducts');
+Route::get('tags/{slug}/{page}', 'FrontController@tagProducts');
 // Order
 Route::get('order','FrontController@order');
 Route::post('validationOrder','FrontController@validationOrder');
 Route::post('orderObj/','FrontController@getOrderProduct');
 // Conctact
-Route::get('/contact/', 'ContactController@show');
-Route::post('/contact/send/', 'ContactController@send');
+Route::get('contact/', 'ContactController@show');
+Route::post('contact/send/', 'ContactController@send');
 
 /** Back **/
 //Auth
