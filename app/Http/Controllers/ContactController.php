@@ -8,16 +8,34 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Mail;
+use View;
 use Akismet;
 use App\Contact;
 
 class ContactController extends Controller
 {
+    public function __construct(Request $request){
+        parent::__construct();
+
+        // Check for splash cookie
+        if($request->cookie('splash'))
+            $splash = false;
+        else{
+            // Set cookie
+            Cookie::queue('splash', true, 43200);
+            $splash = true;
+        }
+        // Tell if splash screen is needed
+        View::composer('front.layouts.master', function ($view) use ($splash){
+            $view->with('splash', $splash);
+        });
+    }
     /**
      * Display the contact page content
      */
     public function show(){
-        return view('front.contact');
+        $class = 'contact';
+        return view('front.contact', compact('class'));
     }
     /**
      * Send an email to admin and register it in database
@@ -33,14 +51,14 @@ class ContactController extends Controller
             $rq['spam'] = true;
         else{
             // If not spam, send it to admin
-            Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
-                $message->from($rq['email'], 'WTF ?');
-                $message->to('admin@admin.com');
-            });
+            // Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
+            //     $message->from($rq['email'], 'WTF ?');
+            //     $message->to('admin@admin.com');
+            // });
         }
         // Insert message in db
         Contact::create($rq);
-        // Redirect to contact page
-        return redirect()->to('/contact/')->with('message', 'Message sent');
+        // Ajax return
+        return ['error' => 'sent'];
     }
 }

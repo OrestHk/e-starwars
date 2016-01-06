@@ -14,6 +14,7 @@ use Cookie;
 use App\Product;
 use App\Category;
 use App\Tag;
+use Cookie;
 use View;
 use Illuminate\Support\Facades\DB;
 
@@ -21,48 +22,63 @@ class FrontController extends Controller
 {
     private $paginat = 10;
 
-    public function __construct(){
-        // Get all tags
-        View::composer('front.partials.menu', function ($view){
-            $view->with('allTags', Tag::all());
+    public function __construct(Request $request){
+        parent::__construct();
+
+        // Check for splash cookie
+        if($request->cookie('splash'))
+            $splash = false;
+        else{
+            // Set cookie
+            Cookie::queue('splash', true, 43200);
+            $splash = true;
+        }
+        // Tell if splash screen is needed
+        View::composer('front.layouts.master', function ($view) use ($splash){
+            $view->with('splash', $splash);
         });
     }
+
     /**
      * Display home products
      */
     public function home(){
+        $class = 'home';
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->take(10)
             ->get();
         $prods = $this->splitProducts($products);
-        return view('front.home', compact('prods'));
+        return view('front.home', compact('prods', 'class'));
     }
     /**
      * Display all products
      */
     public function products(){
+        $class = 'products';
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
             ->orderBy('publish_date', 'DESC')
             ->paginate($this->paginat);
         $prods = $this->splitProducts($products);
-        return view('front.products.index', compact('prods', 'products'));
+        return view('front.products.index', compact('prods', 'products', 'class'));
     }
     /**
      * Get product info by slug
      */
     public function singleProduct($slug){
+        $class = 'product';
         $product = Product::where('slug', $slug)
             ->with('tags', 'category', 'picture')
             ->firstOrFail();
-        return view('front.products.single', compact('product'));
+        return view('front.products.single', compact('product', 'class'));
     }
     /**
      * Get products relative to category
      */
     public function categoryProducts($slug){
+        $class = 'category';
         $category = Category::where('slug', $slug)
             ->firstOrFail();
         $products = Product::where('category_id', $category->id)
@@ -70,12 +86,13 @@ class FrontController extends Controller
             ->with('tags', 'picture')
             ->paginate($this->paginat);
         $prods = $this->splitProducts($products);
-        return view('front.categories.single', compact('category', 'prods', 'products'));
+        return view('front.categories.single', compact('category', 'prods', 'products', 'class'));
     }
     /**
      * Get products relative to tags
      */
     public function tagProducts($slug){
+        $class = 'tag';
         $tag = Tag::where('slug', $slug)
             ->firstOrFail();
         $products = $tag->products()
@@ -83,7 +100,7 @@ class FrontController extends Controller
             ->with('tags', 'category', 'picture')
             ->paginate($this->paginat);
         $prods = $this->splitProducts($products);
-        return view('front.tags.single', compact('tag', 'prods', 'products'));
+        return view('front.tags.single', compact('tag', 'prods', 'products', 'class'));
     }
     /**
      * Split products in two columns

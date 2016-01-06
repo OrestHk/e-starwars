@@ -10,15 +10,21 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Category;
 use View;
+use App\Tag;
+
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct()
     {
-        // injecter du code dans une vue, $view <-> au template
+        // Get all categories
         View::composer('partials.main_menu', function ($view) {
             $view->with('categories', Category::all());
+        });
+        // Get all tags
+        View::composer('front.partials.menu', function ($view){
+            $view->with('allTags', Tag::all());
         });
     }
 

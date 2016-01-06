@@ -1,4 +1,4 @@
-<div class="product">
+<div class="product-container">
     <div class="about-top">
         @if(isset($product->picture))
         <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" class="image-min" />

@@ -3,8 +3,8 @@
 @section('title', $product->name)
 
 @section('content')
-    <div class="products">
-        <div class="product single">
+    <div class="products-container">
+        <div class="product-container single">
             @if(isset($product->picture))
             <div class="image table-element">
                 <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" />

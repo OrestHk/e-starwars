@@ -1,0 +1,87 @@
+@import '../conf';
+
+// Contact
+.contact{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    form{
+        top: 55%;
+        left: 50%;
+        width: 40%;
+        max-width: 600px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        // Form fields
+        .fields{
+            width: 100%;
+            display: table;
+            position: relative;
+            padding-bottom: 20px;
+            overflow: hidden;
+            .field{
+                width: 100%;
+                display: table-row;
+                label, .field-container{
+                    display: table-cell;
+                    position: relative;
+                    text-align: left;
+                }
+                label{
+                    width: 80px;
+                    font-size: 16px;
+                    color: $drkBlue;
+                    padding: 10px 0px;
+                    vertical-align: top;
+                }
+                .field-container{
+                    input, textarea{
+                        padding: 10px;
+                        font-size: 16px;
+                        color: $drkBlue;
+                        width: 100%;
+                        border: none;
+                    }
+                    textarea{
+                        min-width: 100%;
+                        max-width: 480px;
+                        max-height: 200px;
+                        min-height: 60px;
+                        resize: none;
+                    }
+                }
+            }
+            &:after{
+                width: 60%;
+                content: '';
+                height: $defBorder;
+                background-color: $drkBlue;
+                position: absolute;
+                left: 20%;
+                bottom: 0;
+            }
+            .success, .progress{
+                width: 60%;
+                text-align: center;
+                font-size: 16px;
+                color: $lgtBlue;
+                position: absolute;
+                left: 20%;
+                bottom: -20px;
+                transition: bottom 0.25s ease;
+            }
+        }
+        .container-btn{margin-top: 20px;}
+        &.sent{
+            .fields{
+                .success{bottom: 5px;}
+            }
+        }
+        &.progress{
+            .fields{
+                .progress{bottom: 5px;}
+            }
+        }
+    }
+}

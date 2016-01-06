@@ -1,4 +1,4 @@
-<div class="products">
+<div class="products-container">
     @if(!empty($prods['left']))
         <div class="left blocs">
             @foreach($prods['left'] as $product)
@@ -20,4 +20,9 @@
         <p>No products available yet.</p>
     @endif
     <div class="clear"></div>
+    @if(isset($products))
+    <div class="container-pagination">
+        {!!$products->render()!!}
+    </div>
+    @endif
 </div>

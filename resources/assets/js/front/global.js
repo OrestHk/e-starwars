@@ -1,13 +1,25 @@
 $(document).ready(function(){
+    init();
+});
+
+/**
+ * Init all functions
+ */
+function init(){
+    // Allow ajax calls globaly
+    $.ajaxSetup({
+       headers:{'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')}
+    });
+
     scroll();
     menu();
     fixFooter();
-});
 
-$(window).resize(function(){
-    menuOverflow();
-    fixFooter();
-});
+    $(window).resize(function(){
+        menuOverflow();
+        fixFooter();
+    });
+}
 
 /**
  * Fix footer if not enought content
@@ -64,4 +76,35 @@ function scroll(){
         else
             $("body").removeClass('reduced');
     });
+}
+
+/**
+ * Set a cookie
+ * @param {string} name : the name of the cookie
+ * @param {string} value : the value of the cookie
+ * @param {integer} expire : days until expiration
+ */
+function setCookie(name, value, expire){
+    var date = new Date();
+    date.setTime(date.getTime() + (expire * 24 * 60 * 60 * 1000));
+    var expires = "expires="+date.toUTCString();
+    document.cookie = name + "=" + value + "; " + expire;
+}
+/**
+ * Get a cookie
+ * @param {string} name : the name of the cookie
+ */
+function getCookie(name){
+    var name = name + "=";
+    var cookies = document.cookie.split(';');
+    var i = 0;
+    var nbCookies = cookies.length;
+
+    for(i; i < nbCookies; i++){
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') cookie = cookie.substring(1);
+        if(cookie.indexOf(name) == 0)
+            return cookie.substring(name.length, cookie.length);
+    }
+    return "";
 }
