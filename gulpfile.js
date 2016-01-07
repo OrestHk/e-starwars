@@ -5,6 +5,7 @@ var uglify        = require('gulp-uglify');
 var sass          = require('gulp-sass');
 var miniCss       = require('gulp-minify-css');
 var autoprefixer  = require('gulp-autoprefixer');
+var runSync       = require('run-sequence');
 
 // Paths
 var path = {
@@ -70,18 +71,28 @@ gulp.task('jsFront', function(){
 // Watch
 gulp.task('back-watch', function(){
   gulp.watch(path.resources.jsBack+'/*.js', ['jsBack']);
-  gulp.watch(path.resources.cssBack+'/**/*.+(scss|sass|css)', ['sassBack', 'cssBack']);
+  gulp.watch(path.resources.cssBack+'/**/*.+(scss|sass|css)', function(){
+      runSync('sassBack', 'cssBack');
+  });
 });
 gulp.task('front-watch', function(){
   gulp.watch(path.resources.jsFront+'/*.js', ['jsFront']);
-  gulp.watch(path.resources.cssFront+'/**/*.+(scss|sass|css)', ['sassFront', 'cssFront']);
+  gulp.watch(path.resources.cssFront+'/**/*.+(scss|sass|css)', function(){
+      runSync('sassFront', 'cssFront');
+  });
 });
 gulp.task('watch', function(){
   gulp.watch(path.resources.jsBack+'/*.js', ['jsBack']);
-  gulp.watch(path.resources.cssBack+'/**/*.+(scss|sass|css)', ['sassBack', 'cssBack']);
+  gulp.watch(path.resources.cssBack+'/**/*.+(scss|sass|css)', function(){
+      runSync('sassBack', 'cssBack');
+  });
   gulp.watch(path.resources.jsFront+'/*.js', ['jsFront']);
-  gulp.watch(path.resources.cssFront+'/**/*.+(scss|sass|css)', ['sassFront', 'cssFront']);
+  gulp.watch(path.resources.cssFront+'/**/*.+(scss|sass|css)', function(){
+      runSync('sassFront', 'cssFront');
+  });
 });
 
 // Build
-gulp.task('build', ['sassFront', 'sassBack', 'jsFront', 'jsBack','cssFront', 'cssBack']);
+gulp.task('build', function(){
+    runSync(['sassFront', 'sassBack'], ['jsFront', 'jsBack', 'cssFront', 'cssBack']);
+});
