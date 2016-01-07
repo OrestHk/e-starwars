@@ -1,6 +1,6 @@
 <div class="cart">
     <div class="container">
         <div class="border"></div>
-        <span class="items">2</span>
+        <span class="items">0</span>
     </div>
 </div>

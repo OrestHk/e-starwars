@@ -1,5 +1,5 @@
 'use strict'
-var Cart = {
+var Cart1 = {
     totalPrice:0,
     product:[],
     order:{},
@@ -58,17 +58,17 @@ $(document).ready(function(){
 
     var isProduct = location.pathname.split('/')[1] == 'products' ? true : false;
     if(isProduct){
-        Cart.orderToObj();
+        Cart1.orderToObj();
     }
 
     $('#orderValidation').submit(function(evt){
         evt.preventDefault();
-        Cart.orderProced();
+        Cart1.orderProced();
     });
 
     $('input[name="order"]').on('click',function(evt){
         evt.preventDefault();
-        Cart.addOderItem($('input[name="product_id"]').val(),$('#quantity :selected').text());
+        Cart1.addOderItem($('input[name="product_id"]').val(),$('#quantity :selected').text());
     });
 
 });

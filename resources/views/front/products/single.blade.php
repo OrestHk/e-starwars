@@ -42,6 +42,7 @@
                     @endforeach
                 </div>
                 @endif
+                <p class="already none">You already have <span class="quantity">0</span> of those in your cart</p>
                 @include('front.forms.addCart', $product)
             </div>
             <div class="clear"></div>

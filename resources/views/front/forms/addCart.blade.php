@@ -25,12 +25,13 @@
             <div class="left"></div>
         </div>
     </div>
-    <div class="container-btn">
+    <div class="container-btn add">
         {!! Form::submit('Add to cart', ['class' => 'btn','name' => 'order']) !!}
         <div class="top"></div>
         <div class="right"></div>
         <div class="bot"></div>
         <div class="left"></div>
+        <p class="message"><span>Product added</span></p>
     </div>
 </div>
 {!! Form::close() !!}

@@ -15,23 +15,37 @@ function initCart(){
         // Vars
         order: {}, // Client order
         totalPrice: 0, // Order total price
+        updated: false, // Cart updated
         // Methods
         /**
          * Add an item to the cart
          */
         addOderItem: function(id, quantity){
-            if(quantity == 0)
-                return false;
+            // If quantity = 0, remove from cart
+            if(quantity == 0){
+                // Hide message already in cart
+                $(".already").addClass('none');
+                delete this.order[id];
+            }
+            // Update quantity
+            else
+                this.order[id] = quantity;
 
-            this.order[id] = quantity;
+            // Display Cart updated message
+            this.updated = true;
+            $("#addcart .add .message").velocity({'top': 0}, 200);
+
+            // Update cookie
             this.orderToCookie();
-            $('#successAddInCart').fadeIn().delay(2500).fadeOut();
+            // Change quantity in already in cart
+            $(".already .quantity").text(quantity);
         },
         /**
          * Update order cookie
          */
         orderToCookie: function () {
             Cookies.set('SwC', this.order);
+            this.updateCartSize();
             console.log(Cookies.get());
         },
         /**
@@ -42,8 +56,44 @@ function initCart(){
             if(!Cookies.get('SwC'))
                 return false;
 
+            // Update this.order
             this.order = JSON.parse(Cookies.get('SwC'));
+            this.updateCartSize();
+            this.giveQuantity();
             console.log(this.order);
+        },
+        /**
+         * Update number of elements in the cart
+         */
+        updateCartSize: function(){
+            // Cart size
+            var size = 0;
+            var order;
+            for(order in this.order){
+                size++;
+            }
+
+            // Change cart size
+            $(".cart .items").text(size);
+        },
+        /**
+         * Give quantity if already in the cart
+         */
+        giveQuantity: function(){
+            // If not in single product page, aboart
+            if(!$(".product .single").length)
+                return false;
+
+            // Get product id
+            var id = $("#product_id").val();
+            // If product is in cart
+            if(this.order[id]){
+                // Change quantity to the one in the cart
+                $("#quantity").val(this.order[id]);
+                // Display message already in cart
+                $(".already").removeClass('none');
+                $(".already .quantity").text(this.order[id]);
+            }
         },
         /**
          * Buy what's in the cart
@@ -77,7 +127,9 @@ function initCart(){
                 }
             });
         },
-        // Input type number quantity
+        /**
+         * Input type number quantity
+         */
         forceNumbers: function(e, el){
             // Get char value
             var char = parseInt(String.fromCharCode(e.keyCode));
@@ -86,7 +138,9 @@ function initCart(){
             if(!regxp.test(char))
                 e.preventDefault();
         },
-        // Change product quantity
+        /**
+         * Change product quantity
+         */
         changeQuantity: function(add){
             // Get current quantity
             var quantity = parseInt($("#quantity").val());
@@ -102,6 +156,11 @@ function initCart(){
             if(quantity > 99)
                 quantity = 99;
 
+            // Hide Cart updated message
+            if(this.updated)
+                $("#addcart .add .message").velocity({'top': '100%'}, 200);
+
+            // Update quantity
             $("#quantity").val(quantity);
         },
         /**
