@@ -26,7 +26,7 @@
 
     @include('front.partials.header')
 
-    <div class="main-container @if($class) {{$class}} @endif">
+    <div class="main-container @if(isset($class)) {{$class}} @endif">
         @yield('content')
     </div>
 
