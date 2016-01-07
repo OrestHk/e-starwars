@@ -304,8 +304,8 @@
     .no-more{
         display: none;
         text-align: center;
-        margin-top: $defPadding;
-        margin-bottom: $defPadding;
+        margin: $defPadding 0;
+        padding: $defPadding 0;
         p{
             color: $lgtBlue;
             padding: 5px 15px;

@@ -261,8 +261,8 @@
   .products-container .no-more {
     display: none;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px; }
+    margin: 20px 0;
+    padding: 20px 0; }
     .products-container .no-more p {
       color: #226498;
       padding: 5px 15px;

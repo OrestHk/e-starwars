@@ -65,23 +65,24 @@ function initInfinite(){
                 url: url,
                 type: 'GET',
                 dataType: 'JSON',
-                complete: function(data){
+                success: function(data){
                     // If no more products (last page)
                     if(data.responseText == 'last'){
                         _this.lastPage = true;
                         // Hide loader
-                        _this.displayLoader(false);
-                        // Show message
-                        $(".products-container .no-more").slideDown();
+                        _this.displayLoader(false, function(){
+                            // Show message
+                            $(".products-container .no-more").slideDown();
+                        });
                     }
                     else{
                         // Change current page
                         _this.page += 1;
-                        _this.inProgress = false;
                         // Append products
                         _this.left.append(data.responseJSON.left);
                         _this.right.append(data.responseJSON.right);
                     }
+                    _this.inProgress = false;
                 },
                 error: function(error){
 
@@ -91,11 +92,19 @@ function initInfinite(){
         /**
          * Hide or show loader
          */
-        displayLoader: function(display){
-            if(display)
-                $(".container-loader").slideDown();
-            else
-                $(".container-loader").slideUp();
+        displayLoader: function(display, callback){
+            if(display){
+                $(".container-loader").slideDown(300, function(){
+                    if(callback)
+                        callback();
+                });
+            }
+            else{
+                $(".container-loader").delay(200).slideUp(300, function(){
+                    if(callback)
+                        callback();
+                });
+            }
         },
         /**
          * Initiate loader animation
