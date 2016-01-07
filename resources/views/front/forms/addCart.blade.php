@@ -11,7 +11,7 @@
             <div class="left"></div>
         </div>
         <div class="container-btn">
-            {!! Form::text('quantity', 0, ['id' => 'quantity', 'class' => 'btn', 'maxlenght' => '2']) !!}
+            {!! Form::text('quantity', 0, ['id' => 'quantity', 'class' => 'btn', 'maxlength' => '2']) !!}
             <div class="top"></div>
             <div class="right"></div>
             <div class="bot"></div>

@@ -23,6 +23,7 @@ function initInfinite(){
                 this.left = $(".blocs.left");
                 this.right = $(".blocs.right");
                 this.url = pagData.url;
+                // Check if given page (ex: /products/2)
                 if(typeof pagData.page !== 'undefined')
                     this.page = parseInt(pagData.page);
                 return true;
@@ -33,12 +34,17 @@ function initInfinite(){
          * Check if scroll is at end page
          */
         bottom: function(){
+            // If already loading a page or no more pages, end
             if(this.inProgress || this.lastPage)
                 return false;
 
+            // Page height
             var ph = $(".main-container").outerHeight() + $("footer").outerHeight();
+            // Window scroll
             var ws = $(window).scrollTop() + this.marg;
+            // Window height
             var wh = $(window).height();
+            // If end page, load next page
             if(ph - wh < ws)
                 this.nextPage();
         },
@@ -48,8 +54,10 @@ function initInfinite(){
         nextPage: function(){
             var _this = this;
             this.inProgress = true;
+            // Next page url
             var url = this.url + (this.page + 1);
 
+            // Show loader
             this.displayLoader(true);
             this.launchLoader();
 
@@ -58,14 +66,19 @@ function initInfinite(){
                 type: 'GET',
                 dataType: 'JSON',
                 complete: function(data){
+                    // If no more products (last page)
                     if(data.responseText == 'last'){
                         _this.lastPage = true;
+                        // Hide loader
                         _this.displayLoader(false);
+                        // Show message
                         $(".products-container .no-more").slideDown();
                     }
                     else{
+                        // Change current page
                         _this.page += 1;
                         _this.inProgress = false;
+                        // Append products
                         _this.left.append(data.responseJSON.left);
                         _this.right.append(data.responseJSON.right);
                     }
@@ -89,11 +102,13 @@ function initInfinite(){
          */
         launchLoader: function(){
             var _this = this;
+            // If page isn't loading, hide loader
             if(!this.inProgress){
                 this.displayLoader(false);
                 return false;
             }
 
+            // Loader animation
             $(".loader .top").velocity({'width': '100%'}, _this.loadDuration, _this.loadEasing, function(){
                 $(".loader .right").velocity({'height': '100%'}, _this.loadDuration, _this.loadEasing, function(){
                     $(".loader .bot").velocity({'width': '100%'}, _this.loadDuration, _this.loadEasing, function(){

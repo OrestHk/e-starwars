@@ -54,20 +54,21 @@ var Cart = {
 
 
 $(document).ready(function(){
+    return false;
 
     var isProduct = location.pathname.split('/')[1] == 'products' ? true : false;
     if(isProduct){
         Cart.orderToObj();
     }
 
-});
+    $('#orderValidation').submit(function(evt){
+        evt.preventDefault();
+        Cart.orderProced();
+    });
 
-$('#orderValidation').submit(function(evt){
-    evt.preventDefault();
-    Cart.orderProced();
-});
+    $('input[name="order"]').on('click',function(evt){
+        evt.preventDefault();
+        Cart.addOderItem($('input[name="product_id"]').val(),$('#quantity :selected').text());
+    });
 
-$('input[name="order"]').on('click',function(evt){
-    evt.preventDefault();
-    Cart.addOderItem($('input[name="product_id"]').val(),$('#quantity :selected').text());
 });
