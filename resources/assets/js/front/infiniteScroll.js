@@ -12,6 +12,8 @@ function initInfinite(){
         page: 1, // Current page
         lastPage: false, // Check if no more page
         inProgress: false, // Check if a query is already in progress
+        loadEasing: 'linear', // Loader animation easing
+        loadDuration: 200, // Loader animation duration
         // Methods
         /**
          * Check if infinite scroll is required
@@ -46,15 +48,21 @@ function initInfinite(){
         nextPage: function(){
             var _this = this;
             this.inProgress = true;
-            console.log(this.url, this.page, this.page + 1);
             var url = this.url + (this.page + 1);
+
+            this.displayLoader(true);
+            this.launchLoader();
+
             $.ajax({
                 url: url,
                 type: 'GET',
                 dataType: 'JSON',
                 complete: function(data){
-                    if(data.responseText == 'last')
+                    if(data.responseText == 'last'){
                         _this.lastPage = true;
+                        _this.displayLoader(false);
+                        $(".products-container .no-more").slideDown();
+                    }
                     else{
                         _this.page += 1;
                         _this.inProgress = false;
@@ -65,6 +73,46 @@ function initInfinite(){
                 error: function(error){
 
                 }
+            });
+        },
+        /**
+         * Hide or show loader
+         */
+        displayLoader: function(display){
+            if(display)
+                $(".container-loader").slideDown();
+            else
+                $(".container-loader").slideUp();
+        },
+        /**
+         * Initiate loader animation
+         */
+        launchLoader: function(){
+            var _this = this;
+            if(!this.inProgress){
+                this.displayLoader(false);
+                return false;
+            }
+
+            $(".loader .top").velocity({'width': '100%'}, _this.loadDuration, _this.loadEasing, function(){
+                $(".loader .right").velocity({'height': '100%'}, _this.loadDuration, _this.loadEasing, function(){
+                    $(".loader .bot").velocity({'width': '100%'}, _this.loadDuration, _this.loadEasing, function(){
+                        $(".loader .left").velocity({'height': '100%'}, _this.loadEasing, _this.loadDuration, function(){
+                            $(".loader").addClass('invert');
+                            $(".loader .top").velocity({'width': '0%'}, _this.loadDuration, _this.loadEasing, function(){
+                                $(".loader .right").velocity({'height': '0%'}, _this.loadDuration, _this.loadEasing, function(){
+                                    $(".loader .bot").velocity({'width': '0%'}, _this.loadDuration, _this.loadEasing, function(){
+                                        $(".loader .left").velocity({'height': '0%'}, _this.loadDuration, _this.loadEasing, function(){
+                                            $(".loader").removeClass('invert');
+                                            $(".loader div").removeClass('style');
+                                            _this.launchLoader();
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
             });
         },
         /**

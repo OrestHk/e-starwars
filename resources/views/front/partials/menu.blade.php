@@ -7,13 +7,13 @@
 <nav class="main-menu">
     <ul class="main first-main">
         <li><a href="{{url('/')}}">Home</a></li>
-        <li><a href="{{url('/categories/helmets/')}}">Helmets</a></li>
-        <li><a href="{{url('/categories/lasers/')}}">Lasers</a></li>
+        <li><a href="{{url('/category/helmets/')}}">Helmets</a></li>
+        <li><a href="{{url('/category/lasers/')}}">Lasers</a></li>
     </ul>
     @if($allTags)
     <ul class="tags">
         @foreach($allTags as $tag)
-            <li><a href="{{url('tags/'.$tag->slug)}}" class="{{$tag->slug}}">{{$tag->name}}</a></li>
+            <li><a href="{{url('tag/'.$tag->slug)}}" class="{{$tag->slug}}">{{$tag->name}}</a></li>
         @endforeach
     </ul>
     @endif

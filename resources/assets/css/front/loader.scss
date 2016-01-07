@@ -1,0 +1,48 @@
+@import '../conf';
+
+.container-loader{
+    padding: $defPadding;
+    margin: $defPadding 0;
+    display: none;
+    .loader{
+        width: 40px;
+        height: 40px;
+        margin: 0 auto;
+        position: relative;
+        transform: rotate(45deg);
+        div{
+            position: absolute;
+            background-color: $drkBlue;
+        }
+        .top{
+            width: 0%;
+            height: $defBorder;
+            top: 0%;
+            left: 0%;
+        }
+        .right{
+            width: $defBorder;
+            height: 0%;
+            top: 0;
+            right: 0;
+        }
+        .bot{
+            width: 0%;
+            height: $defBorder;
+            bottom: 0;
+            right: 0;
+        }
+        .left{
+            width: $defBorder;
+            height: 0%;
+            bottom: 0;
+            left: 0;
+        }
+        &.invert{
+            .top{left: inherit; right: 0;}
+            .right{top: inherit; bottom: 0;}
+            .bot{right: inherit; left: 0;}
+            .left{bottom: inherit; top: 0;}
+        }
+    }
+}

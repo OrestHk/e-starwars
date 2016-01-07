@@ -3,7 +3,7 @@
 @section('title', $category->name)
 
 @section('content')
-    <a class="cube main-cube category {{$category->slug}}" href="{{url('/categories/'.$category->slug)}}" title="{{$category->name}}">
+    <a class="cube main-cube category {{$category->slug}}" href="{{url('/category/'.$category->slug)}}" title="{{$category->name}}">
         <div class="borders">
             <div class="top"></div>
             <div class="right"></div>

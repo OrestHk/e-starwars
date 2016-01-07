@@ -22,11 +22,11 @@ Route::get('/', 'FrontController@home');
 // Products
 Route::get('products', 'FrontController@products');
 Route::get('products/{page}', 'FrontController@products');
-Route::get('products/{slug}', 'FrontController@singleProduct');
-Route::get('categories/{slug}', 'FrontController@categoryProducts');
-Route::get('categories/{slug}/{page}', 'FrontController@categoryProducts');
-Route::get('tags/{slug}', 'FrontController@tagProducts');
-Route::get('tags/{slug}/{page}', 'FrontController@tagProducts');
+Route::get('product/{slug}', 'FrontController@singleProduct');
+Route::get('category/{slug}', 'FrontController@categoryProducts');
+Route::get('category/{slug}/{page}', 'FrontController@categoryProducts');
+Route::get('tag/{slug}', 'FrontController@tagProducts');
+Route::get('tag/{slug}/{page}', 'FrontController@tagProducts');
 // Order
 Route::get('order','FrontController@order');
 Route::post('validationOrder','FrontController@validationOrder');

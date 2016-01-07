@@ -12,7 +12,7 @@
             @endif
             <div class="category-container table-element">
                 @if(isset($product->category))
-                <a class="cube main-cube category {{$product->category->slug}}" href="{{url('/categories/'.$product->category->slug)}}" title="{{$product->category->name}}">
+                <a class="cube main-cube category {{$product->category->slug}}" href="{{url('/category/'.$product->category->slug)}}" title="{{$product->category->name}}">
                     <div class="borders">
                         <div class="top"></div>
                         <div class="right"></div>
@@ -24,14 +24,14 @@
             </div>
             <div class="container-infos table-element">
                 <div class="about-top">
-                    <a class="title" href="{{url('/products/'.$product->slug)}}">{{$product->name}}</a>
+                    <a class="title" href="{{url('/product/'.$product->slug)}}">{{$product->name}}</a>
                     <p class="description">{{$product->description}}</p>
-                    <div class="clear"></div>
+                    <p class="price">Price : {{$product->price}}€</p>
                 </div>
                 @if(!empty($product->tags))
                 <div class="tags">
                     @foreach($product->tags as $tag)
-                        <a href="{{url('tags/'.$tag->slug)}}" class="tag cube {{$tag->slug}}" title="{{$tag->name}}">
+                        <a href="{{url('tag/'.$tag->slug)}}" class="tag cube {{$tag->slug}}" title="{{$tag->name}}">
                             <div class="borders">
                                 <div class="top"></div>
                                 <div class="right"></div>

@@ -4,7 +4,6 @@
             @foreach($prods['left'] as $product)
                 @include('front.partials.product', $product)
             @endforeach
-            <div class="clear"></div>
         </div>
     @endif
     @if(!empty($prods['right']))
@@ -12,7 +11,6 @@
             @foreach($prods['right'] as $product)
                 @include('front.partials.product', $product)
             @endforeach
-            <div class="clear"></div>
         </div>
     @endif
 
@@ -20,9 +18,15 @@
         <p>No products available yet.</p>
     @endif
     <div class="clear"></div>
-    @if(isset($products))
-    <div class="container-pagination">
-        {!!$products->render()!!}
+    <div class="container-loader">
+        <div class="loader">
+            <div class="top"></div>
+            <div class="right"></div>
+            <div class="bot"></div>
+            <div class="left"></div>
+        </div>
     </div>
-    @endif
+    <div class="no-more">
+        <p>You reached the end of this galaxy !</p>
+    </div>
 </div>

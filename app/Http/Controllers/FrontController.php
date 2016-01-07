@@ -8,8 +8,6 @@ use GuzzleHttp\Subscriber\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Cookie;
-
 
 use App\Product;
 use App\Category;
@@ -60,7 +58,7 @@ class FrontController extends Controller
      * Display all products
      */
     public function products(Request $request, $page = false){
-        $class = '/products';
+        $class = 'products';
         $paginatUrl = 'products/';
         // Check if request coming from ajax
         $ajax = $request->ajax();
@@ -102,7 +100,7 @@ class FrontController extends Controller
      */
     public function categoryProducts(Request $request, $slug, $page = false){
         $class = 'category';
-        $paginatUrl = '/categories/'.$slug.'/';
+        $paginatUrl = '/category/'.$slug.'/';
         // Check if request coming from ajax
         $ajax = $request->ajax();
         // Category query
@@ -134,7 +132,7 @@ class FrontController extends Controller
      */
     public function tagProducts(Request $request, $slug, $page = false){
         $class = 'tag';
-        $paginatUrl = '/tags/'.$slug.'/';
+        $paginatUrl = '/tag/'.$slug.'/';
         // Check if request coming from ajax
         $ajax = $request->ajax();
         // Tag query

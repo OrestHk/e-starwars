@@ -127,6 +127,11 @@
                 font-size: 14px;
                 color: $lgtBlue;
             }
+            .price{
+                font-size: 20px;
+                color: $drkBlue;
+                margin-top: 10px;
+            }
         }
         // Category
         .category{
@@ -214,9 +219,25 @@
                         margin-right: 10px;
                     }
                     .container-btn.select{margin-right: 10px;}
+                    .container-quantity{
+                        display: inline-block;
+                        .quantity{
+                            text-align: center;
+                            .btn{
+                                width: 42px;
+                                height: 100%;
+                                position: relative;
+                            }
+                        }
+                        input{
+                            width: 55px;
+                            text-align: center;
+                        }
+                    }
                 }
             }
         }
+        &:last-of-type{margin-bottom: 0px;}
     }
     // Left and right bloc
     .blocs{
@@ -245,6 +266,24 @@
                 }
                 .category{right: 105%;}
             }
+        }
+        &:after{
+            content: '';
+            clear: both;
+        }
+    }
+    // No more products
+    .no-more{
+        display: none;
+        text-align: center;
+        margin-top: $defPadding;
+        margin-bottom: $defPadding;
+        p{
+            color: $lgtBlue;
+            padding: 5px 15px;
+            text-align: center;
+            display: inline-block;
+            border: $defBorder $drkBlue solid;
         }
     }
 }

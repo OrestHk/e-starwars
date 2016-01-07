@@ -11,7 +11,7 @@
             @if(isset($paginatUrl))
                 url: '{{$paginatUrl}}',
             @endif
-            @if(isset($page))
+            @if(isset($page) && $page !== false)
                 page: '{{$page}}'
             @endif
         };
@@ -37,8 +37,5 @@
     @endif
 
 </body>
-<script src="{{asset('assets/js/jquery-1.7.2.min.js')}}"></script>
-<script src="{{asset('assets/js/js.cookie.js')}}"></script>
-<script src="{{asset('assets/js/cartJs.js')}}"></script>
 <script src="{{asset('assets/js/front.min.js')}}"></script>
 </html>

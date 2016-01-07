@@ -1,0 +1,45 @@
+.container-loader {
+  padding: 20px;
+  margin: 20px 0;
+  display: none; }
+  .container-loader .loader {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    position: relative;
+    transform: rotate(45deg); }
+    .container-loader .loader div {
+      position: absolute;
+      background-color: #252c38; }
+    .container-loader .loader .top {
+      width: 0%;
+      height: 2px;
+      top: 0%;
+      left: 0%; }
+    .container-loader .loader .right {
+      width: 2px;
+      height: 0%;
+      top: 0;
+      right: 0; }
+    .container-loader .loader .bot {
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      right: 0; }
+    .container-loader .loader .left {
+      width: 2px;
+      height: 0%;
+      bottom: 0;
+      left: 0; }
+    .container-loader .loader.invert .top {
+      left: inherit;
+      right: 0; }
+    .container-loader .loader.invert .right {
+      top: inherit;
+      bottom: 0; }
+    .container-loader .loader.invert .bot {
+      right: inherit;
+      left: 0; }
+    .container-loader .loader.invert .left {
+      bottom: inherit;
+      top: 0; }
