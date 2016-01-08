@@ -59,7 +59,7 @@ class FrontController extends Controller
      */
     public function products(Request $request, $page = false){
         $class = 'products';
-        $paginatUrl = 'products/';
+        $paginatUrl = '/products/';
         // Check if request coming from ajax
         $ajax = $request->ajax();
         // Check if query for specific page
