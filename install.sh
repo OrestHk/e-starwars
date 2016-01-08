@@ -40,11 +40,12 @@ read answer
 
 if [ $answer="y" ]; then
 
-    sed -i -e "s/DB_HOST=localhost/DB_HOST=$DB_HOST/g" ./.env;
-    sed -i -e "s/DB_DATABASE=homestead/DB_DATABASE=$DB_DATABASE/g" ./.env;
-    sed -i -e "s/DB_USERNAME=homestead/DB_USERNAME=$USERNAME/g" ./.env;
-    sed -i -e "s/DB_PASSWORD=secret/DB_PASSWORD=$PASSWORD/g" ./.env;
+    sed -i -e "s/DB_HOST=localhost/DB_HOST=$DB_HOST/g" ./.env.example;
+    sed -i -e "s/DB_DATABASE=homestead/DB_DATABASE=$DB_DATABASE/g" ./.env.example;
+    sed -i -e "s/DB_USERNAME=homestead/DB_USERNAME=$USERNAME/g" ./.env.example;
+    sed -i -e "s/DB_PASSWORD=secret/DB_PASSWORD=$PASSWORD/g" ./.env.example;
 
+    mv .env.example .env
 fi
 
 

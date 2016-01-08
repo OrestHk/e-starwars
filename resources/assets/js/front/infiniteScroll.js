@@ -65,7 +65,7 @@ function initInfinite(){
                 url: url,
                 type: 'GET',
                 dataType: 'JSON',
-                success: function(data){
+                complete: function(data){
                     // If no more products (last page)
                     if(data.responseText == 'last'){
                         _this.lastPage = true;
