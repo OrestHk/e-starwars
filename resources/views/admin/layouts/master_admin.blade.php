@@ -36,7 +36,7 @@
         @include('admin.partials.admin_menu')
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="adminMainContener">
             @if(Session::has('message'))
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
