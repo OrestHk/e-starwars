@@ -1,0 +1,165 @@
+@import '../conf';
+
+.order{
+    width: 80%;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: $defPadding;
+    padding-top: 170px;
+    padding-bottom: 80px;
+    #orderList{
+        .ordersContainer{
+            width: 100%;
+            margin: 0 auto;
+            .orderTitle{
+                width: 100%;
+                display: table;
+                position: relative;
+                p{
+                    font-size: 18px;
+                    color: $drkBlue;
+                    font-weight: bold;
+                    padding: 10px 0px;
+                    display: table-cell;
+                    vertical-align: middle;
+                    border-bottom: $defBorder $drkBlue solid;
+                }
+            }
+            .orderContainer{
+                width: 100%;
+                display: table;
+                position: relative;
+                .cell{
+                    font-size: 16px;
+                    color: $lgtBlue;
+                    padding: 10px 0px;
+                    position: relative;
+                    display: table-cell;
+                    vertical-align: middle;
+                    border-bottom: $defBorder transparent solid;
+                    a{color: $lgtBlue;}
+                }
+                &:last-of-type{
+                    .cell{border-bottom: $defBorder $drkBlue solid;}
+                }
+                &:hover{
+                    .remove{top: 0%;}
+                }
+            }
+            .remove{
+                width: 5%;
+                span{
+                    top: 50%;
+                    left: 0;
+                    width: 60%;
+                    height: 30%;
+                    cursor: pointer;
+                    position: absolute;
+                    transform: translateY(-50%);
+                    &:after, &:before{
+                        top: 50%;
+                        left: 50%;
+                        content: '';
+                        height: 100%;
+                        width: $defBorder;
+                        position: absolute;
+                        background-color: $drkBlue;
+                        transform: translate(-50%, -50%) rotate(45deg);
+                    }
+                    &:after{transform: translate(-50%, -50%) rotate(-45deg)}
+                }
+            }
+            .image{
+                width: 15%;
+                a{
+                    display: inline-block;
+                    img{
+                        max-width: 100%;
+                        max-height: 50px;
+                    }
+                }
+            }
+            .name{width: 35%;}
+            .price{
+                width: 15%;
+                text-align: center;
+            }
+            .quantity{
+                width: 10%;
+                text-align: center;
+            }
+            .totalPrice{
+                width: 20%;
+                font-weight: bold;
+                text-align: right;
+                position: relative;
+                overflow-y: hidden;
+            }
+        }
+        .finalPrice{
+            font-size: 22px;
+            color: $drkBlue;
+            font-weight: bold;
+            text-align: right;
+            padding: $defPadding 0;
+        }
+        form{
+            .text{
+                width: 35%;
+                float: left;
+                margin-right: 5%;
+            }
+            .submit{
+                float: left;
+                display: block;
+                width: 20%;
+                text-align: center;
+            }
+            .error{
+                display: none;
+                font-size: 18px;
+                text-align: center;
+                margin-top: $defPadding;
+                color: lighten(red, 20%);
+            }
+        }
+    }
+    .confirm{
+        top: 50%;
+        left: 50%;
+        display: none;
+        font-size: 24px;
+        color: $drkBlue;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%, -50%);
+    }
+    .empty{
+        top: 50%;
+        left: 50%;
+        display: none;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        p{
+            font-size: 24px;
+            color: $drkBlue;
+            margin-bottom: $defPadding;
+        }
+        .cube.main-cube{
+            top: 0;
+            left: 0;
+            transform: initial;
+            position: relative;
+            display: inline-block;
+            &:first-of-type{margin-right: 40px;}
+        }
+    }
+    &.ordered{
+        height: 100%;
+    }
+    &.empty{
+        height: 100%;
+        .empty{display: block;}
+    }
+}

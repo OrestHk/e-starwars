@@ -14,6 +14,7 @@ function init(){
     scroll();
     menu();
     fixFooter();
+    buttons();
 
     $(window).resize(function(){
         menuOverflow();
@@ -21,6 +22,17 @@ function init(){
     });
 }
 
+/**
+ * Buttons events handlers
+ */
+function buttons(){
+    $(".container-btn input.btn").focus(function(){
+        $(this).parent('.container-btn').addClass('hover');
+    });
+    $(".container-btn input.btn").focusout(function(){
+        $(this).parent('.container-btn').removeClass('hover');
+    });
+}
 /**
  * Fix footer if not enought content
  */

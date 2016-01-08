@@ -26,7 +26,7 @@
                 <div class="about-top">
                     <a class="title" href="{{url('/product/'.$product->slug)}}">{{$product->name}}</a>
                     <p class="description">{{$product->description}}</p>
-                    <p class="price">Price : {{$product->price}}€</p>
+                    <p class="price">Price : {{$product->price}}<span class="currency">€</span></p>
                 </div>
                 @if(!empty($product->tags))
                 <div class="tags">

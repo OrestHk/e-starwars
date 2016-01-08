@@ -83,6 +83,9 @@ body, html {
 input, textarea, select {
   font-family: "Moondog_bolder"; }
 
+.currency {
+  font-family: "Aurebesh"; }
+
 header {
   top: 0px;
   left: 0px;
@@ -456,7 +459,7 @@ footer {
     width: 2px;
     height: 0%;
     transition: height 0.15s ease; }
-  .container-btn:hover .top, .container-btn:hover .bot {
+  .container-btn:hover .top, .container-btn:hover .bot, .container-btn.hover .top, .container-btn.hover .bot {
     width: 100%; }
-  .container-btn:hover .left, .container-btn:hover .right {
+  .container-btn:hover .left, .container-btn:hover .right, .container-btn.hover .left, .container-btn.hover .right {
     height: 100%; }

@@ -10,6 +10,8 @@ body, html{
     &.hidden{overflow: hidden;}
 }
 input, textarea, select{font-family: $MoondogBolder;}
+// Default
+.currency{font-family: $Aurebesh;}
 
 // Header
 header{
@@ -448,7 +450,7 @@ footer{
         height: 0%;
         transition: height 0.15s ease;
     }
-    &:hover{
+    &:hover, &.hover{
         .top, .bot{width: 100%;}
         .left, .right{height: 100%;}
     }

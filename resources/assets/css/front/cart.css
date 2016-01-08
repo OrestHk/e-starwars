@@ -1,0 +1,137 @@
+.order {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  padding-top: 170px;
+  padding-bottom: 80px; }
+  .order #orderList .ordersContainer {
+    width: 100%;
+    margin: 0 auto; }
+    .order #orderList .ordersContainer .orderTitle {
+      width: 100%;
+      display: table;
+      position: relative; }
+      .order #orderList .ordersContainer .orderTitle p {
+        font-size: 18px;
+        color: #252c38;
+        font-weight: bold;
+        padding: 10px 0px;
+        display: table-cell;
+        vertical-align: middle;
+        border-bottom: 2px #252c38 solid; }
+    .order #orderList .ordersContainer .orderContainer {
+      width: 100%;
+      display: table;
+      position: relative; }
+      .order #orderList .ordersContainer .orderContainer .cell {
+        font-size: 16px;
+        color: #226498;
+        padding: 10px 0px;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        border-bottom: 2px transparent solid; }
+        .order #orderList .ordersContainer .orderContainer .cell a {
+          color: #226498; }
+      .order #orderList .ordersContainer .orderContainer:last-of-type .cell {
+        border-bottom: 2px #252c38 solid; }
+      .order #orderList .ordersContainer .orderContainer:hover .remove {
+        top: 0%; }
+    .order #orderList .ordersContainer .remove {
+      width: 5%; }
+      .order #orderList .ordersContainer .remove span {
+        top: 50%;
+        left: 0;
+        width: 60%;
+        height: 30%;
+        cursor: pointer;
+        position: absolute;
+        transform: translateY(-50%); }
+        .order #orderList .ordersContainer .remove span:after, .order #orderList .ordersContainer .remove span:before {
+          top: 50%;
+          left: 50%;
+          content: '';
+          height: 100%;
+          width: 2px;
+          position: absolute;
+          background-color: #252c38;
+          transform: translate(-50%, -50%) rotate(45deg); }
+        .order #orderList .ordersContainer .remove span:after {
+          transform: translate(-50%, -50%) rotate(-45deg); }
+    .order #orderList .ordersContainer .image {
+      width: 15%; }
+      .order #orderList .ordersContainer .image a {
+        display: inline-block; }
+        .order #orderList .ordersContainer .image a img {
+          max-width: 100%;
+          max-height: 50px; }
+    .order #orderList .ordersContainer .name {
+      width: 35%; }
+    .order #orderList .ordersContainer .price {
+      width: 15%;
+      text-align: center; }
+    .order #orderList .ordersContainer .quantity {
+      width: 10%;
+      text-align: center; }
+    .order #orderList .ordersContainer .totalPrice {
+      width: 20%;
+      font-weight: bold;
+      text-align: right;
+      position: relative;
+      overflow-y: hidden; }
+  .order #orderList .finalPrice {
+    font-size: 22px;
+    color: #252c38;
+    font-weight: bold;
+    text-align: right;
+    padding: 20px 0; }
+  .order #orderList form .text {
+    width: 35%;
+    float: left;
+    margin-right: 5%; }
+  .order #orderList form .submit {
+    float: left;
+    display: block;
+    width: 20%;
+    text-align: center; }
+  .order #orderList form .error {
+    display: none;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    color: #ff6666; }
+  .order .confirm {
+    top: 50%;
+    left: 50%;
+    display: none;
+    font-size: 24px;
+    color: #252c38;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%); }
+  .order .empty {
+    top: 50%;
+    left: 50%;
+    display: none;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%); }
+    .order .empty p {
+      font-size: 24px;
+      color: #252c38;
+      margin-bottom: 20px; }
+    .order .empty .cube.main-cube {
+      top: 0;
+      left: 0;
+      transform: initial;
+      position: relative;
+      display: inline-block; }
+      .order .empty .cube.main-cube:first-of-type {
+        margin-right: 40px; }
+  .order.ordered {
+    height: 100%; }
+  .order.empty {
+    height: 100%; }
+    .order.empty .empty {
+      display: block; }

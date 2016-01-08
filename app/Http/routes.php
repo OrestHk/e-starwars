@@ -29,8 +29,7 @@ Route::get('tag/{slug}', 'FrontController@tagProducts');
 Route::get('tag/{slug}/{page}', 'FrontController@tagProducts');
 // Order
 Route::get('order','FrontController@order');
-Route::post('validationOrder','FrontController@validationOrder');
-Route::post('orderObj/','FrontController@getOrderProduct');
+Route::post('order/validation/','FrontController@validationOrder');
 // Conctact
 Route::get('contact/', 'ContactController@show');
 Route::post('contact/send/', 'ContactController@send');

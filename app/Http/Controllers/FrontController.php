@@ -166,6 +166,7 @@ class FrontController extends Controller
         $index = 0;
         $prodLeft = array();
         $prodRight = array();
+        // Go through each products to split them
         foreach($products as $product){
             if($index % 2 == 0)
                 array_push($prodLeft, $product);
@@ -191,79 +192,98 @@ class FrontController extends Controller
         // Right
         $products = $prods['right'];
         $data['right'] = view('front.ajax.products', compact('products'))->render();
+        // If no left and right products, previous page was the last
         if(!$data['left'] || !$data['right'])
             return 'last';
         return $data;
     }
 
-    public function order(){
+    /**
+     * Get user order from cookie
+     */
+    public function order(Request $request){
         $class = 'order';
+        // If cookie contain orders
         if(!empty($_COOKIE['SwC'])){
-            $products = $this->getProducts();
+            $products = $this->getProducts($_COOKIE['SwC']);
             $cost = $this->getCost($products);
-            return view('front.order.index',compact('products','cost'));
-        }else{
-            return redirect('/')->with('message','No product in cart');
+            // Check if request coming from ajax
+            $ajax = $request->ajax();
+            if($ajax)
+                return compact('products','cost');
+            else
+                return view('front.order.index', compact('products','cost', 'class'));
         }
-
+        else{
+            $empty = true;
+            return view('front.order.index', compact('class', 'empty'));
+        }
     }
 
-    private function getCost($products){
-        $orders = json_decode($_COOKIE['SwC']);
-        $products_qtn = [];
-        $count = 0;
-        $cost = 0;
-
-        foreach ($orders as $order => $qtn) {
-            array_push($products_qtn,$qtn);
+    /**
+     * Get cart products infos
+     */
+    public function getProducts($cookie){
+        // Decode coookie
+        $orders = json_decode($cookie);
+        $productsIds = [];
+        // Get cart products ids
+        foreach($orders as $order => $qtn){
+            array_push($productsIds, $order);
         }
-
+        // Get cart products infos
+        $products = Product::whereIn('id', $productsIds)->with('tags','category','picture')->get();
+        // Set each products total price and quantity
         foreach($products as $product){
-            $product->final_price = $product->price * $products_qtn[$count];
-            $cost += $product->final_price;
-            $count++;
+            $product->quantity = $orders->{$product->id};
+            $product->final_price = $product->price * $product->quantity;
         }
-        return $cost;
-    }
-
-    public function getProducts(){
-        $orders = json_decode($_COOKIE['SwC']);
-        $products_ids = [];
-        foreach ($orders as $order => $qtn) {
-            array_push($products_ids,$order);
-        }
-        $products = Product::whereIn('id',$products_ids)->with('tags','category','picture')->get();
         return $products;
     }
 
-
-    public function getOrderProduct(Request $request){
-        $rq = $request->all();
-        $products = Product::whereIn('id',$rq['ids'])->with('tags','category','picture')->get();
-        return json_encode($products);
+    /**
+     * Get current cart total price
+     */
+    private function getCost($products){
+        $cost = 0;
+        // Count total cost
+        foreach($products as $product){
+            $cost += $product->final_price;
+        }
+        // Return price
+        return $cost;
     }
 
+    /**
+     * Proceed to order
+     */
     public function validationOrder(Request $request){
-
+        // Get request
         $rq = $request->all();
+        // Get cookie
         $orders = json_decode($_COOKIE['SwC']);
-        $products = $this->getProducts();
+        // Get products infos
+        $products = $this->getProducts($_COOKIE['SwC']);
         $cost = $this->getCost($products);
-        $user = User::where('email',$rq['email'])->firstOrFail();
+        // Get user relative to request
+        $user = User::where('email', $rq['email'])->where('name', $rq['name'])->first();
+        // If user exist
         if(!empty($user)){
+            // Create an order
             $history = History::create([
-                'user_id'=>$user->id,
-                'order_date'=>date('Y-m-d H:m:s',time()),
-                'total_price'=>$cost
+                'user_id' => $user->id,
+                'order_date' => date('Y-m-d H:m:s',time()),
+                'total_price' => $cost
             ]);
+            // Create relation order => products
             foreach($orders as $product_id => $quantity){
-                $history->products()->attach([$history->id=>['quantity'=>$quantity,'product_id'=>$product_id]]);
+                $history->products()->attach([$history->id => ['quantity' => $quantity, 'product_id' => $product_id]]);
             }
-            Cookie::queue('SwC','off',-1);
-            return 1;
-        }else{
-            return 0;
+            // Remove cookie
+            Cookie::queue('SwC', 'off', -1);
+            return ['error' => 0];
+        } else{
+            return ['error' => 1];
         }
     }
-
 }
