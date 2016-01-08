@@ -46,6 +46,7 @@ if [ $answer="y" ]; then
     sed -i -e "s/DB_PASSWORD=secret/DB_PASSWORD=$PASSWORD/g" ./.env.example;
 
     mv .env.example .env
+    php artisan key:generate
 fi
 
 

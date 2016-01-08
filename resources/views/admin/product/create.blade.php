@@ -15,6 +15,11 @@
     {!! Form::text('slug') !!}
     {!! $errors->first('slug','<span class="error">:slug</span>') !!}
   </div>
+  <div class="four columns">
+    {!! Form::label('price','price',['for'=>'price']) !!}<br>
+    {!! Form::text('price',$product->price) !!}
+    {!! $errors->first('price','<span class="error">:price</span>') !!}
+  </div>
 </div>
 
 

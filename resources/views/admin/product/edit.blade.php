@@ -15,6 +15,11 @@
     {!! Form::text('slug',$product->slug) !!}
     {!! $errors->first('slug','<span class="error">:slug</span>') !!}
   </div>
+    <div class="four columns">
+    {!! Form::label('price','price',['for'=>'price']) !!}<br>
+    {!! Form::number('price',$product->price) !!}
+    {!! $errors->first('price','<span class="error">:price</span>') !!}
+  </div>
 </div>
 
 
@@ -47,17 +52,18 @@
 </div>
 
 <div class="row">
-  @if(!empty($product->picture->filename))
-      <img height="250px"src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
-  @endif
-</div>
-
-@foreach($tags as $tag)
-  <div class="row ">
-    {!! Form::label($tag->id,$tag->name,['class'=>'two columns']) !!}
-    {!! Form::checkbox('tags[]',$tag->id, $product->hasTag($tag->id),['class'=>'one column']) !!}
-  </div>
+    @foreach($tags as $tag)
+      <div class="two columns ">
+        {!! Form::label($tag->id,$tag->name) !!}
+        {!! Form::checkbox('tags[]',$tag->id, $product->hasTag($tag->id)) !!}
+      </div>
 @endforeach
+</div>
+<div class="row">
+    @if(!empty($product->picture->filename))
+        <img height="250px"src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
+    @endif
+</div>
 
     {!! Form::label('publish_date','plublier à') !!}
     {!! Form::input('date','publish_date',\Carbon\Carbon::now()->toDateString()) !!}
