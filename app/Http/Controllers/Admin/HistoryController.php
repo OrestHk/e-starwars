@@ -12,6 +12,13 @@ use App\History;
 class HistoryController extends Controller
 {
     /**
+     * @abstract middleware auth protected dashboard
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

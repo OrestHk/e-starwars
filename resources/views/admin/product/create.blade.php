@@ -16,8 +16,8 @@
     {!! $errors->first('slug','<span class="error">:slug</span>') !!}
   </div>
   <div class="four columns">
-    {!! Form::label('price','price',['for'=>'price']) !!}<br>
-    {!! Form::text('price',$product->price) !!}
+    {!! Form::label('price','price',['for'=>'price']) !!}
+    {!! Form::text('price') !!}
     {!! $errors->first('price','<span class="error">:price</span>') !!}
   </div>
 </div>
@@ -51,13 +51,15 @@
     {!! Form::file('image') !!}
   </div>
 </div>
+<div class="row ">
   @foreach($tags as $tag)
-    <div class="row ">
-      {!! Form::label($tag->id,$tag->name,['class'=>'two columns']) !!}
-      {!! Form::checkbox('tags[]',$tag->id,'',['class'=>'one column']) !!}
-    </div>
-  @endforeach
 
+      <div class="two columns ">
+        {!! Form::label($tag->id,$tag->name) !!}
+        {!! Form::checkbox('tags[]',$tag->id) !!}
+      </div>
+  @endforeach
+</div>
 
     {!! Form::label('publish_date','publié le') !!}
     {!! Form::input('date','publish_date') !!}
