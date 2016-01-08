@@ -110,7 +110,7 @@ class ProductController extends Controller
 
            $product->update($request->all());
 
-           return redirect()->to('admin/product')->with('message', 'success');
+           return redirect()->to('admin/product')->with('message', 'update success');
        }
     /**
      * Remove the specified resource from storage.
@@ -121,7 +121,7 @@ class ProductController extends Controller
      public function destroy($id)
        {
            Product::destroy($id);
-           return redirect('admin/product')->with('message', 'success delete');
+           return redirect('admin/product')->with('message', 'delete success');
        }
 
        private function categoryTitleAndId()

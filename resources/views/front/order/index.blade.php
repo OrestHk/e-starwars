@@ -5,12 +5,13 @@
 @section('content')
     <div id="orderList">
         @forelse($products as $product)
-            <p>model : {{$product->name}}</p>
-            <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" />
-            <p>price : {{$product->price}}</p>
-            <p>quantity : {{$product->final_price / $product->price}}</p>
-            <p>total product cost : {{$product->final_price}}</p>
-
+            <div>
+                <p>model : {{$product->name}}</p>
+                <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" />
+                <p>price : {{$product->price}}</p>
+                <p>quantity : {{$product->final_price / $product->price}}</p>
+                <p>total product cost : {{$product->final_price}}</p>
+            </div>
         @empty
             <p>no order</p>
         @endforelse

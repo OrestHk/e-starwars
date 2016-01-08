@@ -26,7 +26,7 @@ class DashboardController extends Controller
       * @return Response
       */
       public function index(){
-        return view('admin.dashboard.index');
+        return redirect('admin/product');
       }
 
 }

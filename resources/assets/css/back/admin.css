@@ -127,3 +127,6 @@ input.btn-delete[type=submit]:hover {
     padding: 20px;
     border-radius: 5px;
     background-color: rgba(130, 130, 130, 0.5); }
+
+#adminMainContener {
+  margin: 50px 0; }
