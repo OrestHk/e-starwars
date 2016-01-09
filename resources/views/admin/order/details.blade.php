@@ -4,10 +4,10 @@
 <div id="recapOrder">
     <h3>user info</h3>
     <div id="userRecapOrder">
-        <p>name : {{$history->user->name}}</p>
-        <p>email : {{$history->user->email}}</p>
-        <p>total price : {{$history->total_price}}</p>
-        <p>order date : {{$history->order_date}}</p>
+        <p>name : {{$order->user->name}}</p>
+        <p>email : {{$order->user->email}}</p>
+        <p>total price : {{$order->total_price}}</p>
+        <p>order date : {{$order->order_date}}</p>
     </div>
     <h3>order info</h3>
     <div id="productRecapOrder">

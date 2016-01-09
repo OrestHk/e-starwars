@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\History;
 use App\User;
 use GuzzleHttp\Subscriber\Redirect;
 use Illuminate\Http\Request;
@@ -11,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 use App\Product;
 use App\Category;
+use App\Order;
 use App\Tag;
 use Cookie;
 use View;
@@ -270,7 +270,7 @@ class FrontController extends Controller
         // If user exist
         if(!empty($user)){
             // Create an order
-            $history = History::create([
+            $history = Order::create([
                 'user_id' => $user->id,
                 'order_date' => date('Y-m-d H:m:s',time()),
                 'total_price' => $cost

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master_admin')
 
 @section('content')
- @if(!empty($histories))
+ @if(!empty($orders))
     <table class="u-full-width">
         <thead>
         <tr>
@@ -14,12 +14,12 @@
         </thead>
         <tbody>
 @endif
-        @forelse($histories as $history)
+        @forelse($orders as $order)
             <tr>
-                <td>{{$history->user->name}}</td>
-                <td>{{$history->total_price}}</td>
-                <td>{{$history->order_date}}</td>
-                <td><a href="{{url('admin/history/'.$history->id)}}"> see more</a></td>
+                <td>{{$order->user->name}}</td>
+                <td>{{$order->total_price}}</td>
+                <td>{{$order->order_date}}</td>
+                <td><a href="{{url('admin/order/'.$order->id)}}"> see more</a></td>
             </tr>
         @empty
             <p>no order history</p>
