@@ -23,9 +23,9 @@
                 <td>{{$product->dateConfert()}}</td>
                 <td>{{$product->category ? $product->category->name : 'no Category'}}</td>
                 <td>@forelse($product->tags as $tag)
-                      <p class="tags">{{$tag->name}}</p>
+                        <p class="tags">{{$tag->name}}</p>
                     @empty
-                      <p>no tags</p>
+                        <p>no tags</p>
                     @endforelse
                 </td>
 

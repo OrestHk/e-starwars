@@ -13,7 +13,8 @@ class UserMeta extends Model
 
     /**
      * Get user related to this meta
-     * @return {object} metas
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo {object} metas
+     * metas
      */
     public function user(){
         return $this->belongsTo('App\User');

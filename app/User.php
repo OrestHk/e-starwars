@@ -39,7 +39,8 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * Get user meta
-     * @return {object} metas
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne {object} metas
+     * metas
      */
     public function metas(){
 

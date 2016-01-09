@@ -1,5 +1,6 @@
 @import "../conf";
 @import "../font";
+//general rules
 *{
   margin: 0;
   padding: 0;
@@ -8,44 +9,9 @@ body{
   font-family: $MoondogBolder;
 }
 
-ul.pagination {
-  list-style: none;
-  vertical-align: top;
-  li {
-    display: inline-block;
-    margin-left: 10px;
-  }
-}
-
-nav#adminMainNav a{
-  text-decoration: none;
-}
-td > p.tags{
-  background: black;
-  color: white;
-  display: inline-block;
-  border-radius: 5px;
-  padding: 1px 2px;
-}
-.alert.alert-info{
-  width: 25%;
-  background-color: rgba(34,139,34,0.5);
-  text-align: center;
-  margin: 0 auto;
-  border-radius: 10px;
-  color: white;
-  position: absolute;
-  top: 15%;
-  left: 35%;
-}
-input.btn-delete[type=submit]{
-  background-color: $redBtn;
-  color: white;
-  transition: background 0.5s;
-}
-input.btn-delete[type=submit]:hover{
-  background-color: white;
-  color: $drkBlue;
+//main
+#adminMainContener{
+  margin: 50px 0;
 }
 #authDashbord{
   padding-top: 29px;
@@ -67,7 +33,57 @@ input.btn-delete[type=submit]:hover{
     color: slategrey;
   }
 }
+tr.info{
+  background-color: rgba(192, 44, 44, 0.05);
+}
+tr.success{
+  background-color: rgba(37, 190, 44, 0.05);
+}
+ul.pagination {
+  list-style: none;
+  vertical-align: top;
+  li {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+.alert.alert-info{
+  width: 25%;
+  background-color: rgba(34,139,34,0.5);
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+}
+input.btn-delete[type=submit]{
+  background-color: $redBtn;
+  color: white;
+  transition: background 0.5s;
+}
+input.btn-delete[type=submit]:hover{
+  background-color: white;
+  color: $drkBlue;
+}
+//nav
+nav#adminMainNav a{
+  text-decoration: none;
+}
+//product page
+td > p.tags{
+  background: black;
+  color: white;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 1px 2px;
+}
 
+.rightBtn{
+  float: right;
+}
+//history
 #recapOrder{
   margin:55px auto;
   width:auto;
@@ -83,6 +99,4 @@ input.btn-delete[type=submit]:hover{
     background-color: rgba(130,130,130,0.5);
   }
 }
-#adminMainContener{
-  margin: 50px 0;
-}
+

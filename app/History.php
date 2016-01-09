@@ -15,13 +15,20 @@ class History extends Model
 
     /**
      * Get products associated with history
-     * @return {object} products
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany {object} products
+     *
      */
     public function products(){
         return $this->belongsToMany('App\Product', 'history_product');
     }
 
-    public function user(){
+    /**
+     *Get user associated with history
+     * @return \Illuminate\Database\Eloquent\Relations\belongTo {object} user
+     *
+     */
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 }

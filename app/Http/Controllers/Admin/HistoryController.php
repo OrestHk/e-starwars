@@ -14,8 +14,7 @@ class HistoryController extends Controller
     /**
      * @abstract middleware auth protected dashboard
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
     /**
@@ -23,8 +22,7 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $histories = History::with('user','products')->get();
 
         return view('admin.history.index',compact('histories'));
@@ -57,8 +55,7 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $history = History::where('id',$id)->with('user','products')->firstOrFail();
         foreach($history->products as $product){
             $productQt = Product::find($product->id)
