@@ -16,8 +16,7 @@ class ProductController extends Controller
     /**
      * @abstract middleware auth protected dashboard
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
     /**
