@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_admin')
-
+@section('title', 'new product')
 @section('content')
 
     {!! Form::open(['url'=>'admin/product/','files'=>true]) !!}

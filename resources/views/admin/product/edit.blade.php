@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_admin')
-
+@section('title', 'edit product')
 @section('content')
 
 

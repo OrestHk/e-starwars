@@ -1,6 +1,6 @@
 
 @extends('admin.layouts.master_admin')
-
+@section('title', 'Admin login')
 @section('content')
 <div id="authDashbord">
     <form method="POST" action="/auth/login">
