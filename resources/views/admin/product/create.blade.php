@@ -17,7 +17,7 @@
         </div>
         <div class="four columns">
             {!! Form::label('price','price',['for'=>'price']) !!}
-            {!! Form::text('price') !!}
+            {!! Form::text('price') !!}<span class="currency">€</span>
             {!! $errors->first('price','<span class="error">:price</span>') !!}
         </div>
     </div>
