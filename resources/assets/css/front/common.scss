@@ -455,3 +455,23 @@ footer{
         .left, .right{height: 100%;}
     }
 }
+
+// Mobile
+.mobile{
+    header{
+        .content{
+            .menu.open{
+                margin-left: 0;
+                left: $defPadding;
+            }
+            .main-menu{
+                left: -40%;
+                width: 40%;
+                li{
+                    a{font-size: 34px;}
+                }
+                &.open{left: 0;}
+            }
+        }
+    }
+}

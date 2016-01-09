@@ -74,25 +74,6 @@
         }
     }
 }
-// Pagination
-.container-pagination{
-    text-align: center;
-    margin-bottom: 30px;
-    .pagination{
-        display: inline-block;
-        li{
-            display: inline-block;
-            a, span{
-                display: block;
-                padding: 10px;
-                font-size: 16px;
-                color: $drkBlue;
-            }
-            &.active span{color: $lgtBlue;}
-            &.disabled span{color: $lgtGrey;}
-        }
-    }
-}
 // Products
 .products-container{
     padding: $defPadding;
@@ -312,6 +293,184 @@
             text-align: center;
             display: inline-block;
             border: $defBorder $drkBlue solid;
+        }
+    }
+}
+
+// Mobile
+.mobile{
+    // Main cube
+    .category{
+        .main-cube{
+            left: 85%;
+            width: 100px;
+            height: 100px;
+            background-size: 70%;
+            transform: translate(25px, -50%);
+            .borders{
+                .top, .bot{height: $defBorder * 2}
+                .left, .right{width: $defBorder * 2}
+            }
+        }
+    }
+    .products-container{
+        padding-bottom: 90px;
+        .product-container{
+            &.single{
+                display: block;
+                .table-element{display: block;}
+                .image{
+                    width: 100%;
+                    margin-bottom: $defPadding * 2;
+                    img{
+                        margin: 0 auto;
+                        width: 75%;
+                    }
+                }
+                .category-container{
+                    width: 100%;
+                    margin-bottom: $defPadding * 2;
+                    .category{
+                        width: 100px;
+                        height: 100px;
+                        background-size: 70%;
+                        .borders{
+                            .top, .bot{height: $defBorder * 2}
+                            .left, .right{width: $defBorder * 2}
+                        }
+                    }
+                }
+                .container-infos{
+                    text-align: center;
+                    width: 100%;
+                    .about-top{
+                        .title{
+                            font-size: 68px;
+                            // Chrome size ajust fix
+                            max-height: 10000px;
+                        }
+                        .description{
+                            font-size: 40px;
+                            // Chrome size ajust fix
+                            max-height: 10000px;
+                        }
+                        .price{
+                            font-size: 46px;
+                            // Chrome size ajust fix
+                            max-height: 10000px;
+                        }
+                    }
+                    .tags{
+                        .tag{
+                            width: 55px;
+                            height: 55px;
+                            margin: 10px 20px;
+                            background-size: 90%;
+                            .borders{
+                                .top, .bot{height: $defBorder * 2}
+                                .left, .right{width: $defBorder * 2}
+                            }
+                        }
+                    }
+                }
+                .already{
+                    font-size: 34px;
+                    // Chrome size ajust fix
+                    max-height: 10000px;
+                }
+                form{
+                    .form-content{
+                        label{
+                            font-size: 34px;
+                            // Chrome size ajust fix
+                            max-height: 10000px;
+                        }
+                        .container-quantity{
+                            .quantity{
+                                .btn{
+                                    width: 55px;
+                                    font-size: 34px;
+                                    // Chrome size ajust fix
+                                    max-height: 10000px;
+                                }
+                            }
+                            input{
+                                width: 70px;
+                                font-size: 34px;
+                                text-align: center;
+                            }
+                        }
+                        .add{
+                            .btn{font-size: 34px;}
+                            .message{
+                                span{
+                                    font-size: 24px;
+                                    // Chrome size ajust fix
+                                    max-height: 10000px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .blocs{
+            float: none;
+            width: 100%;
+            // Products
+            .product-container{
+                width: 85%;
+                .about-top{
+                    .title{
+                        font-size: 50px;
+                        // Chrome size ajust fix
+                        max-height: 10000px;
+                    }
+                    .description{
+                        font-size: 32px;
+                        // Chrome size ajust fix
+                        max-height: 10000px;
+                    }
+                }
+                // category
+                .category{
+                    width: 80px;
+                    height: 80px;
+                    .borders{
+                        .top, .bot{height: $defBorder * 2}
+                        .left, .right{width: $defBorder * 2}
+                    }
+                    &.helmets{background-size: 70%;}
+                    &.lasers{background-size: 70%;}
+                }
+                // Tags
+                .tags{
+                    .tag{
+                        width: 55px;
+                        height: 55px;
+                        margin: 10px 20px;
+                        background-size: 90%;
+                        .borders{
+                            .top, .bot{height: $defBorder * 2}
+                            .left, .right{width: $defBorder * 2}
+                        }
+                    }
+                }
+            }
+            &.right{
+                .product-container{
+                    float: none;
+                    text-align: left;
+                    .image-min{float: right;}
+                    .category{
+                        left: 105%;
+                        right: initial;
+                    }
+                }
+            }
+        }
+        .no-more{
+            p{font-size: 25px;}
         }
     }
 }

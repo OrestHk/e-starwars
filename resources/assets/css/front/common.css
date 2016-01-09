@@ -463,3 +463,15 @@ footer {
     width: 100%; }
   .container-btn:hover .left, .container-btn:hover .right, .container-btn.hover .left, .container-btn.hover .right {
     height: 100%; }
+
+.mobile header .content .menu.open {
+  margin-left: 0;
+  left: 20px; }
+
+.mobile header .content .main-menu {
+  left: -40%;
+  width: 40%; }
+  .mobile header .content .main-menu li a {
+    font-size: 34px; }
+  .mobile header .content .main-menu.open {
+    left: 0; }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Mail;
 use View;
 use Akismet;
+use Agent;
 use App\Contact;
 
 class ContactController extends Controller
@@ -25,9 +26,11 @@ class ContactController extends Controller
             Cookie::queue('splash', true, 43200);
             $splash = true;
         }
-        // Tell if splash screen is needed
-        View::composer('front.layouts.master', function ($view) use ($splash){
-            $view->with('splash', $splash);
+        // Check if device is mobile
+        $mobile = Agent::isMobile();
+        // Send vars to view
+        View::composer('front.layouts.master', function ($view) use ($splash, $mobile){
+            $view->with(compact('splash', 'mobile'));
         });
     }
     /**
