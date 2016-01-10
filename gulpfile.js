@@ -63,7 +63,7 @@ gulp.task('cssFront', function(){
 // JS
 gulp.task('jsFront', function(){
   return gulp.src(path.resources.jsFront+'*.js')
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(concat('front.min.js'))
     .pipe(gulp.dest(path.public.js));
 });

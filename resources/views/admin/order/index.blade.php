@@ -2,13 +2,13 @@
 @section('title', 'order index')
 @section('content')
  @if(!empty($orders))
-    <table class="u-full-width">
+    <table class="u-full-width" id="listOrder">
         <thead>
         <tr>
-            <th>user name</th>
-            <th>total price</th>
-            <th>date publication</th>
-            <th>details</th>
+            <th>User name</th>
+            <th>Total price</th>
+            <th>Date publication</th>
+            <th>Details</th>
 
         </tr>
         </thead>
@@ -22,7 +22,7 @@
                 <td><a href="{{url('admin/order/'.$order->id)}}"> see more</a></td>
             </tr>
         @empty
-            <p>no order history</p>
+            <p>No order history</p>
         @endforelse
         </tbody>
     </table>
