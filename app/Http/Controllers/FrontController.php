@@ -47,6 +47,13 @@ class FrontController extends Controller
     public function showError(){
         return view('errors.404');
     }
+    /**
+     * Legal view
+     */
+    public function legal(){
+        $class = 'legal';
+        return view('front.legal', compact('class'));
+    }
 
     /**
      * Display home products

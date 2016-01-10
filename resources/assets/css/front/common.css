@@ -467,6 +467,7 @@ footer {
 .main-error {
   top: 50%;
   left: 50%;
+  width: 100%;
   position: absolute;
   text-align: center;
   transform: translate(-50%, -50%); }
@@ -476,6 +477,10 @@ footer {
     margin-bottom: 20px; }
   .main-error img {
     margin: 0 auto; }
+
+.mobile .main-error p {
+  font-size: 34px;
+  max-height: 10000px; }
 
 .mobile header .content .menu.open {
   margin-left: 0;

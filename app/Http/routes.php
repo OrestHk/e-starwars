@@ -33,6 +33,8 @@ Route::post('order/validation/','FrontController@validationOrder');
 // Conctact
 Route::get('contact/', 'ContactController@show');
 Route::post('contact/send/', 'ContactController@send');
+// Legal
+Route::get('legal/', 'FrontController@legal');
 
 /** Back **/
 //Auth

@@ -460,6 +460,7 @@ footer{
 .main-error{
     top: 50%;
     left: 50%;
+    width: 100%;
     position: absolute;
     text-align: center;
     transform: translate(-50%, -50%);
@@ -473,6 +474,13 @@ footer{
 
 // Mobile
 .mobile{
+    .main-error{
+        p{
+            font-size: 34px;
+            // Chrome size ajust fix
+            max-height: 10000px;
+        }
+    }
     header{
         .content{
             .menu.open{

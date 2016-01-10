@@ -1,0 +1,15 @@
+@import '../conf';
+
+.legal{
+    padding: $defPadding;
+    padding-top: 150px;
+    .title{
+        color: $drkBlue;
+        font-size: 38px;
+        margin-bottom: 40px;
+    }
+    .text{
+        color: $drkBlue;
+        font-size: 16px;
+    }
+}
