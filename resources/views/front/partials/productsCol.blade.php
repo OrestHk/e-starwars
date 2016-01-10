@@ -1,4 +1,11 @@
 <div class="products-container">
+    <p class="main-title">
+        @if(isset($tag))
+            {{$tag->name}}
+        @elseif(isset($category))
+            {{$category->name}}
+        @endif
+    </p>
     @if(!empty($prods['left']))
         <div class="left blocs">
             @foreach($prods['left'] as $product)

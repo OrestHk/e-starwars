@@ -71,7 +71,12 @@
   padding: 20px;
   margin: 0 auto;
   max-width: 1024px;
-  padding-top: 170px; }
+  padding-top: 100px; }
+  .products-container .main-title {
+    color: #252c38;
+    font-size: 36px;
+    text-align: right;
+    margin-bottom: 50px; }
   .products-container .product-container {
     width: 80%;
     position: relative;
@@ -266,6 +271,9 @@
 
 .mobile .products-container {
   padding-bottom: 90px; }
+  .mobile .products-container .main-title {
+    font-size: 60px;
+    max-height: 10000px; }
   .mobile .products-container .product-container.single {
     display: block; }
     .mobile .products-container .product-container.single .table-element {

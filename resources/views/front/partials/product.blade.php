@@ -1,9 +1,11 @@
 <div class="product-container">
     <div class="about-top">
         @if(isset($product->picture))
-        <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" class="image-min" />
+        <a title="{{$product->name}}" href="{{url('/product/'.$product->slug)}}">
+            <img src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}" class="image-min" />
+        </a>
         @endif
-        <a class="title" href="{{url('/product/'.$product->slug)}}">{{$product->name}}</a>
+        <a class="title" title="{{$product->name}}" href="{{url('/product/'.$product->slug)}}">{{$product->name}}</a>
         <p class="description">{{$product->short_text}}</p>
         <div class="clear"></div>
     </div>

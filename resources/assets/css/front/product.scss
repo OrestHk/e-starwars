@@ -79,7 +79,14 @@
     padding: $defPadding;
     margin: 0 auto;
     max-width: 1024px;
-    padding-top: 170px;
+    padding-top: 100px;
+    // Main title
+    .main-title{
+        color: $drkBlue;
+        font-size: 36px;
+        text-align: right;
+        margin-bottom: 50px;
+    }
     // Product
     .product-container{
         width: 80%;
@@ -313,9 +320,18 @@
             }
         }
     }
+    // Products container
     .products-container{
         padding-bottom: 90px;
+        // Main title
+        .main-title{
+            font-size: 60px;
+            // Chrome size ajust fix
+            max-height: 10000px;
+        }
+        // Product container
         .product-container{
+            // Single product
             &.single{
                 display: block;
                 .table-element{display: block;}
