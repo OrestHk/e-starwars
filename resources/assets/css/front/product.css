@@ -67,23 +67,6 @@
   .cube.main-cube:hover .borders div {
     background-color: #226498; }
 
-.container-pagination {
-  text-align: center;
-  margin-bottom: 30px; }
-  .container-pagination .pagination {
-    display: inline-block; }
-    .container-pagination .pagination li {
-      display: inline-block; }
-      .container-pagination .pagination li a, .container-pagination .pagination li span {
-        display: block;
-        padding: 10px;
-        font-size: 16px;
-        color: #252c38; }
-      .container-pagination .pagination li.active span {
-        color: #226498; }
-      .container-pagination .pagination li.disabled span {
-        color: #889db8; }
-
 .products-container {
   padding: 20px;
   margin: 0 auto;
@@ -269,3 +252,119 @@
       text-align: center;
       display: inline-block;
       border: 2px #252c38 solid; }
+
+.mobile .category .main-cube {
+  left: 85%;
+  width: 100px;
+  height: 100px;
+  background-size: 70%;
+  transform: translate(25px, -50%); }
+  .mobile .category .main-cube .borders .top, .mobile .category .main-cube .borders .bot {
+    height: 4px; }
+  .mobile .category .main-cube .borders .left, .mobile .category .main-cube .borders .right {
+    width: 4px; }
+
+.mobile .products-container {
+  padding-bottom: 90px; }
+  .mobile .products-container .product-container.single {
+    display: block; }
+    .mobile .products-container .product-container.single .table-element {
+      display: block; }
+    .mobile .products-container .product-container.single .image {
+      width: 100%;
+      margin-bottom: 40px; }
+      .mobile .products-container .product-container.single .image img {
+        margin: 0 auto;
+        width: 75%; }
+    .mobile .products-container .product-container.single .category-container {
+      width: 100%;
+      margin-bottom: 40px; }
+      .mobile .products-container .product-container.single .category-container .category {
+        width: 100px;
+        height: 100px;
+        background-size: 70%; }
+        .mobile .products-container .product-container.single .category-container .category .borders .top, .mobile .products-container .product-container.single .category-container .category .borders .bot {
+          height: 4px; }
+        .mobile .products-container .product-container.single .category-container .category .borders .left, .mobile .products-container .product-container.single .category-container .category .borders .right {
+          width: 4px; }
+    .mobile .products-container .product-container.single .container-infos {
+      text-align: center;
+      width: 100%; }
+      .mobile .products-container .product-container.single .container-infos .about-top .title {
+        font-size: 68px;
+        max-height: 10000px; }
+      .mobile .products-container .product-container.single .container-infos .about-top .description {
+        font-size: 40px;
+        max-height: 10000px; }
+      .mobile .products-container .product-container.single .container-infos .about-top .price {
+        font-size: 46px;
+        max-height: 10000px; }
+      .mobile .products-container .product-container.single .container-infos .tags .tag {
+        width: 55px;
+        height: 55px;
+        margin: 10px 20px;
+        background-size: 90%; }
+        .mobile .products-container .product-container.single .container-infos .tags .tag .borders .top, .mobile .products-container .product-container.single .container-infos .tags .tag .borders .bot {
+          height: 4px; }
+        .mobile .products-container .product-container.single .container-infos .tags .tag .borders .left, .mobile .products-container .product-container.single .container-infos .tags .tag .borders .right {
+          width: 4px; }
+    .mobile .products-container .product-container.single .already {
+      font-size: 34px;
+      max-height: 10000px; }
+    .mobile .products-container .product-container.single form .form-content label {
+      font-size: 34px;
+      max-height: 10000px; }
+    .mobile .products-container .product-container.single form .form-content .container-quantity .quantity .btn {
+      width: 55px;
+      font-size: 34px;
+      max-height: 10000px; }
+    .mobile .products-container .product-container.single form .form-content .container-quantity input {
+      width: 70px;
+      font-size: 34px;
+      text-align: center; }
+    .mobile .products-container .product-container.single form .form-content .add .btn {
+      font-size: 34px; }
+    .mobile .products-container .product-container.single form .form-content .add .message span {
+      font-size: 24px;
+      max-height: 10000px; }
+  .mobile .products-container .blocs {
+    float: none;
+    width: 100%; }
+    .mobile .products-container .blocs .product-container {
+      width: 85%; }
+      .mobile .products-container .blocs .product-container .about-top .title {
+        font-size: 50px;
+        max-height: 10000px; }
+      .mobile .products-container .blocs .product-container .about-top .description {
+        font-size: 32px;
+        max-height: 10000px; }
+      .mobile .products-container .blocs .product-container .category {
+        width: 80px;
+        height: 80px; }
+        .mobile .products-container .blocs .product-container .category .borders .top, .mobile .products-container .blocs .product-container .category .borders .bot {
+          height: 4px; }
+        .mobile .products-container .blocs .product-container .category .borders .left, .mobile .products-container .blocs .product-container .category .borders .right {
+          width: 4px; }
+        .mobile .products-container .blocs .product-container .category.helmets {
+          background-size: 70%; }
+        .mobile .products-container .blocs .product-container .category.lasers {
+          background-size: 70%; }
+      .mobile .products-container .blocs .product-container .tags .tag {
+        width: 55px;
+        height: 55px;
+        margin: 10px 20px;
+        background-size: 90%; }
+        .mobile .products-container .blocs .product-container .tags .tag .borders .top, .mobile .products-container .blocs .product-container .tags .tag .borders .bot {
+          height: 4px; }
+        .mobile .products-container .blocs .product-container .tags .tag .borders .left, .mobile .products-container .blocs .product-container .tags .tag .borders .right {
+          width: 4px; }
+    .mobile .products-container .blocs.right .product-container {
+      float: none;
+      text-align: left; }
+      .mobile .products-container .blocs.right .product-container .image-min {
+        float: right; }
+      .mobile .products-container .blocs.right .product-container .category {
+        left: 105%;
+        right: initial; }
+  .mobile .products-container .no-more p {
+    font-size: 25px; }

@@ -85,3 +85,60 @@
         }
     }
 }
+
+// Mobile
+.mobile{
+    .contact{
+        form{
+            width: 80%;
+            max-width: initial;
+            // Form fields
+            .fields{
+                .field{
+                    label{
+                        width: 150px;
+                        font-size: 34px;
+                        // Chrome size ajust fix
+                        max-height: 10000px;
+                    }
+                    .field-container{
+                        input, textarea{
+                            font-size: 34px;
+                        }
+                        textarea{
+                            max-width: initial;
+                            max-height: initial;
+                            min-height: initial;
+                        }
+                    }
+                }
+                &:after{
+                    height: $defBorder * 2;
+                }
+                .success, .progress{
+                    font-size: 34px;
+                    bottom: -40px;
+                    // Chrome size ajust fix
+                    max-height: 10000px;
+                }
+            }
+            .container-btn{
+                .btn{
+                    font-size: 34px;
+                    // Chrome size ajust fix
+                    max-height: 10000px;
+                }
+            }
+            &.sent{
+                .fields{
+                    .success{bottom: 8px;}
+                }
+            }
+            &.progress{
+                .fields{
+                    .progress{bottom: 8px;}
+                }
+            }
+        }
+    }
+}

@@ -151,6 +151,7 @@ return [
         nickurt\Akismet\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
 
     ],
 
@@ -167,6 +168,7 @@ return [
 
     'aliases' => [
 
+        'Agent'     => Jenssegers\Agent\Facades\Agent::class,
         'Akismet'   => nickurt\Akismet\Facade::class,
         'App'       => Illuminate\Support\Facades\App::class,
         'Artisan'   => Illuminate\Support\Facades\Artisan::class,

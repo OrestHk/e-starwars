@@ -64,3 +64,30 @@
       bottom: 5px; }
     .contact form.progress .fields .progress {
       bottom: 5px; }
+
+.mobile .contact form {
+  width: 80%;
+  max-width: initial; }
+  .mobile .contact form .fields .field label {
+    width: 150px;
+    font-size: 34px;
+    max-height: 10000px; }
+  .mobile .contact form .fields .field .field-container input, .mobile .contact form .fields .field .field-container textarea {
+    font-size: 34px; }
+  .mobile .contact form .fields .field .field-container textarea {
+    max-width: initial;
+    max-height: initial;
+    min-height: initial; }
+  .mobile .contact form .fields:after {
+    height: 4px; }
+  .mobile .contact form .fields .success, .mobile .contact form .fields .progress {
+    font-size: 34px;
+    bottom: -40px;
+    max-height: 10000px; }
+  .mobile .contact form .container-btn .btn {
+    font-size: 34px;
+    max-height: 10000px; }
+  .mobile .contact form.sent .fields .success {
+    bottom: 8px; }
+  .mobile .contact form.progress .fields .progress {
+    bottom: 8px; }
