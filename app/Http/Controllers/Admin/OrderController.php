@@ -20,7 +20,7 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $orders = Order::with('user','products')->get();
+        $orders = Order::with('user','products')->paginate(20);
 
         return view('admin.order.index',compact('orders'));
     }
@@ -57,7 +57,7 @@ class OrderController extends Controller
         foreach($order->products as $product){
             $productQt = Product::find($product->id)
                 ->join('order_product','products.id','=','order_product.product_id')
-                ->where('order_product.history_id', '=',$id)
+                ->where('order_product.order_id', '=',$id)
                 ->get();
         }
         return view('admin.order.details',compact('order','productQt'));
