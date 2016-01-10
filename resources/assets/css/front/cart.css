@@ -135,3 +135,34 @@
     height: 100%; }
     .order.empty .empty {
       display: block; }
+
+.mobile .order {
+  width: 80%; }
+  .mobile .order #orderList .ordersContainer .orderTitle p {
+    font-size: 28px;
+    max-height: 10000px;
+    border-bottom: 4px #252c38 solid; }
+  .mobile .order #orderList .ordersContainer .orderContainer .cell {
+    font-size: 24px;
+    max-height: 10000px;
+    border-bottom: 4px; }
+  .mobile .order #orderList .ordersContainer .orderContainer:last-of-type .cell {
+    border-bottom: 4px #252c38 solid; }
+  .mobile .order #orderList .finalPrice {
+    font-size: 34px;
+    max-height: 10000px; }
+  .mobile .order #orderList form .text input {
+    font-size: 28px;
+    max-height: 10000px; }
+  .mobile .order #orderList form .submit input {
+    font-size: 28px;
+    max-height: 10000px; }
+  .mobile .order #orderList form .error {
+    font-size: 24px;
+    max-height: 10000px; }
+  .mobile .order .confirm {
+    font-size: 28px;
+    max-height: 10000px; }
+  .mobile .order .empty p {
+    font-size: 28px;
+    max-height: 10000px; }

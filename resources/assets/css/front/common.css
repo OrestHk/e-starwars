@@ -472,6 +472,22 @@ footer {
   left: -40%;
   width: 40%; }
   .mobile header .content .main-menu li a {
-    font-size: 34px; }
+    font-size: 34px;
+    max-height: 10000px; }
   .mobile header .content .main-menu.open {
     left: 0; }
+
+.mobile header .content .cart {
+  background-image: none; }
+  .mobile header .content .cart .container {
+    width: 40px;
+    height: 40px;
+    bottom: initial;
+    right: initial;
+    left: 10px;
+    top: 10px; }
+    .mobile header .content .cart .container .items {
+      top: 55%;
+      left: 52%;
+      font-size: 28px;
+      max-height: 10000px; }
