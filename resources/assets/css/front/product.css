@@ -151,9 +151,11 @@
         display: table-cell;
         position: relative; }
       .products-container .product-container.single .image {
-        width: 45%; }
+        width: 45%;
+        vertical-align: middle; }
         .products-container .product-container.single .image img {
-          width: 100%; }
+          margin: 0 auto;
+          width: 85%; }
       .products-container .product-container.single .category-container {
         width: 10%;
         vertical-align: middle; }

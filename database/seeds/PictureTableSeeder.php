@@ -9,8 +9,23 @@ class PictureTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        factory(App\Picture::class, 20)->create();
+    public function run(){
+        // Get products dir
+        $images = scandir(IMG_PATH_BACK);
+        // Insert each images in DB
+        foreach($images as $image){
+            if($image != '.' && $image != '..'){
+                $image = IMG_PATH_BACK.$image;
+                $infos = pathinfo($image);
+                $size = filesize($image);
+                DB::table('pictures')->insert([
+                    'filename'      => $infos['basename'],
+                    'size'          => $size,
+                    'type'          => $infos['extension'],
+                    'created_at'    => Carbon\Carbon::now(),
+                    'updated_at'    => Carbon\Carbon::now()
+                ]);
+            }
+        }
     }
 }

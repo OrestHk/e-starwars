@@ -168,7 +168,11 @@
             }
             .image{
                 width: 45%;
-                img{width: 100%;}
+                vertical-align: middle;
+                img{
+                    margin: 0 auto;
+                    width: 85%;
+                }
             }
             .category-container{
                 width: 10%;

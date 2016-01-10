@@ -47,11 +47,12 @@ $factory->define(App\Product::class, function (Faker\Generator $faker){
       'updated_at' => Carbon\Carbon::now()
   ];
 });
-
+// Order factory
 $factory->define(App\Order::class,function(Faker\Generator $faker){
-
-    return ['user_id'=>rand(1,10),'order_date'=>Carbon\Carbon::now()];
-
+    return [
+        'user_id' => rand(1, 10),
+        'order_date' => Carbon\Carbon::now()
+    ];
 });
 // Picture factory
 $factory->define(App\Picture::class, function (Faker\Generator $faker){
