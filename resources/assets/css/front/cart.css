@@ -64,7 +64,7 @@
       .order #orderList .ordersContainer .image a {
         display: inline-block; }
         .order #orderList .ordersContainer .image a img {
-          max-width: 100%;
+          max-width: 90%;
           max-height: 50px; }
     .order #orderList .ordersContainer .name {
       width: 35%; }
