@@ -2,16 +2,16 @@
 @section('title', 'product index')
 @section('content')
 
-    <a class="button button-primary" href="{{url('admin/product/create')}}">New one</a>
+    <a class="button button-primary" href="{{url('admin/product/create')}}">Add product</a>
     <table class="u-full-width">
         <thead>
         <tr>
-            <th>status</th>
-            <th>name</th>
-            <th>date publication</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Publication date</th>
             <th>Category</th>
-            <th>tags</th>
-            <th>delete</th>
+            <th>Tags</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -29,17 +29,25 @@
                     @endforelse
                 </td>
 
-                <td>{!! Form::open(['url'=>'admin/product/'.$product->id, 'method'=>'DELETE', 'class'=>'form-delete']) !!}
+                <td>
                     <div class="form-group">
-                        {!! Form::submit('delete', ['class'=>'btn-delete']) !!}
+                        {!! Form::button('delete', ['class'=>'btn-delete', 'data-id' => $product->id]) !!}
                     </div>
-                    {!! Form::close() !!}</td>
+                </td>
             </tr>
         @empty
             <p>No post</p>
         @endforelse
         </tbody>
     </table>
+    <div class="delete-conf">
+        {!! Form::open(['url' => "admin/product/", 'method' => 'delete', 'data-url' => url('admin/product/')]) !!}
+            <p>Are you sure you want to delete this post ?</p>
+            <input type="hidden" name="id" value="" id="">
+            <button class="aboart btn btn-success">Aboart</button>
+            <input type="submit" class="btn btn-danger" value="Confirm">
+        {!! Form::close() !!}
+    </div>
     <div class="pagination">
         {!!$products->render()!!}
     </div>

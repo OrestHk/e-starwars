@@ -6,28 +6,28 @@
     {!! Form::open(['url'=>'admin/product/'.$product->id,'method'=>'PUT','files'=>true]) !!}
     <div class="row">
         <div class="four columns">
-            {!! Form::label('name','name',['for'=>'name']) !!}<br>
+            {!! Form::label('name','name',['for'=>'name']) !!}
             {!! Form::text('name',$product->name) !!}
             {!! $errors->first('name','<span class="error">:message</span>') !!}
         </div>
         <div class="four columns">
-            {!! Form::label('slug','slug',['for'=>'slug']) !!}<br>
+            {!! Form::label('slug','slug',['for'=>'slug']) !!}
             {!! Form::text('slug',$product->slug) !!}
             {!! $errors->first('slug','<span class="error">:slug</span>') !!}
         </div>
         <div class="four columns">
-            {!! Form::label('price','price',['for'=>'price']) !!}<br>
+            {!! Form::label('price','price',['for'=>'price']) !!}
             {!! Form::number('price',$product->price) !!}<span class="currency">€</span>
             {!! $errors->first('price','<span class="error">:price</span>') !!}
         </div>
     </div>
 
 
-    {!! Form::label('description','description',['for'=>'description']) !!}<br>
+    {!! Form::label('description','description',['for'=>'description']) !!}
     {!! Form::textarea('description',$product->description,['class'=>'u-full-width']) !!}
     {!! $errors->first('description','<span class="error">:message</span>') !!}
 
-    {!! Form::label('short_text','text court',['for'=>'short_text']) !!}<br>
+    {!! Form::label('short_text','text court',['for'=>'short_text']) !!}
     {!! Form::textarea('short_text',$product->short_text,['class'=>'u-full-width']) !!}
     {!! $errors->first('short_text','<span class="error">:message</span>') !!}
 
@@ -61,7 +61,7 @@
     </div>
     <div class="row">
         @if(!empty($product->picture->filename))
-            <img height="250px"src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
+            <img class="image" height="250px"src="{{url(IMG_PATH_FRONT.$product->picture->filename)}}">
         @endif
     </div>
 

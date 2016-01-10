@@ -56,26 +56,60 @@
 
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0px !important; }
 
 body {
   font-family: "Moondog_bolder"; }
 
+.container {
+  height: 100%;
+  position: relative; }
+
 #adminMainContener {
-  margin: 50px 0; }
+  padding: 50px 0;
+  min-height: 100%;
+  position: relative; }
+  #adminMainContener label {
+    margin-top: 20px; }
+  #adminMainContener:after {
+    content: '';
+    clear: both; }
+  #adminMainContener:before {
+    content: '';
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    opacity: 0.2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220px;
+    z-index: -1;
+    height: 320px;
+    transform: translate(-50%, -50%); }
 
 #authDashbord {
-  padding-top: 29px;
-  width: 237px;
+  width: 250px;
   background-image: url("../images/logo.png");
-  margin: 150px auto;
   text-align: center;
-  height: 311px;
+  height: 320px;
   background-repeat: no-repeat;
   background-size: cover;
-  color: white; }
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding-top: 40px;
+  transform: translate(-50%, -50%); }
   #authDashbord input {
-    color: black; }
+    color: black;
+    margin-bottom: 15px; }
   #authDashbord button {
     color: white; }
   #authDashbord button:hover {
@@ -90,12 +124,16 @@ tr.success {
 tr td a {
   font-weight: 600; }
 
-ul.pagination {
-  list-style: none;
-  vertical-align: top; }
-  ul.pagination li {
-    display: inline-block;
-    margin-left: 10px; }
+.pagination {
+  text-align: center; }
+  .pagination ul.pagination {
+    margin-top: 20px;
+    list-style: none;
+    vertical-align: top;
+    display: inline-block; }
+    .pagination ul.pagination li {
+      display: inline-block;
+      margin-left: 10px; }
 
 .alert.alert-info {
   width: 25%;
@@ -105,27 +143,56 @@ ul.pagination {
   border-radius: 10px;
   color: white;
   position: absolute;
-  top: 15%;
-  left: 35%; }
+  top: 50px;
+  right: 0; }
 
-input.btn-delete[type=submit] {
+button.btn-delete {
   background-color: rgba(148, 0, 0, 0.7);
   color: white;
-  transition: background 0.5s; }
+  transition: background 0.3s, color 0.3s; }
 
-input.btn-delete[type=submit]:hover {
+button.btn-delete:hover {
   background-color: white;
   color: #252c38; }
 
+.btn.btn-success {
+  background-color: #00c85a;
+  transition: background 0.3s, color 0.3s;
+  color: #fff; }
+  .btn.btn-success:hover {
+    color: #252c38;
+    background-color: #00e66e; }
+
+.btn.btn-danger {
+  background-color: #940000;
+  transition: background 0.3s, color 0.3s;
+  color: #fff; }
+  .btn.btn-danger:hover {
+    color: #252c38;
+    background-color: #c80000; }
+
 nav#adminMainNav a {
-  text-decoration: none; }
+  text-decoration: none;
+  width: 25%;
+  text-align: center;
+  float: left;
+  border-right: 1px #889db8 solid;
+  border-bottom: 1px #889db8 solid;
+  padding: 10px; }
+  nav#adminMainNav a:last-of-type {
+    border-right: none; }
+
+nav#adminMainNav:after {
+  content: '';
+  clear: both; }
 
 td > p.tags {
   background: black;
   color: white;
   display: inline-block;
   border-radius: 5px;
-  padding: 1px 2px; }
+  padding: 1px 2px;
+  margin-bottom: 5px; }
 
 .rightBtn {
   float: right; }
@@ -134,6 +201,9 @@ td > p.tags {
   font-family: Aurebesh;
   margin-left: 5px;
   font-size: 20px; }
+
+.row .image {
+  margin-top: 20px; }
 
 #recapOrder {
   margin: 55px auto;
@@ -147,3 +217,24 @@ td > p.tags {
     padding: 20px;
     border-radius: 5px;
     background-color: rgba(130, 130, 130, 0.5); }
+
+.delete-conf {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none; }
+  .delete-conf form {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+    width: 300px;
+    height: 100px;
+    color: #fff; }
+    .delete-conf form .aboart {
+      margin-right: 20px; }

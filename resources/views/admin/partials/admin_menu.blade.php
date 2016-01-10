@@ -1,9 +1,8 @@
-
 <nav class="row" id="adminMainNav">
-    <a class="three columns" href="{{url('/')}}">site public</a>
     @if(Auth::check())
-        <a class="three columns" href="{{url('auth/logout')}}">logout</a>
-        <a class="three columns" href="{{url('admin/product')}}">administrer les produits</a>
-        <a class="three columns" href="{{url('admin/order')}}">voir les commandes</a>
+        <a class="links" href="{{url('/')}}">See site</a>
+        <a class="links" href="{{url('admin/product')}}">Edit products</a>
+        <a class="links" href="{{url('admin/order')}}">See orders history</a>
+        <a class="links" href="{{url('auth/logout')}}">Logout</a>
     @endif
 </nav>
