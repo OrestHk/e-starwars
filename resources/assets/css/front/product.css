@@ -93,6 +93,7 @@
         float: right;
         margin-bottom: 10px; }
       .products-container .product-container .about-top .title {
+        width: 65%;
         color: #252c38;
         font-size: 30px;
         margin-bottom: 5px;
@@ -232,7 +233,7 @@
     .products-container .blocs.left .product-container {
       background-image: url("../images/product-border.png"); }
       .products-container .blocs.left .product-container .image-min {
-        margin-left: 20px; }
+        margin-left: 5%; }
       .products-container .blocs.left .product-container .category {
         left: 105%; }
     .products-container .blocs.right {
@@ -242,7 +243,7 @@
         float: right;
         text-align: right; }
         .products-container .blocs.right .product-container .image-min {
-          margin-right: 20px;
+          margin-right: 5%;
           float: left; }
         .products-container .blocs.right .product-container .category {
           right: 105%; }

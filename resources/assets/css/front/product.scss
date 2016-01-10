@@ -106,6 +106,7 @@
                 margin-bottom: 10px;
             }
             .title{
+                width: 65%;
                 color: $drkBlue;
                 font-size: 30px;
                 margin-bottom: 5px;
@@ -269,7 +270,7 @@
             .product-container{
                 background-image: url($imgs+'product-border.png');
                 .image-min{
-                    margin-left: 20px;
+                    margin-left: 5%;
                 }
                 .category{left: 105%;}
             }
@@ -282,7 +283,7 @@
                 float: right;
                 text-align: right;
                 .image-min{
-                    margin-right: 20px;
+                    margin-right: 5%;
                     float: left;
                 }
                 .category{right: 105%;}

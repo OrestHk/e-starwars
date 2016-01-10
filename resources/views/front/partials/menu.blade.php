@@ -7,6 +7,7 @@
 <nav class="main-menu">
     <ul class="main first-main">
         <li><a href="{{url('/')}}">Home</a></li>
+        <li><a href="{{url('/products')}}">Products</a></li>
         <li><a href="{{url('/category/helmets/')}}">Helmets</a></li>
         <li><a href="{{url('/category/lasers/')}}">Lasers</a></li>
     </ul>
