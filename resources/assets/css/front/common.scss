@@ -456,6 +456,21 @@ footer{
     }
 }
 
+// 404
+.main-error{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    p{
+        font-size: 24px;
+        color: $drkBlue;
+        margin-bottom: 20px;
+    }
+    img{margin: 0 auto;}
+}
+
 // Mobile
 .mobile{
     header{

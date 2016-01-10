@@ -42,6 +42,13 @@ class FrontController extends Controller
     }
 
     /**
+     * Error handler
+     */
+    public function showError(){
+        return view('errors.404');
+    }
+
+    /**
      * Display home products
      */
     public function home(){
@@ -66,11 +73,12 @@ class FrontController extends Controller
         // Check if request coming from ajax
         $ajax = $request->ajax();
         // Check if query for specific page
-        if($page){
-            Paginator::currentPageResolver(function() use ($page){
-                return $page;
-            });
-        }
+        $page = intval($page);
+        if($page == 0)
+            $page = 1;
+        Paginator::currentPageResolver(function() use ($page){
+            return $page;
+        });
         // Products query
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
@@ -83,8 +91,12 @@ class FrontController extends Controller
         if($page && $ajax)
             return $this->splitProductsView($prods);
         // Return view for default display
-        else
+        else{
+            if(count($products) < 1)
+                return view('errors.404');
+
             return view('front.products.index', compact('prods', 'products', 'class', 'paginatUrl', 'page'));
+        }
     }
     /**
      * Get product info by slug
@@ -110,11 +122,12 @@ class FrontController extends Controller
         $category = Category::where('slug', $slug)
             ->firstOrFail();
         // Check if query for specific page
-        if($page){
-            Paginator::currentPageResolver(function() use ($page){
-                return $page;
-            });
-        }
+        $page = intval($page);
+        if($page == 0)
+            $page = 1;
+        Paginator::currentPageResolver(function() use ($page){
+            return $page;
+        });
         // Products query
         $products = Product::where('category_id', $category->id)
             ->orderBy('publish_date', 'DESC')
@@ -127,8 +140,12 @@ class FrontController extends Controller
         if($page && $ajax)
             return $this->splitProductsView($prods);
         // Return view for default display
-        else
+        else{
+            if(count($products) < 1)
+                return view('errors.404');
+
             return view('front.categories.single', compact('category', 'prods', 'products', 'class', 'paginatUrl', 'page'));
+        }
     }
     /**
      * Get products relative to tags
@@ -142,11 +159,12 @@ class FrontController extends Controller
         $tag = Tag::where('slug', $slug)
             ->firstOrFail();
         // Check if query for specific page
-        if($page){
-            Paginator::currentPageResolver(function() use ($page){
-                return $page;
-            });
-        }
+        $page = intval($page);
+        if($page == 0)
+            $page = 1;
+        Paginator::currentPageResolver(function() use ($page){
+            return $page;
+        });
         // Products query
         $products = $tag->products()
             ->orderBy('publish_date', 'DESC')
@@ -159,8 +177,12 @@ class FrontController extends Controller
         if($page && $ajax)
             return $this->splitProductsView($prods);
         // Return view for default display
-        else
+        else{
+            if(count($products) < 1)
+                return view('errors.404');
+
             return view('front.tags.single', compact('tag', 'prods', 'products', 'class', 'paginatUrl', 'page'));
+        }
     }
     /**
      * Split products in two columns

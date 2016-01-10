@@ -17,7 +17,7 @@
         };
     </script>
 </head>
-<body class="@if($mobile) mobile @endif">
+<body class="@if(isset($mobile) && $mobile != false) mobile @endif">
     @if(session('message'))
         <div class="alert alert-success">
             {{session('message')}}

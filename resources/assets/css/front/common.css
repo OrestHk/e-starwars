@@ -464,6 +464,19 @@ footer {
   .container-btn:hover .left, .container-btn:hover .right, .container-btn.hover .left, .container-btn.hover .right {
     height: 100%; }
 
+.main-error {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translate(-50%, -50%); }
+  .main-error p {
+    font-size: 24px;
+    color: #252c38;
+    margin-bottom: 20px; }
+  .main-error img {
+    margin: 0 auto; }
+
 .mobile header .content .menu.open {
   margin-left: 0;
   left: 20px; }
