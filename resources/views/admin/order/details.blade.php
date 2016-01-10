@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_admin')
-
+@section('title', 'order details')
 @section('content')
 <div id="recapOrder">
     <h3>user info</h3>

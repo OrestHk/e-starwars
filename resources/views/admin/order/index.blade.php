@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_admin')
-
+@section('title', 'order index')
 @section('content')
  @if(!empty($orders))
     <table class="u-full-width">

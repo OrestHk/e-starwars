@@ -1,5 +1,5 @@
 @extends('admin.layouts.master_admin')
-
+@section('title', 'product index')
 @section('content')
 
     <a class="button button-primary" href="{{url('admin/product/create')}}">New one</a>
