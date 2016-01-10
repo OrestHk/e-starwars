@@ -144,7 +144,8 @@
           background-image: url("../images/icones/saber.png"); }
     .products-container .product-container.single {
       width: 100%;
-      display: table; }
+      display: table;
+      padding-top: 70px; }
       .products-container .product-container.single .table-element {
         vertical-align: top;
         display: table-cell;

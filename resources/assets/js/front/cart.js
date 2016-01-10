@@ -1,4 +1,6 @@
 'use strict';
+// Disable console log
+console.log = function(){};
 
 // Global vars
 var Cart;
