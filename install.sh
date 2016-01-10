@@ -40,6 +40,8 @@ read answer
 
 if [ $answer="y" ]; then
 
+    chmod -f 777 .env.example
+
     sed -i -e "s/DB_HOST=localhost/DB_HOST=$DB_HOST/g" ./.env.example;
     sed -i -e "s/DB_DATABASE=homestead/DB_DATABASE=$DB_DATABASE/g" ./.env.example;
     sed -i -e "s/DB_USERNAME=homestead/DB_USERNAME=$USERNAME/g" ./.env.example;
