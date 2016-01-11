@@ -12,8 +12,8 @@ Just change the host, login, password and database name parameters in this file,
 php install.php
 ```
 
-The install.sh file allows you to configure the server step by step by a series of questions.
-Here you have to run
-```
-sh install.sh
-```
+install.sh will be available soon (work in progress)
+
+## Contact
+
+Contact page uses Akismet and maildev, to make it fully functionnal you need to install those two dependencies, and configure the Akismet API key in the .env file
