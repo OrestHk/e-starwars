@@ -423,7 +423,11 @@ footer {
 
 .container-btn {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
   .container-btn .btn {
     border: none;
     cursor: pointer;
@@ -431,7 +435,11 @@ footer {
     color: #226498;
     border: 2px transparent solid;
     background-color: transparent;
-    padding: 10px 15px; }
+    padding: 10px 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
   .container-btn div {
     position: absolute;
     background-color: #252c38; }

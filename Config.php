@@ -44,13 +44,13 @@
          * Install vendors required for the project
          */
         private function installVendors(){
-            echo "Vendors installation...\n\n";
-
-            exec('composer install');
-
-            echo "Node modules installation...\n\n";
-
-            exec('npm install');
+            // echo "Vendors installation...\n\n";
+            //
+            // exec('composer install');
+            //
+            // echo "Node modules installation...\n\n";
+            //
+            // exec('npm install');
 
             $this->initEnv();
         }

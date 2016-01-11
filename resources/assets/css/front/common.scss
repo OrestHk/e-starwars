@@ -409,6 +409,10 @@ footer{
 .container-btn{
     position: relative;
     display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     .btn{
         border: none;
         cursor: pointer;
@@ -417,6 +421,10 @@ footer{
         border: $defBorder transparent solid;
         background-color: transparent;
         padding: 10px 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
     div{
         position: absolute;
