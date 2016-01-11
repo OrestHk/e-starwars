@@ -304,7 +304,7 @@ class FrontController extends Controller
             // Create an order
             $history = Order::create([
                 'user_id' => $user->id,
-                'order_date' => date('Y-m-d H:m:s',time()),
+                'order_date' => \Carbon\Carbon::now(),
                 'total_price' => $cost
             ]);
             // Create relation order => products
