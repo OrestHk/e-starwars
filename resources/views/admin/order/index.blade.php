@@ -26,4 +26,7 @@
         @endforelse
         </tbody>
     </table>
+    <div class="pagination">
+        {!!$orders->render()!!}
+    </div>
 @stop
