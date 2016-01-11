@@ -37,13 +37,15 @@ Route::post('contact/send/', 'ContactController@send');
 Route::get('legal/', 'FrontController@legal');
 
 /** Back **/
-//Auth
-Route::controller('auth', 'Auth\AuthController');
-
-//admin Route
-Route::get('dashboard', 'Admin\DashboardController@index');
-
-Route::group(['prefix' => 'admin'], function () {
-    Route::resource('product', 'Admin\ProductController');
-    Route::resource('order','Admin\orderController');
+// Admin middleware
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+    // Admin Route
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('product', 'Admin\ProductController');
+        Route::resource('order','Admin\orderController');
+    });
 });
+// Log route
+Route::get('dashboard', 'Admin\DashboardController@index');
+// Auth
+Route::controller('auth', 'Auth\AuthController');

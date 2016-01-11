@@ -3,6 +3,8 @@
 .legal{
     padding: $defPadding;
     padding-top: 150px;
+    max-width: 1024px;
+    margin: 0 auto;
     .title{
         color: $drkBlue;
         font-size: 38px;
