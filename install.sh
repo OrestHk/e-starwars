@@ -15,6 +15,17 @@ echo "enter DBPASSWORD :"
 read PASSWORD
 
 
+
+#composer install and dependencies node
+echo -n "Do you wish to install composer element ? (y/n)"
+read answer
+
+if [ $answer="y" ]; then
+
+    composer install;
+    npm install
+fi
+
 #create database
 
 echo -n "Do you wish to create database? (y/n)"
@@ -51,18 +62,6 @@ if [ $answer="y" ]; then
     php artisan key:generate
 fi
 
-
-#composer install
-echo -n "Do you wish to install composer element ? (y/n)"
-read answer
-
-if [ $answer="y" ]; then
-
-    composer install;
-
-fi
-
-
 #seed Db
 echo -n "Do you wish to create tables and seed db ? (y/n)"
 read answer
@@ -73,16 +72,5 @@ if [ $answer="y" ]; then
 
 fi
 
-
-#install dependencies node
-
-echo -n "Do you wish to install modules node for gulp program? (y/n)"
-read answer
-
-if [ ! -d "./node_modules/" ] && [ $answer="y" ]; then
-
-    npm install
-
-fi
 
 echo "install finish";
