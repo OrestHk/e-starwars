@@ -11,6 +11,7 @@ use Mail;
 use View;
 use Akismet;
 use Agent;
+use Cookie;
 use App\Contact;
 
 class ContactController extends Controller
@@ -54,10 +55,10 @@ class ContactController extends Controller
             $rq['spam'] = true;
         else{
             // If not spam, send it to admin
-            // Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
-            //     $message->from($rq['email'], 'WTF ?');
-            //     $message->to('admin@admin.com');
-            // });
+            Mail::send('emails.contact', ['data' => $rq], function($message) use($rq){
+                $message->from($rq['email'], 'Kuar\'s Resell');
+                $message->to(env('MAIL_ADDRESS'));
+            });
         }
         // Insert message in db
         Contact::create($rq);
