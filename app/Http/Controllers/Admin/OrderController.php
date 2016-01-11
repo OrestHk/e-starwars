@@ -20,7 +20,9 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $orders = Order::with('user','products')->paginate(20);
+        $orders = Order::with('user','products')
+            ->orderBy('order_date', 'ASC')
+            ->paginate(20);
 
         return view('admin.order.index',compact('orders'));
     }

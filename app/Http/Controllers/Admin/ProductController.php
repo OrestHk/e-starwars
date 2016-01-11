@@ -26,7 +26,9 @@ class ProductController extends Controller
      */
     public function index(){
 
-        $products = Product::with('tags','category')->paginate(5);
+        $products = Product::with('tags','category')
+            ->orderBy('publish_date', 'ASC')
+            ->paginate(5);
 
         return view('admin.product.index', compact('products'));
     }

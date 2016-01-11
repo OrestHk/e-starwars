@@ -63,7 +63,7 @@ class FrontController extends Controller
         // Products query
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
-            ->orderBy('publish_date', 'DESC')
+            ->orderBy('publish_date', 'ASC')
             ->take(10)
             ->get();
         // Split products in two arrays
@@ -89,7 +89,7 @@ class FrontController extends Controller
         // Products query
         $products = Product::where('status', 'published')
             ->with('tags', 'category', 'picture')
-            ->orderBy('publish_date', 'DESC')
+            ->orderBy('publish_date', 'ASC')
             ->paginate($this->paginat);
         // Split products in two arrays
         $prods = $this->splitProducts($products);
@@ -137,7 +137,7 @@ class FrontController extends Controller
         });
         // Products query
         $products = Product::where('category_id', $category->id)
-            ->orderBy('publish_date', 'DESC')
+            ->orderBy('publish_date', 'ASC')
             ->with('tags', 'picture')
             ->paginate($this->paginat);
         // Split products in two arrays
@@ -174,7 +174,7 @@ class FrontController extends Controller
         });
         // Products query
         $products = $tag->products()
-            ->orderBy('publish_date', 'DESC')
+            ->orderBy('publish_date', 'ASC')
             ->with('tags', 'category', 'picture')
             ->paginate($this->paginat);
         // Split products in two arrays
